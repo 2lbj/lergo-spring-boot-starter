@@ -1,0 +1,8 @@
+${AnsiColor.BLUE},--.                     ,----.
+${AnsiColor.BLUE}|  |     ,---.  ,--.--. '  .-./     ,---.
+${AnsiColor.BLUE}|  |    | .-. : |  .--' |  | .---. | .-. |
+${AnsiColor.BLUE}|  '--. \   --. |  |    '  '--'  | ' '-' '
+${AnsiColor.BLUE}`-----'  `----' `--'     `------'   `---'
+
+${AnsiColor.BRIGHT_GREEN} ${application.title} ${application.version}
+${AnsiColor.BRIGHT_WHITE} Base Spring Boot ${spring-boot.formatted-version}

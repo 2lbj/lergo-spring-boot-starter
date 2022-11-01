@@ -1,0 +1,87 @@
+plugins {
+    id 'org.springframework.boot' version '2.6.7'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java-library'
+    id 'maven-publish'
+    id 'idea'
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+}
+
+/**
+ * 定义版本号变量
+ */
+def guava_version = "31.1-jre"
+def hutool_version = "5.7.20"
+def springfox_version = "3.0.0"
+def mybatis_plus_version = "3.5.1"
+def feign_version = "11.8"
+
+group = 'com.lergo.framework'
+version = '0.0.1'
+
+//jdk版本
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
+
+repositories {
+    //指定阿里云镜像
+    maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
+    maven { url 'https://maven.aliyun.com/nexus/content/repositories/jcenter' }
+    maven { url 'https://maven.aliyun.com/nexus/content/repositories/google' }
+    maven { url 'https://maven.aliyun.com/nexus/content/repositories/gradle-plugin' }
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+
+    //SpringBoot
+    api 'org.springframework.boot:spring-boot-starter'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    api 'org.springframework.boot:spring-boot-starter-validation'
+    api 'org.springframework.boot:spring-boot-starter-webflux'
+    api 'org.springframework.boot:spring-boot-starter-actuator'
+//    implementation 'org.springframework.boot:spring-boot-starter-data-rest'
+//    implementation 'org.springframework.boot:spring-boot-starter-jersey'
+//    //排除tomcat使用undertow
+//    implementation ("org.springframework.boot:spring-boot-starter-web") {
+//        exclude module: "spring-boot-starter-tomcat"
+//    }
+//    implementation "org.springframework.boot:spring-boot-starter-undertow:${spring_boot_version}"
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'io.projectreactor:reactor-test'
+    //Lombok
+    annotationProcessor 'org.projectlombok:lombok'
+    compileOnly 'org.projectlombok:lombok'
+    testAnnotationProcessor 'org.projectlombok:lombok'
+    testCompileOnly 'org.projectlombok:lombok'
+
+
+    //Tool
+    api "com.google.guava:guava:${guava_version}"
+    api "cn.hutool:hutool-all:${hutool_version}"
+    //Swagger
+    implementation "io.springfox:springfox-boot-starter:${springfox_version}"
+    //DB
+    api "com.baomidou:mybatis-plus-extension:${mybatis_plus_version}"
+    api "com.baomidou:mybatis-plus-boot-starter:${mybatis_plus_version}"
+    runtimeOnly 'org.postgresql:postgresql'
+    //Feign
+    api "io.github.openfeign:feign-core:${feign_version}"
+    api "io.github.openfeign:feign-okhttp:${feign_version}"
+    api "io.github.openfeign:feign-slf4j:${feign_version}"
+    api "io.github.openfeign:feign-gson:${feign_version}"
+
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}

@@ -1,0 +1,46 @@
+application:
+    title: Lergo-Debugger
+    version: 0.0.1-alpha
+server:
+    port: 8080
+
+management:
+    info:
+        git:
+            mode: full
+    endpoints:
+        web:
+            exposure:
+                include: '*'
+
+spring:
+    datasource:
+        driver-class-name: org.postgresql.Driver
+        url: jdbc:postgresql://subway.i-driven.com.cn:18025/postgres
+        username: smp
+        password: smp1q2w3e
+
+mybatis-plus:
+    configuration:
+        log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #本地调试配置
+    mapper-locations:
+        classpath:mapper/*Mapper.xml
+    global-config:
+        banner: false
+        db-config:
+            id-type: ASSIGN_ID
+            table-prefix:
+    type-aliases-package:
+        com.lergo.framework.entity
+    type-handlers-package:
+        com.lergo.framework.hanlder
+
+lergo:
+    swagger:
+        enable: true
+    env:
+        channel:
+            - code: 11
+              name: AAA
+            - code: 22
+              name: BBB

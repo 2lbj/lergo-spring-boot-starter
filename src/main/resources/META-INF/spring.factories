@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+ com.lergo.framework.config.SwaggerConfig,com.lergo.framework.config.LergoConfig

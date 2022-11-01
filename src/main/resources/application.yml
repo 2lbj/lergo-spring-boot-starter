@@ -1,0 +1,3 @@
+spring:
+    config:
+        import: config/lergo-core.yml
