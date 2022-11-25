@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>io.github.2lbj</groupId>
 	<artifactId>lergo-spring-boot-starter</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.1</version>
 	<packaging>jar</packaging>
 	<name>LergoCore</name>
 	<description>LerGo Framework for Spring Boot</description>
@@ -76,6 +76,7 @@
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
+			<version>42.4.1</version>
 			<scope>runtime</scope>
 		</dependency>
 
