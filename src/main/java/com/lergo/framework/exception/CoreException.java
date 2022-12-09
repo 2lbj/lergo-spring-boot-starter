@@ -1,8 +1,5 @@
 package com.lergo.framework.exception;
 
-import java.io.Serial;
-
-
 public class CoreException extends RuntimeException {
 
     private ErrorMessage errorMessage;
