@@ -6,3 +6,4 @@ ${AnsiColor.BLUE}`-----'  `----' `--'     `------'   `---'
 
 ${AnsiColor.BRIGHT_GREEN} ${application.title} ${application.version}
 ${AnsiColor.BRIGHT_WHITE} Base Spring Boot ${spring-boot.formatted-version}
+ Swagger-UI: http://localhost:${server.port}${spring.webflux.base-path:}/swagger-ui/index.html

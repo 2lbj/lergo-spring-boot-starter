@@ -28,6 +28,7 @@ public class SwaggerConfig {
         return new Docket(
                 // 使用 OpenAPI 3.0
                 DocumentationType.OAS_30)
+                .pathProvider(new IPathProvider(swaggerProperties))
                 // 等同 @EnableOpenApi
                 .enable(swaggerProperties.getEnable())
                 // API 信息

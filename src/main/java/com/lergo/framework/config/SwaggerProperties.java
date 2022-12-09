@@ -1,6 +1,7 @@
 package com.lergo.framework.config;
 
 import lombok.Data;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @Data
@@ -9,6 +10,8 @@ public class SwaggerProperties {
     private Boolean enable = false;
     private String groupName = "根分组";
     private String basePackage = "com.lergo.framework";
+    @Value("${lergo.swagger.base-path:${spring.webflux.base-path:/}}")
+    private String basePath;
     private String version = "1.0.0";
     private String title = "基础开发脚手架";
     private String description = "API文档";

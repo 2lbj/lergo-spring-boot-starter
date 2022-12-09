@@ -14,6 +14,7 @@ management:
                 include: '*'
 
 spring:
+#    webflux.base-path: /api
     datasource:
         driver-class-name: org.postgresql.Driver
         url: jdbc:postgresql://localhost/postgres
@@ -23,6 +24,7 @@ spring:
 lergo:
     swagger:
         enable: true
+#        base-path: /swagger-test-api
     env:
         channel:
             - code: 11
