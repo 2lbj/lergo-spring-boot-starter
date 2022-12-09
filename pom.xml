@@ -5,16 +5,18 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.6.7</version>
+		<version>2.7.6</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>io.github.2lbj</groupId>
 	<artifactId>lergo-spring-boot-starter</artifactId>
-	<version>1.0.1</version>
+	<version>1.0.2</version>
 	<packaging>jar</packaging>
 	<name>LergoCore</name>
 	<description>LerGo Framework for Spring Boot</description>
 	<properties>
+		<application.artifactId>${artifactId}</application.artifactId>
+		<application.version>${version}</application.version>
 		<java.version>17</java.version>
 		<projectUrl>https://github.com/2lbj/lergo-spring-boot-starter.git</projectUrl>
 		<serverId>Sonatype_OSSRH</serverId><!-- 服务id 也就是setting.xml中的servers.server.id -->
@@ -68,43 +70,39 @@
 			<version>3.0.0</version>
 		</dependency>
 
-		<dependency>
-			<groupId>com.baomidou</groupId>
-			<artifactId>mybatis-plus-boot-starter</artifactId>
-			<version>3.5.1</version>
-		</dependency>
+
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
-			<version>42.4.1</version>
+			<version>42.5.1</version>
 			<scope>runtime</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>io.github.openfeign</groupId>
 			<artifactId>feign-core</artifactId>
-			<version>11.8</version>
+			<version>12.1</version>
 		</dependency>
 		<dependency>
 			<groupId>io.github.openfeign</groupId>
 			<artifactId>feign-okhttp</artifactId>
-			<version>11.8</version>
+			<version>12.1</version>
 		</dependency>
 		<dependency>
 			<groupId>io.github.openfeign</groupId>
 			<artifactId>feign-slf4j</artifactId>
-			<version>11.8</version>
+			<version>12.1</version>
 		</dependency>
 		<dependency>
 			<groupId>io.github.openfeign</groupId>
 			<artifactId>feign-gson</artifactId>
-			<version>11.8</version>
+			<version>12.1</version>
 		</dependency>
 
 		<dependency>
 			<groupId>cn.hutool</groupId>
 			<artifactId>hutool-all</artifactId>
-			<version>5.7.20</version>
+			<version>5.8.10</version>
 		</dependency>
 		<dependency>
 			<groupId>com.google.guava</groupId>
@@ -153,6 +151,14 @@
 	</distributionManagement>
 
 	<build>
+		<!--指定filtering=true.maven的占位符解析表达式就可以用于它里面的文件-->
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+
 		<plugins>
 
 			<!-- 编译插件，设置源码以及编译的jdk版本 -->
@@ -199,6 +205,19 @@
 						</goals>
 					</execution>
 				</executions>
+			</plugin>
+			<!--支持yaml读取pom的参数-->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>3.2.0</version>
+				<configuration>
+					<encoding>UTF-8</encoding>
+					<delimiters>
+						<delimiter>@</delimiter>
+					</delimiters>
+					<useDefaultDelimiters>false</useDefaultDelimiters>
+				</configuration>
 			</plugin>
 			<!--公钥私钥插件，也就是上传需要进行验证用户名和密码过程中需要用到的插件-->
 			<plugin>
@@ -305,7 +324,7 @@
 		<repository>
 			<id>alimaven</id>
 			<name>aliyun maven</name>
-			<url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+			<url>https://maven.aliyun.com/repository/public</url>
 			<releases>
 				<enabled>true</enabled>
 			</releases>
