@@ -2,13 +2,14 @@ package com.lergo.framework.config;
 
 import org.springframework.web.util.UriComponentsBuilder;
 import springfox.documentation.PathProvider;
+import springfox.documentation.spring.web.paths.DefaultPathProvider;
 
 import static springfox.documentation.spring.web.paths.Paths.ROOT;
 import static springfox.documentation.spring.web.paths.Paths.removeAdjacentForwardSlashes;
 
 public class IPathProvider implements PathProvider {
 
-    private SwaggerProperties pathProperties;
+    private final SwaggerProperties pathProperties;
 
     public IPathProvider(SwaggerProperties pathProperties) {
         this.pathProperties = pathProperties;
@@ -17,8 +18,8 @@ public class IPathProvider implements PathProvider {
     /**
      * The base path to the swagger api documentation.
      * <p>
-     * Typically docs are served from &lt;yourApp&gt;/api-docs so a relative resourceListing path will omit the api-docs
-     * segment. E.g. Relative: "path": "/" Absolute: "path": "http://localhost:8080/api-docs"
+     * Typically, docs are served from &lt;yourApp&gt;/api-docs so a relative resourceListing path will omit the api-docs
+     * segment. E.g. Relative: "path": "/" Absolute: "path": "<a href="http://localhost:8080/api-docs">...</a>"
      *
      * @return the documentation base path
      */
@@ -49,7 +50,7 @@ public class IPathProvider implements PathProvider {
      * @param groupName      the group name for this Resource Object e.g. 'default'
      * @param apiDeclaration the identifier for the api declaration e.g 'business-controller'
      * @return the resource listing path
-     * @see DefaultPathProvider#getDocumentationPath() by appending the swagger group and apiDeclaration
+     * @see DefaultPathProvider getDocumentationPath by appending the swagger group and apiDeclaration
      */
     @Override
     public String getResourceListingPath(String groupName, String apiDeclaration) {

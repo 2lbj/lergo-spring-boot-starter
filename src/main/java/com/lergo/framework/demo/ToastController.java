@@ -1,6 +1,7 @@
 package com.lergo.framework.demo;
 
 
+import com.lergo.framework.annotation.LogTracker;
 import com.lergo.framework.config.LergoConfig;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,7 @@ public class ToastController {
     LergoConfig lergoConfig;
 
     @GetMapping("test")
+    @LogTracker("Hello World~")
     public Mono<String> test() {
         return Mono.just("hello world");
     }

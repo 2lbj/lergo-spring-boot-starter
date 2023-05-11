@@ -20,7 +20,8 @@ public class SwaggerConfig {
 
     /**
      * API
-     * @return
+     *
+     * @return Docket
      */
     @Bean
     public Docket adminApi() {
@@ -46,7 +47,8 @@ public class SwaggerConfig {
 
     /**
      * API 信息
-     * @return
+     *
+     * @return ApiInfo
      */
     private ApiInfo getAdminApiInfo() {
         return new ApiInfoBuilder()

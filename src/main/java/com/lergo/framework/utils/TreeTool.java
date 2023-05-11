@@ -33,11 +33,11 @@ public class TreeTool<T extends ModelTree> {
 	private List<T> getOneParentChildren(T root, List<T> mL) {
 		List<T> r = new ArrayList<T>();//山里有个庙
 		for (T menu : mL) {
-			//if(root.getId().equals(menu.getParentid())){
-			if(root.getId() == menu.getParentid()){
-				r.add(menu);
-			}
-		}
+            //if(root.getId().equals(menu.getParentId())){
+            if (root.getId() == menu.getParentId()) {
+                r.add(menu);
+            }
+        }
 		return r;//庙里有个老和尚讲故事
 	}
 
