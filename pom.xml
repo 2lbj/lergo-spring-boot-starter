@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>io.github.2lbj</groupId>
 	<artifactId>lergo-spring-boot-starter</artifactId>
-	<version>1.0.8</version>
+	<version>1.0.9</version>
 	<packaging>jar</packaging>
 	<name>LergoCore</name>
 	<description>LerGo Framework for Spring Boot</description>
@@ -104,14 +104,24 @@
 		</dependency>
 
 		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>32.0.1-jre</version>
+		</dependency>
+		<dependency>
 			<groupId>cn.hutool</groupId>
 			<artifactId>hutool-all</artifactId>
 			<version>5.8.20</version>
 		</dependency>
 		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
-			<version>32.0.1-jre</version>
+			<groupId>com.baomidou</groupId>
+			<artifactId>mybatis-plus-boot-starter</artifactId>
+			<version>3.5.3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>cn.zhxu</groupId>
+			<artifactId>bean-searcher</artifactId>
+			<version>4.2.0</version>
 		</dependency>
 
 	</dependencies>
