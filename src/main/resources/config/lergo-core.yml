@@ -15,19 +15,19 @@ management:
 
 spring:
 #    webflux.base-path: /api
-    datasource:
-        driver-class-name: org.postgresql.Driver
-        url: jdbc:postgresql://localhost/postgres
-        username: postgres
-        password:
+#    datasource:
+#        driver-class-name: org.postgresql.Driver
+#        url: jdbc:postgresql://localhost/postgres
+#        username: postgres
+#        password:
 
 lergo:
     swagger:
         enable: true
-#        base-path: /swagger-test-api
+    #        base-path: /swagger-test-api
     env:
         channel:
-            - code: 11
+            - code: 100
               name: AAA
-            - code: 22
+            - code: 200
               name: BBB
