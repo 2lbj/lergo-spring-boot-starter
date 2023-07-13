@@ -12,7 +12,7 @@ import springfox.documentation.spring.web.plugins.Docket;
 
 import javax.annotation.Resource;
 
-@EnableConfigurationProperties(value = {SwaggerProperties.class})
+@EnableConfigurationProperties(SwaggerProperties.class)
 public class SwaggerConfig {
 
     @Resource
