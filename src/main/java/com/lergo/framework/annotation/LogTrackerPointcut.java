@@ -32,7 +32,7 @@ public class LogTrackerPointcut {
         // 执行源方法
         Object proceed = joinPoint.proceed();
 
-        log.info("{} @LogTracker.{} {} >>> {} --> {}",
+        log.info("{} @LogTracker.{} {}| ${} --> {}",
                 method.getDeclaringClass().getName(),
                 method.getName(),
                 method.getDeclaredAnnotation(LogTracker.class).value(),

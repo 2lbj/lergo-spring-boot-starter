@@ -17,7 +17,7 @@
 	<properties>
 		<application.artifactId>${artifactId}</application.artifactId>
 		<application.version>${version}</application.version>
-		<java.version>8</java.version>
+		<java.version>1.8</java.version>
 		<projectUrl>https://github.com/2lbj/lergo-spring-boot-starter.git</projectUrl>
 		<serverId>Sonatype_OSSRH</serverId><!-- 服务id 也就是setting.xml中的servers.server.id -->
 	</properties>
