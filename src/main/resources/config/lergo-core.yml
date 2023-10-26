@@ -1,6 +1,6 @@
 application:
-    title: application.title:(@application.artifactId@)
-    version: application.version:(@application.version@)
+    artifactId: @application.artifactId@
+    version: @application.version@
 server:
     port: 8080
 
@@ -13,23 +13,28 @@ management:
             exposure:
                 include: '*'
 spring:
-    mvc:
-        pathmatch:
-            matching-strategy: ant_path_matcher
+    application:
+        name: @application.name@
+
+#    mvc:
+#        pathmatch:
+#            matching-strategy: ant_path_matcher
+
 #    webflux.base-path: /api
 #    datasource:
 #        driver-class-name: org.postgresql.Driver
 #        url: jdbc:postgresql://localhost/postgres
 #        username: postgres
 #        password:
-
 lergo:
     swagger:
-        enable: false
-    #        base-path: /swagger-test-api
+        enable: true #..................
     env:
         channel:
             - code: 100
               name: AAA
             - code: 200
               name: BBB
+logging:
+    level:
+        root: info

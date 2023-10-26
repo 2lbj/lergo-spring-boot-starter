@@ -17,6 +17,7 @@
 	<properties>
 		<application.artifactId>${artifactId}</application.artifactId>
 		<application.version>${version}</application.version>
+		<application.name>${name}</application.name>
 		<java.version>1.8</java.version>
 		<projectUrl>https://github.com/2lbj/lergo-spring-boot-starter.git</projectUrl>
 		<serverId>Sonatype_OSSRH</serverId><!-- 服务id 也就是setting.xml中的servers.server.id -->
@@ -118,6 +119,32 @@
 			<version>2.0.0</version>
 		</dependency>
 
+		<!-- Log -->
+		<dependency>
+			<groupId>com.yomahub</groupId>
+			<artifactId>tlog-all-spring-boot-starter</artifactId>
+			<version>1.5.1</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-autoconfigure</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-web</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>commons-beanutils</groupId>
+					<artifactId>commons-beanutils</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!--<dependency>
+			<groupId>com.yomahub</groupId>
+			<artifactId>tlog-all</artifactId>
+			<version>1.5.1</version>
+		</dependency>-->
+
 		<!--
         <dependency>
 			<groupId>org.postgresql</groupId>
@@ -125,23 +152,23 @@
 			<version>42.6.0</version>
 			<scope>runtime</scope>
 		</dependency>
+        -->
 
-		<dependency>
+		<!--<dependency>
 			<groupId>com.baomidou</groupId>
 			<artifactId>mybatis-plus-boot-starter</artifactId>
 			<version>3.5.3.1</version>
 		</dependency>
-		<dependency>
+			<dependency>
 			<groupId>cn.zhxu</groupId>
 			<artifactId>bean-searcher</artifactId>
 			<version>4.2.0</version>
 		</dependency>
-		<dependency>
-            <groupId>org.mapstruct</groupId>
-            <artifactId>mapstruct</artifactId>
-            <version>1.5.5.Final</version>
-        </dependency>
-        -->
+			<dependency>
+			<groupId>org.mapstruct</groupId>
+			<artifactId>mapstruct</artifactId>
+			<version>1.5.5.Final</version>
+		</dependency>-->
 
 	</dependencies>
 

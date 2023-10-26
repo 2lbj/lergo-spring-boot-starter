@@ -3,7 +3,8 @@ ${AnsiColor.BLUE}|  |     ,---.  ,--.--. '  .-./     ,---.
 ${AnsiColor.BLUE}|  |    | .-. : |  .--' |  | .---. | .-. |
 ${AnsiColor.BLUE}|  '--. \   --. |  |    '  '--'  | ' '-' '
 ${AnsiColor.BLUE}`-----'  `----' `--'     `------'   `---'
+${AnsiColor.BLUE}                    -- ${spring.application.name}
 
-${AnsiColor.BRIGHT_GREEN} ${application.title} ${application.version}
-${AnsiColor.BRIGHT_WHITE} Base Spring Boot ${spring-boot.formatted-version}
+${AnsiColor.BRIGHT_GREEN} ${application.artifactId} (v${application.version})
+${AnsiColor.BRIGHT_WHITE} Spring Boot ${spring-boot.formatted-version}
  Swagger-UI: http://localhost:${server.port}${spring.webflux.base-path:}/swagger-ui/index.html

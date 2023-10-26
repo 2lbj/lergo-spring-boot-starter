@@ -13,7 +13,7 @@ public class LergoBootStarter extends AbstractBootStarter {
 	}
 
 	static {
-		System.setProperty("toast.demo", "akb48");
-		log.debug(System.getProperties().toString());
+		//System.setProperty("toast.demo", "akb48");
+		//log.debug(System.getProperties().toString());
 	}
 }
