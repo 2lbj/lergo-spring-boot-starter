@@ -27,14 +27,12 @@ spring:
 #        username: postgres
 #        password:
 lergo:
-    swagger:
-        enable: true #..................
     env:
         channel:
-            - code: 100
-              name: AAA
-            - code: 200
-              name: BBB
+          - code: 100
+            name: AAA
+          - code: 200
+            name: BBB
 logging:
     level:
         root: info
