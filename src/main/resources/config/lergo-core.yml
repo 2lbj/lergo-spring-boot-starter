@@ -25,7 +25,7 @@ spring:
 
 lergo:
     swagger:
-        enable: true
+        enable: false
     #        base-path: /swagger-test-api
     env:
         channel:
