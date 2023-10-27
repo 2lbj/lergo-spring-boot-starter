@@ -1,20 +1,21 @@
 application:
-    artifactId: @application.artifactId@
-    version: @application.version@
+  artifactId: @application.artifactId@
+  version: @application.version@
 server:
-    port: 8080
+  port: 8080
 
 management:
-    info:
-        git:
-            mode: full
-    endpoints:
-        web:
-            exposure:
-                include: '*'
+  info:
+    git:
+      mode: full
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
 spring:
-    application:
-        name: @application.name@
+  application:
+    name: @application.name@
 
 #    mvc:
 #        pathmatch:
@@ -26,13 +27,23 @@ spring:
 #        url: jdbc:postgresql://localhost/postgres
 #        username: postgres
 #        password:
+
 lergo:
-    env:
-        channel:
-          - code: 100
-            name: AAA
-          - code: 200
-            name: BBB
+  env:
+    channel:
+      - code: 100
+        name: AAA
+      - code: 200
+        name: BBB
+
 logging:
-    level:
-        root: info
+  level:
+    root: info
+
+springdoc:
+  writer-with-order-by-keys: true
+  swagger-ui:
+    display-request-duration: true
+    operationsSorter: method
+    disable-swagger-default-url: true
+    use-root-path: true
