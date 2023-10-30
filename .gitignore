@@ -32,3 +32,4 @@ build/
 
 ### VS Code ###
 .vscode/
+/ln_m2_lergo-spring-boot-starter/
