@@ -31,6 +31,11 @@
 			<artifactId>spring-boot-starter-webflux</artifactId>
 			<optional>true</optional>
 		</dependency>
+		<!--<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<optional>true</optional>
+		</dependency>-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-validation</artifactId>
@@ -79,6 +84,11 @@
 			<artifactId>springdoc-openapi-webflux-ui</artifactId>
 			<version>1.7.0</version>
 		</dependency>
+		<!--<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-ui</artifactId>
+			<version>1.7.0</version>
+		</dependency>-->
 
 		<!-- OpenFeign -->
 		<dependency>
@@ -139,11 +149,6 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-		<!--<dependency>
-			<groupId>com.yomahub</groupId>
-			<artifactId>tlog-all</artifactId>
-			<version>1.5.1</version>
-		</dependency>-->
 
 		<!--
         <dependency>
@@ -157,12 +162,12 @@
 		<!--<dependency>
 			<groupId>com.baomidou</groupId>
 			<artifactId>mybatis-plus-boot-starter</artifactId>
-			<version>3.5.3.1</version>
+			<version>3.5.4</version>
 		</dependency>
 			<dependency>
 			<groupId>cn.zhxu</groupId>
 			<artifactId>bean-searcher</artifactId>
-			<version>4.2.0</version>
+			<version>4.2.4</version>
 		</dependency>
 			<dependency>
 			<groupId>org.mapstruct</groupId>
