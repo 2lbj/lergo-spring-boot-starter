@@ -9,7 +9,7 @@ public class LergoBootStarter extends AbstractBootStarter {
 	private static final Logger log = LoggerFactory.getLogger(LergoBootStarter.class);
 
 	public LergoBootStarter() {
-		System.getProperties().getProperty("os.name");
+		//System.getProperties().getProperty("os.name");
 	}
 
 	static {

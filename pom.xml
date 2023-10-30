@@ -29,12 +29,10 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-webflux</artifactId>
-			<optional>true</optional>
 		</dependency>
 		<!--<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
-			<optional>true</optional>
 		</dependency>-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -130,7 +128,7 @@
 		</dependency>
 
 		<!-- Log -->
-		<dependency>
+		<!--<dependency>
 			<groupId>com.yomahub</groupId>
 			<artifactId>tlog-all-spring-boot-starter</artifactId>
 			<version>1.5.1</version>
@@ -148,7 +146,7 @@
 					<artifactId>commons-beanutils</artifactId>
 				</exclusion>
 			</exclusions>
-		</dependency>
+		</dependency>-->
 
 		<!--
         <dependency>
