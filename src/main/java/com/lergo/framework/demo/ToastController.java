@@ -3,6 +3,7 @@ package com.lergo.framework.demo;
 
 import com.lergo.framework.annotation.LogTracker;
 import com.lergo.framework.config.LergoConfig;
+import com.lergo.framework.mapper.NoWarnMapper;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +17,8 @@ public class ToastController {
 
     @Resource
     LergoConfig lergoConfig;
+    @Resource
+    NoWarnMapper noWarnMapper;
 
     @GetMapping("test")
     @LogTracker("Hello World~")
@@ -26,6 +29,11 @@ public class ToastController {
     @GetMapping("config")
     public LergoConfig config() {
         return lergoConfig;
+    }
+
+    @GetMapping("dbVersion")
+    public String dbVersion() {
+        return noWarnMapper.version();
     }
 
 }

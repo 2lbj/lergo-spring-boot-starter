@@ -1,0 +1,20 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost/postgres
+    username: postgres
+    password: postgres
+
+mybatis-plus:
+  #  configuration:
+  #    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #本地调试配置
+  global-config:
+    banner: false
+    db-config:
+      id-type: ASSIGN_ID
+
+pagehelper:
+  auto-dialect: true
+  helperDialect: postgresql
+  reasonable: true
+  support-methods-arguments: true

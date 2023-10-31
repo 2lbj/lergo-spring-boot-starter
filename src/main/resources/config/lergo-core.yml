@@ -29,6 +29,8 @@ spring:
 logging:
   level:
     root: info
+    org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver: WARN
+    com.zaxxer.hikari.HikariDataSource: WARN
 
 springdoc:
   writer-with-order-by-keys: true

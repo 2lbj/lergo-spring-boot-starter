@@ -1,7 +1,6 @@
 spring:
     config:
-        import: config/lergo-core.yml
-
-mybatis-plus:
-    global-config:
-        banner: false
+        import:
+            - classpath:/config/lergo-core.yml
+            - classpath:/config/lergo-db.yml
+            #- optional:/Users/Downloads/system.properties
