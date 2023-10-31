@@ -29,8 +29,10 @@ spring:
 logging:
   level:
     root: info
+    org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer: WARN
+    org.springframework.boot.web.embedded.netty.NettyWebServer: WARN
+    org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor: WARN
     org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver: WARN
-    com.zaxxer.hikari.HikariDataSource: WARN
 
 springdoc:
   writer-with-order-by-keys: true
@@ -39,16 +41,6 @@ springdoc:
     operationsSorter: method
     disable-swagger-default-url: true
     use-root-path: true
-
-#mybatis-plus:
-#  configuration:
-#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #本地调试配置
-#  mapper-locations:
-#    classpath:mapper/*Mapper.xml
-#  global-config:
-#    banner: false
-#    db-config:
-#      id-type: ASSIGN_ID #雪花ID
 
 lergo:
   env:

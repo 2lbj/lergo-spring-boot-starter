@@ -5,6 +5,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.Arrays;
+
 @SpringBootApplication
 public class LergoBootStarter extends AbstractBootStarter {
 	private static final Logger log = LoggerFactory.getLogger(LergoBootStarter.class);
@@ -20,7 +22,7 @@ public class LergoBootStarter extends AbstractBootStarter {
 
 	public static void main(String[] args) {
 		SpringApplication.run(LergoBootStarter.class, args);
+        System.out.println("Spring BOOT Startup: $" + Arrays.toString(args));
 	}
-
 
 }

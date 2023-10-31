@@ -3,4 +3,5 @@ spring:
         import:
             - classpath:/config/lergo-core.yml
             - classpath:/config/lergo-db.yml
+            - classpath:/config/lergo-redis.yml
             #- optional:/Users/Downloads/system.properties
