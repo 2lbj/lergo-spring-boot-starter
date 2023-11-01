@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>io.github.2lbj</groupId>
 	<artifactId>lergo-spring-boot-starter</artifactId>
-	<version>1.0.9-pre</version>
+	<version>1.0.9</version>
 	<packaging>jar</packaging>
 	<name>LergoCore</name>
 	<description>LerGo Framework for Spring Boot</description>
@@ -292,7 +292,6 @@
 		</resources>
 
 		<plugins>
-
 			<!-- 编译插件，设置源码以及编译的jdk版本 -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
