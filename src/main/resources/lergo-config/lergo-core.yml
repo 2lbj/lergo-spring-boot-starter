@@ -9,7 +9,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: '*'
+        include: 'info,health'
 
 spring:
   application:
@@ -29,6 +29,8 @@ logging:
     org.springdoc.api.AbstractOpenApiResource: WARN
 
 springdoc:
+  api-docs:
+    enabled: false
   writer-with-order-by-keys: true
   swagger-ui:
     display-request-duration: true
