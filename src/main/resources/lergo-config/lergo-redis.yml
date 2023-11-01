@@ -2,15 +2,15 @@ spring:
   redis:
     database: 0
     # 集群配置
-    cluster:
-      nodes:
-        - 127.0.0.1:7000
-        - 127.0.0.1:7001
-        - 127.0.0.1:7002
+    #    cluster:
+    #      nodes:
+    #        - 127.0.0.1:7000
+    #        - 127.0.0.1:7001
+    #        - 127.0.0.1:7002
     # 单机配置
     host: 127.0.0.1
     port: 6379
-    password: xxxxxxxxxx
+    #password: xxxxxxxxxx
     # 连接超时时间
     timeout: 10s
     lettuce:

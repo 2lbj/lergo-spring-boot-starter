@@ -1,7 +1,11 @@
+server:
+  port: 9999
+
 spring:
-    config:
-        import:
-            - classpath:/config/lergo-core.yml
-            - classpath:/config/lergo-db.yml
-            - classpath:/config/lergo-redis.yml
-            #- optional:/Users/Downloads/system.properties
+  config:
+    import:
+      - classpath:/lergo-config/lergo-core.yml
+      - classpath:/lergo-config/lergo-db.yml
+      - classpath:/lergo-config/lergo-redis.yml
+  profiles:
+    active: dev

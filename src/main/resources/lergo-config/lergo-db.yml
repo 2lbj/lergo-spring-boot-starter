@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost/postgres
+    url: jdbc:postgresql://localhost/postgres?tringtype=unspecified
     username: postgres
     password: postgres
     type: com.alibaba.druid.pool.DruidDataSource
@@ -49,7 +49,7 @@ pagehelper:
 
 logging:
   level:
+    #com.zaxxer.hikari.HikariDataSource: WARN
     com.alibaba.druid.pool.DruidDataSource: WARN
     com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure: WARN
-    #com.zaxxer.hikari.HikariDataSource: WARN
     com.lergo.framework.mapper: DEBUG
