@@ -3,6 +3,7 @@ package com.lergo.framework.filter;
 import io.micrometer.core.instrument.MeterRegistry;
 import io.micrometer.core.instrument.Timer;
 import lombok.extern.slf4j.Slf4j;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.context.annotation.Configuration;
@@ -30,14 +31,17 @@ public class LoggerFilter implements WebFilter {
                 .register(registry);
     }
 
+    @NotNull
     @Override
-    public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain) {
+    public Mono<Void> filter(@NotNull ServerWebExchange exchange,
+                             WebFilterChain chain) {
         long start = System.currentTimeMillis();
 
         return chain.filter(exchange)
                 .doFinally(signalType -> {
                     long end = System.currentTimeMillis();
-                    myFilterTimer.record((end - start), java.util.concurrent.TimeUnit.MILLISECONDS);
+                    myFilterTimer.record((end - start),
+                            java.util.concurrent.TimeUnit.MILLISECONDS);
 
                 });
     }
