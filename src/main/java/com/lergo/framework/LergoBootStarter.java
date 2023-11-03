@@ -10,22 +10,22 @@ import java.util.Arrays;
 
 @SpringBootApplication
 public class LergoBootStarter extends AbstractBootStarter {
-	private static final Logger log = LoggerFactory.getLogger(LergoBootStarter.class);
+    private static final Logger log = LoggerFactory.getLogger(LergoBootStarter.class);
 
-	public LergoBootStarter() {
-		//System.setProperty("pagehelper.banner", "false");
-		log.info("{}-{} ({})",
-				System.getProperties().getProperty("os.name"),
-				System.getProperties().getProperty("os.version"),
-				System.getProperties().getProperty("os.arch")
-		);
-	}
+    public LergoBootStarter() {
+        //System.setProperty("pagehelper.banner", "false");
+        log.info("{}-{} ({})",
+                System.getProperties().getProperty("os.name"),
+                System.getProperties().getProperty("os.version"),
+                System.getProperties().getProperty("os.arch")
+        );
+    }
 
-	public static void main(String[] args) {
-		ConfigurableApplicationContext run = SpringApplication.run(LergoBootStarter.class, args);
-		System.out.println("OK --- Spring BOOT Running: $" + Arrays.toString(args));
-		System.out.printf("Swagger-UI: http://localhost:%s%n",
-				run.getEnvironment().getProperty("server.port"));
-	}
+    public static void main(String[] args) {
+        ConfigurableApplicationContext run = SpringApplication.run(LergoBootStarter.class, args);
+        System.out.println("OK --- Spring BOOT Running: $" + Arrays.toString(args));
+        System.out.printf("Swagger-UI: http://localhost:%s%n",
+                run.getEnvironment().getProperty("server.port"));
+    }
 
 }

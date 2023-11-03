@@ -24,7 +24,7 @@ public class FrameworkController {
     LergoConfig lergoConfig;
 
     @GetMapping("ping")
-    @LogTracker("~Ping-Pong LogTracker~")
+    @LogTracker("...测试方法...")
     @Operation(summary = "服务连通性测试接口")
     public String ping(@Valid
                        @Nullable

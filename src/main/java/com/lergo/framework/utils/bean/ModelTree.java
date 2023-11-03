@@ -50,12 +50,12 @@ public abstract class ModelTree<T> {
         this.local = local;
     }
 
-	public List<T> getChildren() {
-		return children;
-	}
+    public List<T> getChildren() {
+        return children;
+    }
 
-	public void setChildren(List<T> children) {
-		this.children = children;
-	}
-	
+    public void setChildren(List<T> children) {
+        this.children = children;
+    }
+
 }

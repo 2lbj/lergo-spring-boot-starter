@@ -7,6 +7,6 @@ public class BeanTool {
         return BeanUtil.mapToBean(
                 BeanUtil.beanToMap(o),
                 clazz,
-                true,null);
+                true, null);
     }
 }
