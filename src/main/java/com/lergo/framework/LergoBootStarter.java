@@ -23,8 +23,8 @@ public class LergoBootStarter extends AbstractBootStarter {
 
     public static void main(String[] args) {
         ConfigurableApplicationContext run = SpringApplication.run(LergoBootStarter.class, args);
-        System.out.println("OK --- Spring BOOT Running: $" + Arrays.toString(args));
-        System.out.printf("Swagger-UI: http://localhost:%s%n",
+        System.out.println("Spring BOOT Running: $" + Arrays.toString(args));
+        System.out.printf("\n\n\t\tSwagger-UI: http://localhost:%s%n\n\n",
                 run.getEnvironment().getProperty("server.port"));
     }
 
