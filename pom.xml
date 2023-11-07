@@ -30,12 +30,6 @@
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-webflux-ui</artifactId>
             <version>1.7.0</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.yaml</groupId>
-                    <artifactId>snakeyaml</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <!--<dependency>
             <groupId>org.springdoc</groupId>
@@ -47,12 +41,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-webflux</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.yaml</groupId>
-                    <artifactId>snakeyaml</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <!--<dependency>
             <groupId>org.springframework.boot</groupId>
@@ -196,6 +184,16 @@
             <version>3.3.9.RELEASE</version>
         </dependency>-->
         <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+            <version>1.2.20</version>
+        </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>3.5.4</version>
+        </dependency>
+        <dependency>
             <groupId>cn.zhxu</groupId>
             <artifactId>bean-searcher</artifactId>
             <version>4.2.4</version>
@@ -206,6 +204,11 @@
             <version>1.5.5.Final</version>
         </dependency>
         <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+            <version>1.4.7</version>
+        </dependency>
+        <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>42.6.0</version>
@@ -213,25 +216,15 @@
             <optional>true</optional>
         </dependency>
 
+        <!-- Fix snakeyaml CVE -->
         <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>3.5.4</version>
-        </dependency>
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid-spring-boot-starter</artifactId>
-            <version>1.2.20</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.github.pagehelper</groupId>
-            <artifactId>pagehelper-spring-boot-starter</artifactId>
-            <version>1.4.7</version>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <version>1.30</version>
             <exclusions>
                 <exclusion>
-                    <groupId>org.yaml</groupId>
-                    <artifactId>snakeyaml</artifactId>
+                    <groupId>*</groupId>
+                    <artifactId>*</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>
@@ -240,7 +233,6 @@
             <artifactId>snakeyaml</artifactId>
             <version>2.2</version>
         </dependency>
-
 
     </dependencies>
 
@@ -423,7 +415,7 @@
                         <skip>false</skip>
                         <!--提交操作未发现tag时,仅打印提交操作ID,-->
                         <always>false</always>
-                        <!--提交操作ID显式字符长度,最大值为:40;默认值:7; 0代表特殊意义;后面有解释; -->
+                        <!--提交操作ID显式字符长度,最大值为:40;默认值:7; 0:代表特殊意义;后面有解释; -->
                         <abbrev>7</abbrev>
                         <!--构建触发时,代码有修改时(即"dirty state"),添加指定后缀;默认值:"";-->
                         <dirty>-dirty</dirty>
