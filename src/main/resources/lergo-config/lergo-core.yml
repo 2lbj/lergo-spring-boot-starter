@@ -42,9 +42,8 @@ springdoc:
 #    resolve-schema-properties: true
 
 lergo:
-  env:
-    channel:
-      - code: 100
-        name: AAA
-      - code: 200
-        name: BBB
+  channel:
+    - code: 100
+      name: AAA
+    - code: 200
+      name: BBB
