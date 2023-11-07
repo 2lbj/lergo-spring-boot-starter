@@ -7,3 +7,23 @@ ${AnsiColor.BLUE}                    -- ${spring.application.name}
 
 ${AnsiColor.BRIGHT_GREEN} ${application.artifactId} (v${application.version})
 ${AnsiColor.BRIGHT_WHITE} Spring Boot ${spring-boot.formatted-version}
+${AnsiColor.WHITE} spring-boot-starter-webflux
+${AnsiColor.WHITE} spring-boot-autoconfigure-processor
+${AnsiColor.WHITE} spring-boot-starter-validation
+${AnsiColor.WHITE} spring-boot-configuration-processor
+${AnsiColor.WHITE} spring-boot-starter-actuator
+${AnsiColor.WHITE} spring-boot-starter-aop
+${AnsiColor.WHITE} spring-boot-starter-mail
+${AnsiColor.WHITE} spring-boot-starter-data-redis
+${AnsiColor.WHITE} spring-boot-starter-cache
+${AnsiColor.WHITE} lombok
+${AnsiColor.BRIGHT_WHITE} OpenApi v1.7.0
+${AnsiColor.BRIGHT_WHITE} OpenFeign v13.0
+${AnsiColor.BRIGHT_WHITE} Guava v32.1.3-jre
+${AnsiColor.BRIGHT_WHITE} Hutool v5.8.22
+${AnsiColor.BRIGHT_WHITE} guava-retrying v2.0.0
+${AnsiColor.BRIGHT_WHITE} Druid v1.2.20
+${AnsiColor.BRIGHT_WHITE} MybatisPlus v3.5.4
+${AnsiColor.BRIGHT_WHITE} BeanSearcher v4.2.4
+${AnsiColor.BRIGHT_WHITE} MapStruct v1.5.5.Final
+${AnsiColor.BRIGHT_WHITE} PageHelper v1.4.7
