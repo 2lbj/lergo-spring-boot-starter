@@ -1,7 +1,3 @@
-application:
-  artifactId: @application.artifactId@
-  version: @application.version@
-
 management:
   info:
     git:
@@ -11,13 +7,12 @@ management:
       exposure:
         include: 'info,health'
 
+application:
+  artifactId: @application.artifactId@
+  version: @application.version@
 spring:
   application:
     name: @application.name@
-#  mvc:
-#    pathmatch:
-#      matching-strategy: ant_path_matcher
-#  webflux.base-path: /api
 
 logging:
   level:

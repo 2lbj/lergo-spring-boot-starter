@@ -49,7 +49,7 @@ pagehelper:
 
 logging:
   level:
-    #com.zaxxer.hikari.HikariDataSource: WARN
+    com.zaxxer.hikari.HikariDataSource: WARN
     com.alibaba.druid.pool.DruidDataSource: WARN
     com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure: WARN
     com.lergo.framework.mapper: DEBUG
