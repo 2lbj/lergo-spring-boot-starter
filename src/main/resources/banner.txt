@@ -19,11 +19,12 @@ ${AnsiColor.WHITE} spring-boot-starter-cache
 ${AnsiColor.WHITE} lombok
 ${AnsiColor.BRIGHT_WHITE} OpenApi v1.7.0
 ${AnsiColor.BRIGHT_WHITE} OpenFeign v13.0
-${AnsiColor.BRIGHT_WHITE} Guava v32.1.3-jre
-${AnsiColor.BRIGHT_WHITE} Hutool v5.8.22
-${AnsiColor.BRIGHT_WHITE} guava-retrying v2.0.0
 ${AnsiColor.BRIGHT_WHITE} Druid v1.2.20
 ${AnsiColor.BRIGHT_WHITE} MybatisPlus v3.5.4
-${AnsiColor.BRIGHT_WHITE} BeanSearcher v4.2.4
-${AnsiColor.BRIGHT_WHITE} MapStruct v1.5.5.Final
 ${AnsiColor.BRIGHT_WHITE} PageHelper v1.4.7
+${AnsiColor.BRIGHT_WHITE} MapStruct v1.5.5.Final
+${AnsiColor.BRIGHT_WHITE} BeanSearcher v4.2.4
+${AnsiColor.BRIGHT_WHITE} Guava v32.1.3-jre
+${AnsiColor.BRIGHT_WHITE} Hutool v5.8.22
+${AnsiColor.BRIGHT_WHITE} GuavaRetrying v2.0.0
+${AnsiColor.BRIGHT_WHITE} LiteFlow v2.11.3
