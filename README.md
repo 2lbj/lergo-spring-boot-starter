@@ -34,7 +34,7 @@
 
 ```yaml
  #微服务核心
- Spring Boot  (v2.7.17)
+ Spring Boot
  - spring-boot-starter-webflux
  - spring-boot-autoconfigure-processor
  - spring-boot-starter-validation
@@ -49,31 +49,31 @@
  lombok
 
   #接口文档
- OpenApi v1.7.0
+ OpenApi
 
   #外部调用
- OpenFeign v13.0
+ OpenFeign
 
   #数据库连接池
- Druid v1.2.20
+ Druid
 
   #数据库开发辅助
- MybatisPlus v3.5.4
- PageHelper v1.4.7
- MapStruct v1.5.5.Final
- BeanSearcher v4.2.4
+ MybatisPlus
+ PageHelper
+ MapStruct
+ BeanSearcher
 
   #Google工具库
- Guava v32.1.3-jre
+ Guava
 
   #Hutool工具库
- Hutool v5.8.22
+ Hutool
 
   #重试机制
- GuavaRetrying v2.0.0
+ GuavaRetrying
 
   #规则引擎
- LiteFlow v2.11.3
+ LiteFlow 
 ```
 
 # 开发规范
