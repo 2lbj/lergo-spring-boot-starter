@@ -45,34 +45,34 @@
  - spring-boot-starter-data-redis
  - spring-boot-starter-cache
 
-  #语法糖
+# 语法糖
  lombok
 
-  #接口文档
+# 接口文档
  OpenApi
 
-  #外部调用
+# 外部调用
  OpenFeign
 
-  #数据库连接池
+# 数据库连接池
  Druid
 
-  #数据库开发辅助
+# 数据库开发辅助
  MybatisPlus
  PageHelper
  MapStruct
  BeanSearcher
 
-  #Google工具库
+# Google工具库
  Guava
 
-  #Hutool工具库
+# Hutool工具库
  Hutool
 
-  #重试机制
+# 重试机制
  GuavaRetrying
 
-  #规则引擎
+# 规则引擎
  LiteFlow 
 ```
 
