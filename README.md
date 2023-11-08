@@ -32,8 +32,8 @@
 
 # 引入模块
 
-```yaml
- #微服务核心
+```markdown
+ # 微服务核心
  Spring Boot
  - spring-boot-starter-webflux
  - spring-boot-autoconfigure-processor
