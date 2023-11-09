@@ -5,7 +5,7 @@
 **LerGo** 是一个基于 SpringBoot 的微服务工程脚手架, 旨在提供一套完整的微服务开发解决方案, 精简项目结构,
 使开发者可以专注于业务开发而不是重复造轮子
 
-![精简](https://img.shields.io/badge/%23-%E7%AE%80%E5%8D%95-4f8a7c)
+![精简](https://img.shields.io/badge/%23-%E7%B2%BE%E7%AE%80-4f8a7c)
 ![高效](https://img.shields.io/badge/%23-%E9%AB%98%E6%95%88-4f8a7c)
 ![开箱即用](https://img.shields.io/badge/%23-%E5%BC%80%E7%AE%B1%E5%8D%B3%E7%94%A8-4f8a7c)
 
