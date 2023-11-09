@@ -1,4 +1,4 @@
-![Author](https://img.shields.io/badge/Author-hexLi-orange) ![last-commit](https://img.shields.io/github/last-commit/2lbj/lergo-spring-boot-starter) ![maven-central](https://img.shields.io/maven-central/v/io.github.2lbj/lergo-spring-boot-starter)
+![Author](https://img.shields.io/badge/Author-hexLi-666699) ![last-commit](https://img.shields.io/github/last-commit/2lbj/lergo-spring-boot-starter) ![maven-central](https://img.shields.io/maven-central/v/io.github.2lbj/lergo-spring-boot-starter)
 
 # LerGo是什么
 
