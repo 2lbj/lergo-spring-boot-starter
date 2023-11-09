@@ -1,4 +1,4 @@
-<img src="https://img.shields.io/badge/Author-hexLi-orange" alt="2lbj" /> <img src="https://img.shields.io/github/last-commit/2lbj/lergo-spring-boot-starter" alt="last-commit" /> <img src="https://img.shields.io/maven-central/v/io.github.2lbj/lergo-spring-boot-starter" alt="maven-central" />
+![Author](https://img.shields.io/badge/Author-hexLi-orange) ![last-commit](https://img.shields.io/github/last-commit/2lbj/lergo-spring-boot-starter) ![maven-central](https://img.shields.io/maven-central/v/io.github.2lbj/lergo-spring-boot-starter)
 
 # LerGo是什么
 
@@ -16,14 +16,28 @@
 
 ```xml
 
-<dependency>
-    <groupId>io.github.2lbj</groupId>
-    <artifactId>lergo-spring-boot-starter</artifactId>
-    <version>1.0.9</version>
-</dependency>
+<dependency>AAA</dependency>
+<groupId>AAA</groupId>io.github.2lbj<<//groupAAAId<//groupId>
+<artifactId>AAA</artifactId>lergo-spring-boot-starter<<//artifactIAAAd<//artifactId>
+<version>AAA</version>1.0.9<<//versiAAAon<//version>
+<<//dependenAAAcy<//dependency>
 ```
 
-# 上游版本依赖
+```sequence
+Title: 标题：复杂使用
+对象A->对象B: 对象B你好吗?（请求）
+Note right of 对象B: 对象B的描述
+Note left of 对象A: 对象A的描述(提示)
+对象B-->对象A: 我很好(响应)
+对象B->小三: 你好吗
+小三-->>对象A: 对象B找我了
+对象A->对象B: 你真的好吗？
+Note over 小三,对象B: 我们是朋友
+participant C
+Note right of C: 没人陪我玩
+```
+
+# 上游依赖
 
 | LerGo | Spring-boot | 备注                |
 |:------|:-----------:|:------------------|
@@ -84,11 +98,11 @@
 
 ### 数据库设计约定
 
-* 主键 字段统一使用 **id** 表示 类型为 [ *int8(64)* ] 保存内容`雪花ID`
-* 创建时间 字段统一使用 **create_time** 表示 类型为 [ *timestamp(6)* ] 保存内容`时间辍`
-* 更新时间 字段统一使用 **update_time** 表示 类型为 [ *timestamp(6)* ] 保存内容`时间辍`
-* 逻辑删除 字段统一使用 **deleted** 表示 类型为 [ *bool* ] 保存内容`T-F/1-0`
-* JSON数据 字段统一使用 **xxx_json** 表示 类型为 [ *jsonb* ] 保存内容`json`
+* 主键 字段统一使用 **id** 表示 类型为 <kbd>int8(64)</kbd> 保存内容`雪花ID`
+* 创建时间 字段统一使用 **create_time** 表示 类型为 <kbd>timestamp(6)</kbd> 保存内容`时间辍`
+* 更新时间 字段统一使用 **update_time** 表示 类型为 <kbd>timestamp(6)</kbd> 保存内容`时间辍`
+* 逻辑删除 字段统一使用 **deleted** 表示 类型为 <kbd>bool</kbd> 保存内容`T-F/1-0`
+* JSON数据 字段统一使用 **xxx_json** 表示 类型为 <kbd>jsonb</kbd> 保存内容`json`
 
 > 旧版本PG 可考虑用 json 类型代替
 
