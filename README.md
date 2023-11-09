@@ -12,15 +12,16 @@
 # 如何使用
 
 **Lergo** 已经发布到 Maven 中央仓库, 可以直接引入依赖使用  
-原则上你可以在任何基于SpringBoot项目中引入, 但是推荐使用 [LerGo-Example]() 作为基础工程 亦可以参考其中代码最佳实践
+原则上你可以在任何基于SpringBoot项目中引入, 但是推荐使用 [LerGo-Example](https://github.com/2lbj/LerGo-Example) 作为基础工程
+亦可以参考其中代码最佳实践
 
 ```xml
 
-<dependency>AAA</dependency>
-<groupId>AAA</groupId>io.github.2lbj<<//groupAAAId<//groupId>
-<artifactId>AAA</artifactId>lergo-spring-boot-starter<<//artifactIAAAd<//artifactId>
-<version>AAA</version>1.0.9<<//versiAAAon<//version>
-<<//dependenAAAcy<//dependency>
+<dependency>
+    <groupId>io.github.2lbj</groupId>
+    <artifactId>lergo-spring-boot-starter</artifactId>
+    <version>1.0.9</version>
+</dependency>
 ```
 
 # 上游依赖
