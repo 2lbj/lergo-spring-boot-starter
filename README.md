@@ -1,4 +1,4 @@
-![Author](https://img.shields.io/badge/Author-hexLi-666699) ![last-commit](https://img.shields.io/github/last-commit/2lbj/lergo-spring-boot-starter) ![maven-central](https://img.shields.io/maven-central/v/io.github.2lbj/lergo-spring-boot-starter)
+![Author](https://img.shields.io/badge/Author-hexLi-666699) ![last-commit](https://img.shields.io/github/last-commit/2lbj/lergo-spring-boot-starter) ![maven-central](https://img.shields.io/maven-central/v/io.github.2lbj/lergo-spring-boot-starter?link=https%3A%2F%2Fcentral.sonatype.com%2Fartifact%2Fio.github.2lbj%2Flergo-spring-boot-starter&link=https%3A%2F%2Fmvnrepository.com%2Fartifact%2Fio.github.2lbj%2Flergo-spring-boot-starter)
 
 # LerGo是什么
 
@@ -16,7 +16,6 @@
 亦可以参考其中代码最佳实践
 
 ```xml
-
 <dependency>
     <groupId>io.github.2lbj</groupId>
     <artifactId>lergo-spring-boot-starter</artifactId>
