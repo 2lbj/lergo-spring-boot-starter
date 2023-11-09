@@ -98,11 +98,11 @@ Note right of C: 没人陪我玩
 
 ### 数据库设计约定
 
-* 主键 字段统一使用 **id** 表示 类型为 <kbd>int8(64)</kbd> 保存内容`雪花ID`
-* 创建时间 字段统一使用 **create_time** 表示 类型为 <kbd>timestamp(6)</kbd> 保存内容`时间辍`
-* 更新时间 字段统一使用 **update_time** 表示 类型为 <kbd>timestamp(6)</kbd> 保存内容`时间辍`
-* 逻辑删除 字段统一使用 **deleted** 表示 类型为 <kbd>bool</kbd> 保存内容`T-F/1-0`
-* JSON数据 字段统一使用 **xxx_json** 表示 类型为 <kbd>jsonb</kbd> 保存内容`json`
+* 主键 **id** <kbd>int8(64)</kbd> 内容:`雪花ID`
+* 创建时间 **create_time** <kbd>timestamp(6)</kbd> 内容:`时间戳`
+* 更新时间 **update_time** <kbd>timestamp(6)</kbd> 内容:`时间戳`
+* 逻辑删除 **deleted** <kbd>bool</kbd> 内容:`T-F/1-0`
+* JSON数据 **xxx_json** <kbd>jsonb</kbd> 内容:`json`
 
 > 旧版本PG 可考虑用 json 类型代替
 
