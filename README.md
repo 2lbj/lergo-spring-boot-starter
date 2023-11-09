@@ -1,5 +1,5 @@
 <img src="https://img.shields.io/badge/Author-hexLi-orange" alt="2lbj" />
-<img src="https://img.shields.io/github/last-commit/2lbj/2lbj" alt="last-commit" />
+<img src="https://img.shields.io/github/last-commit/2lbj/lergo-spring-boot-starter" alt="last-commit" />
 <img src="https://img.shields.io/maven-central/v/io.github.2lbj/lergo-spring-boot-starter
 " alt="maven-central" />
 
