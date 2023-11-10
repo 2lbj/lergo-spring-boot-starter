@@ -7,5 +7,6 @@ spring:
       - classpath:/lergo-config/lergo-core.yml
       - classpath:/lergo-config/lergo-db.yml
       - classpath:/lergo-config/lergo-redis.yml
+      - classpath:/lergo-config/lergo-liteflow.yml
   profiles:
     active: dev
