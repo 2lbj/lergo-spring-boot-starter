@@ -1,4 +1,4 @@
-![Author](https://img.shields.io/badge/Author-hexLi-666699) ![last-commit](https://img.shields.io/github/last-commit/2lbj/lergo-spring-boot-starter) [![maven-central](https://img.shields.io/maven-central/v/io.github.2lbj/lergo-spring-boot-starter?link=https%3A%2F%2Fcentral.sonatype.com%2Fartifact%2Fio.github.2lbj%2Flergo-spring-boot-starter)](https://central.sonatype.com/artifact/io.github.2lbj/lergo-spring-boot-starter) ![license](https://img.shields.io/badge/license-GPLv3.0-orange)
+[![Author](https://img.shields.io/badge/Author-hexLi-666699)](https://2lbj.github.io/) [![last-commit](https://img.shields.io/github/last-commit/2lbj/lergo-spring-boot-starter)](https://github.com/2lbj/lergo-spring-boot-starter) [![maven-central](https://img.shields.io/maven-central/v/io.github.2lbj/lergo-spring-boot-starter?link=https%3A%2F%2Fcentral.sonatype.com%2Fartifact%2Fio.github.2lbj%2Flergo-spring-boot-starter)](https://central.sonatype.com/artifact/io.github.2lbj/lergo-spring-boot-starter) [![license](https://img.shields.io/badge/license-GPLv3.0-orange)](./blob/main/LICENSE)
 
 # LerGo是什么
 
