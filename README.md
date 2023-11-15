@@ -12,8 +12,8 @@
 # 如何使用
 
 **Lergo** 已经发布到 Maven 中央仓库, 可以直接引入依赖使用  
-原则上你可以在任何基于SpringBoot项目中引入, 但是推荐克隆 [LerGo-Example](https://github.com/2lbj/LerGo-Example) 作为基础工程
-亦可以参考其中代码最佳实践
+原则上你可以在任何基于SpringBoot项目中引入.  
+强烈推荐克隆 [LerGo-Example](https://github.com/2lbj/LerGo-Example) 作为基础工程, 亦可以参考其中代码最佳实践
 
 ```xml
 <dependency>
