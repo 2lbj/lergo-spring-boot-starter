@@ -12,7 +12,7 @@
     <artifactId>lergo-spring-boot-starter</artifactId>
     <version>1.0.10-SNAPSHORT</version>
     <packaging>jar</packaging>
-    <name>LergoCore</name>
+    <name>Lergo Framework Starter</name>
     <description>LerGo Framework for Spring Boot</description>
     <properties>
         <application.artifactId>${artifactId}</application.artifactId>

@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ConditionalOnProperty(value = "lergo.boot.with-redis", havingValue = "false", matchIfMissing = true)
+@ConditionalOnProperty(value = "lergo.boot-with-redis", havingValue = "false", matchIfMissing = true)
 @EnableAutoConfiguration(exclude = {RedisAutoConfiguration.class})
 public class ExcludeRedisConfiguration {
 }

@@ -77,3 +77,33 @@
 > 规则引擎
  LiteFlow 
 ```
+
+# 配置文件说明
+
+**LerGo** 提供了一些默认配置, 你可以在 `application-xxx.yml` 中覆盖它们
+
+> 以下配置均为可选配置, 你可以根据自己的需求选择性配置  
+> **甚至可以完全不写**
+
+* 启动模块
+   ```yaml
+   lergo:
+     boot-with-jdbc: false # 是否启用JDBC (默认禁用)
+     boot-with-redis: false # 是否启用Redis (默认禁用)
+   ```
+* 文档配置
+    ```yaml
+    open-api:
+      title:  基础开发脚手架 # 文档_项目标题 (默认spring.application.name)
+      version: 1.0.0 # 文档_项目版本(默认application.version)
+      termsOfService: ' https://your.service.com' # 文档_服务条款
+      description: 基于SpringBoot的微服务开发脚手架 # 文档_项目描述
+    ```
+
+# TOTO
+
+1. [ ] 日志 traceId 耗时
+2. [ ] pageBean searchBean
+3. [ ] 重试机制 feign
+4. [x] 异常捕获及校验
+5. [x] 前置解析模块 http状态码转义固定json格式

@@ -12,10 +12,10 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @OpenAPIDefinition(info =
-@Info(title = "${open-api.title:基础开发脚手架}",
-        version = "${open-api.version:v1.0.10}",
-        termsOfService = "https://github.com/2lbj/lergo-spring-boot-starter",
-        description = "OpenAPI文档",
+@Info(title = "${open-api.title:${spring.application.name:基础开发脚手架}}",
+        version = "${open-api.version:${application.version:v1.0.0}}",
+        termsOfService = "${open-api.version:https://github.com/2lbj/lergo-spring-boot-starter}",
+        description = "${open-api.description:OpenAPI文档}",
         contact = @Contact(name = "李某人", email = "nerv.2lbj@gmail.com", url = "https://2lbj.github.io"),
         license = @License(name = "GPLv3", url = "http://www.gnu.org/licenses/gpl-3.0.html")
 ), tags = {})
@@ -42,7 +42,6 @@ public class OpenAPIConfig {
      * 描述 eg: 少既是多, 能不说就别说
      */
     private String description;
-
 
     @Bean
     public GroupedOpenApi rootApi() {
