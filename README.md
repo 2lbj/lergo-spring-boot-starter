@@ -5,6 +5,10 @@
 **LerGo** 是一个基于 SpringBoot 的微服务`工程脚手架`, 旨在提供一套完整的微服务开发解决方案, 精简项目结构,
 使开发者可以专注于业务开发而不是重复造轮子
 
+~~**LerGo** 由 `Ler` 和 `Go` 组成, `Ler` 源于 `Laravel` , `Go` 源于 `Golang`~~
+> **LerGo** 发音为 [ˈlɜːɡəʊ] , 意为 `Let it go` , 取自早期项目中自动化部署机器人 `李二狗` 的谐音  
+> 是其旨在帮助开发者从重复工作中彻底解放的精神传承
+
 ![精简](https://img.shields.io/badge/%23-%E7%B2%BE%E7%AE%80-4f8a7c)
 ![高效](https://img.shields.io/badge/%23-%E9%AB%98%E6%95%88-4f8a7c)
 ![开箱即用](https://img.shields.io/badge/%23-%E5%BC%80%E7%AE%B1%E5%8D%B3%E7%94%A8-4f8a7c)
@@ -107,3 +111,5 @@
 3. [ ] 重试机制 feign
 4. [x] 异常捕获及校验
 5. [x] 前置解析模块 http状态码转义固定json格式
+
+Created by [hexLi](https://2lbj.github.io/) with Github Copilot (它可真能瞎胡嘞)
