@@ -92,13 +92,13 @@
     boot.with-redis: false # 是否启用Redis (默认禁用)
   ```
 * 文档配置
-    ```yaml
-    open-api:
-      title:  基础开发脚手架 # 文档_项目标题 (默认spring.application.name)
-      version: 1.0.0 # 文档_项目版本(默认application.version)
-      termsOfService: ' https://your.service.com' # 文档_服务条款
-      description: 基于SpringBoot的微服务开发脚手架 # 文档_项目描述
-    ```
+  ```yaml
+  open-api:
+    title:  基础开发脚手架 # 文档_项目标题 (默认spring.application.name)
+    version: 1.0.0 # 文档_项目版本(默认application.version)
+    termsOfService: ' https://your.service.com' # 文档_服务条款
+    description: 基于SpringBoot的微服务开发脚手架 # 文档_项目描述
+  ```
 
 # TOTO
 
