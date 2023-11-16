@@ -8,16 +8,15 @@
         <version>2.7.17</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
     <groupId>io.github.2lbj</groupId>
     <artifactId>lergo-spring-boot-starter</artifactId>
     <version>1.0.10-SNAPSHORT</version>
     <packaging>jar</packaging>
     <name>Lergo Framework Starter</name>
     <description>LerGo Framework for Spring Boot</description>
+
     <properties>
-        <application.artifactId>${artifactId}</application.artifactId>
-        <application.version>${version}</application.version>
-        <application.name>${name}</application.name>
         <java.version>1.8</java.version>
         <projectUrl>https://github.com/2lbj/lergo-spring-boot-starter.git</projectUrl>
         <serverId>Sonatype_OSSRH</serverId><!-- 服务id 也就是setting.xml中的servers.server.id -->
@@ -306,8 +305,8 @@
                 <version>3.6.0</version>
                 <configuration>
                     <!-- 忽略生成文档中的错误 -->
-                    <additionalparam>-Xdoclint:none</additionalparam>
-                    <aggregate>true</aggregate>
+                    <!--<additionalparam>-Xdoclint:none</additionalparam>
+                    <aggregate>true</aggregate>-->
                     <charset>UTF-8</charset><!-- utf-8读取文件 -->
                     <encoding>UTF-8</encoding><!-- utf-8进行编码代码 -->
                     <docencoding>UTF-8</docencoding><!-- utf-8进行编码文档 -->

@@ -1,2 +1,2 @@
 lergo:
-  version: @application.version@
+  version: @project.version@

@@ -7,12 +7,12 @@ management:
       exposure:
         include: 'info,health'
 
-application:
-  artifactId: @application.artifactId@
-  version: @application.version@
 spring:
   application:
-    name: @application.name@
+    name: @project.name@
+    description: @project.description@
+    artifactId: @project.artifactId@
+    version: @project.version@
 
 logging:
   level:

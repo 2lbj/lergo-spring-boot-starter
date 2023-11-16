@@ -3,9 +3,10 @@ ${AnsiColor.BLUE}|  |     ,---.  ,--.--. '  .-./     ,---.
 ${AnsiColor.BLUE}|  |    | .-. : |  .--' |  | .---. | .-. |
 ${AnsiColor.BLUE}|  '--. \   --. |  |    '  '--'  | ' '-' '
 ${AnsiColor.BLUE}`-----'  `----' `--'     `------'   `---'
-${AnsiColor.BLUE}                    -- ${spring.application.name}
+${AnsiColor.BLUE}                    ${spring.application.name}
+${AnsiColor.BLUE}                    -- ${spring.application.description}
 
-${AnsiColor.BRIGHT_GREEN} ${application.artifactId} (v${application.version})
+${AnsiColor.BRIGHT_GREEN} ${spring.application.artifactId} (v${spring.application.version})
 ${AnsiColor.BRIGHT_WHITE} Spring Boot ${spring-boot.formatted-version}
 ${AnsiColor.WHITE} spring-boot-starter-webflux
 ${AnsiColor.WHITE} spring-boot-autoconfigure-processor
