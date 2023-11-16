@@ -86,11 +86,11 @@
 > **甚至可以完全不写**
 
 * 启动模块
-   ```yaml
-   lergo:
-     boot-with-jdbc: false # 是否启用JDBC (默认禁用)
-     boot-with-redis: false # 是否启用Redis (默认禁用)
-   ```
+  ```yaml
+  lergo:
+    boot.with-jdbc: false # 是否启用JDBC (默认禁用)
+    boot.with-redis: false # 是否启用Redis (默认禁用)
+  ```
 * 文档配置
     ```yaml
     open-api:
