@@ -1,5 +1,6 @@
-package com.lergo.framework.annotation;
+package com.lergo.framework.points;
 
+import com.lergo.framework.annotation.LogTracker;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -9,6 +10,7 @@ import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StopWatch;
 
 import java.lang.reflect.Method;
 
@@ -24,6 +26,9 @@ public class LogTrackerPointcut {
 
     @Around("cutMethod()")
     public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
+        //记录耗时
+        StopWatch stopWatch = new StopWatch();
+        stopWatch.start();
 
         // 获取方法传入参数
         Object[] params = joinPoint.getArgs();
@@ -32,19 +37,21 @@ public class LogTrackerPointcut {
         // 执行源方法
         Object proceed = joinPoint.proceed();
 
-        log.info("{} @LogTracker.{} {}| ${} --> {}",
+        stopWatch.stop();
+        log.info("{} @LogTracker.{} {}| ${} --> {} ({}ms)",
                 method.getDeclaringClass().getName(),
                 method.getName(),
                 method.getDeclaredAnnotation(LogTracker.class).value(),
                 params,
-                proceed);
+                proceed,
+                stopWatch.getLastTaskTimeMillis());
 
         return proceed;
     }
 
     /**
      * 获取方法中声明的注解
-     *
+     * @param joinPoint
      * @return Method
      */
     public Method getDeclaredAnnotation(ProceedingJoinPoint joinPoint) {

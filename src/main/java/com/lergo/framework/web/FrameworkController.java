@@ -1,6 +1,7 @@
 package com.lergo.framework.web;
 
 
+import com.lergo.framework.annotation.Authentication;
 import com.lergo.framework.annotation.LogTracker;
 import com.lergo.framework.config.LergoConfig;
 import io.swagger.v3.oas.annotations.Operation;
@@ -31,6 +32,13 @@ public class FrameworkController {
                        @Parameter(description = "参数")
                        String request) {
         return "PONG:" + request;
+    }
+
+    @GetMapping("authentication")
+    @Authentication
+    @Operation(summary = "服务鉴权测试接口")
+    public String authentication() {
+        return "OK";
     }
 
     @GetMapping("config")
