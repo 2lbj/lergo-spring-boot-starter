@@ -1,8 +1,8 @@
 package com.lergo.framework.web;
 
 
-import com.lergo.framework.annotation.Authentication;
 import com.lergo.framework.annotation.LogTracker;
+import com.lergo.framework.annotation.UnAuthentication;
 import com.lergo.framework.config.LergoConfig;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -29,7 +29,7 @@ public class FrameworkController {
     }
 
     @GetMapping("authentication")
-    @Authentication
+    @UnAuthentication
     @Operation(summary = "服务鉴权测试接口")
     public String authentication() {
         return "OK";

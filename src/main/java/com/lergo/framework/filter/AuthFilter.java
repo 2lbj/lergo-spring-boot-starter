@@ -1,6 +1,6 @@
 package com.lergo.framework.filter;
 
-import com.lergo.framework.annotation.Authentication;
+import com.lergo.framework.annotation.UnAuthentication;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.NotNull;
@@ -52,7 +52,7 @@ public class AuthFilter extends BaseFilter implements WebFilter {
 
         return handlerMethodMono.flatMap(handlerMethod -> {
             // 判断Method是否含有对应注解
-            if (handlerMethod.hasMethodAnnotation(Authentication.class)) {
+            if (!handlerMethod.hasMethodAnnotation(UnAuthentication.class)) {
 
                 MultiValueMap<String, String> params = req.getQueryParams();
                 HttpHeaders headers = req.getHeaders();
@@ -68,13 +68,16 @@ public class AuthFilter extends BaseFilter implements WebFilter {
 
                 // 校验通过，过滤器正常放行
                 if (valid) return chain.filter(exchange);
+
+                // 校验不通过，返回错误信息
+                res.setStatusCode(HttpStatus.NON_AUTHORITATIVE_INFORMATION);
+                res.getHeaders().add("Content-Type", "text/plain;charset=UTF-8");
+                byte[] bytes = "NON_AUTHORITATIVE".getBytes();
+                return res.writeWith(Mono.just(res.bufferFactory().wrap(bytes)));
             }
 
-            // 校验不通过，返回错误信息
-            res.setStatusCode(HttpStatus.NON_AUTHORITATIVE_INFORMATION);
-            res.getHeaders().add("Content-Type", "text/plain;charset=UTF-8");
-            byte[] bytes = "NON_AUTHORITATIVE".getBytes();
-            return res.writeWith(Mono.just(res.bufferFactory().wrap(bytes)));
+            // 注解，正常放行
+            return chain.filter(exchange);
         });
     }
 
