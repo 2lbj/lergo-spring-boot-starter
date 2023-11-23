@@ -23,7 +23,7 @@ public class BodyCaptureRequest extends ServerHttpRequestDecorator {
         });
     }
 
-    public String getFullBody() {
+    public String getBodyStr() {
         return this.body.toString().replaceAll("[\r\n ]", "");
     }
 

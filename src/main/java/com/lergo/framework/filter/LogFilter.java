@@ -25,24 +25,28 @@ public class LogFilter extends BaseFilter implements WebFilter {
 
         BodyCaptureExchange bce = new BodyCaptureExchange(exchange);
         return chain.filter(bce).doFinally((se) -> {
-            log.trace("[{}] {} Headers:{} Form:{} Body:{} |====> ({}) {}",
-                    bce.getRequest().getMethod(),
-                    bce.getRequest().getURI(),
-                    bce.getRequest().getHeaders(),
-                    bce.getFormDataString(),
-                    bce.getRequest().getFullBody(),
-                    bce.getResponse().getStatusCode(),
-                    bce.getResponse().getFullBody());
+
             if (!HttpStatus.OK.equals(bce.getResponse().getStatusCode())) {
                 log.warn("[{}] {} Headers:{} Form:{} Body:{} !----> ({}) {}",
                         bce.getRequest().getMethod(),
                         bce.getRequest().getURI(),
                         bce.getRequest().getHeaders(),
                         bce.getFormDataString(),
-                        bce.getRequest().getFullBody(),
+                        bce.getRequest().getBodyStr(),
                         bce.getResponse().getStatusCode(),
-                        bce.getResponse().getFullBody());
+                        bce.getResponse().getBodyStr());
+                return;
             }
+
+            // REST日志
+            log.trace("[{}] {} Headers:{} Form:{} Body:{} |====> ({}) {}",
+                    bce.getRequest().getMethod(),
+                    bce.getRequest().getURI(),
+                    bce.getRequest().getHeaders(),
+                    bce.getFormDataString(),
+                    bce.getRequest().getBodyStr(),
+                    bce.getResponse().getStatusCode(),
+                    bce.getResponse().getBodyStr());
         });
     }
 }
