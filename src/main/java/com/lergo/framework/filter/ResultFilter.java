@@ -49,11 +49,11 @@ public class ResultFilter extends BaseFilter implements WebFilter {
                 .getHandler(exchange).cast(HandlerMethod.class);
 
         return handlerMethodMono.flatMap(handlerMethod -> {
+
             // 判断Method是否含有对应注解
             if (handlerMethod.hasMethodAnnotation(RawResponse.class)) {
                 return chain.filter(exchange);
             }
-
 
             // 返回统一JSON格式
             return chain.filter(exchange.mutate().response(new ServerHttpResponseDecorator(exchange.getResponse()) {

@@ -25,7 +25,7 @@ public class LogFilter extends BaseFilter implements WebFilter {
 
         BodyCaptureExchange bce = new BodyCaptureExchange(exchange);
         return chain.filter(bce).doFinally((se) -> {
-            log.trace("[{}] {} Headers:{} Form:{} Body:{} ==> ({}) {}",
+            log.trace("[{}] {} Headers:{} Form:{} Body:{} |====> ({}) {}",
                     bce.getRequest().getMethod(),
                     bce.getRequest().getURI(),
                     bce.getRequest().getHeaders(),
@@ -34,7 +34,7 @@ public class LogFilter extends BaseFilter implements WebFilter {
                     bce.getResponse().getStatusCode(),
                     bce.getResponse().getFullBody());
             if (!HttpStatus.OK.equals(bce.getResponse().getStatusCode())) {
-                log.error("[{}] {} Headers:{} Form:{} Body:{} |====> ({}) {}",
+                log.warn("[{}] {} Headers:{} Form:{} Body:{} !----> ({}) {}",
                         bce.getRequest().getMethod(),
                         bce.getRequest().getURI(),
                         bce.getRequest().getHeaders(),
