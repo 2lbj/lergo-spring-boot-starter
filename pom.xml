@@ -176,9 +176,9 @@
             <version>3.5.4.1</version>
         </dependency>
         <dependency>
-            <groupId>cn.zhxu</groupId>
-            <artifactId>bean-searcher</artifactId>
-            <version>4.2.4</version>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+            <version>2.0.0</version>
         </dependency>
         <dependency>
             <groupId>org.mapstruct</groupId>
@@ -186,9 +186,9 @@
             <version>1.5.5.Final</version>
         </dependency>
         <dependency>
-            <groupId>com.github.pagehelper</groupId>
-            <artifactId>pagehelper-spring-boot-starter</artifactId>
-            <version>2.0.0</version>
+            <groupId>cn.zhxu</groupId>
+            <artifactId>bean-searcher</artifactId>
+            <version>4.2.4</version>
         </dependency>
         <dependency>
             <groupId>org.postgresql</groupId>
