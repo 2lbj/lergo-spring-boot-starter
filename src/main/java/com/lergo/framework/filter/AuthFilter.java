@@ -27,7 +27,7 @@ import javax.annotation.Resource;
 @Configuration
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.REACTIVE)
 @ConditionalOnProperty(value = "lergo.filter.auth", havingValue = "true")
-@Order(1000)//优先级，数字越小，优先级越高
+@Order(1000)
 public class AuthFilter extends BaseFilter implements WebFilter {
 
     @Resource

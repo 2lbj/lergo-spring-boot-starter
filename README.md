@@ -86,7 +86,7 @@
 **LerGo** 提供了一些默认配置, 你可以在 `application-xxx.yml` 中覆盖它们
 
 > 以下配置均为可选配置, 你可以根据自己的需求选择性配置  
-> **甚至可以完全不写**
+> **没有特别需要可以完全不写**
 
 * 核心模块
   ```yaml
@@ -115,6 +115,50 @@
       com.lergo.framework.filter.LogFilter: TRACE # REST请求日志
       com.lergo.framework.filter.ResultFilter: TRACE # REST响应非法json
   ```
+
+# 自定义注解
+
+**LerGo** 提供了一些自定义注解, 你可以在需要的地方使用它们
+
+```java
+// 标记为需要权限校验的接口
+
+import com.lergo.framework.annotation.Authentication;
+
+@Authentication
+public class DemoController {
+  // ...
+}
+```
+
+```java
+// 标记为需要日志记录 请求/返回(耗时) 的方法
+
+import com.lergo.framework.annotation.LogTracker;
+
+public class Function {
+  // ...
+  @LogTracker("say some thing for log")
+  public void doSomething() {
+    // ...
+  }
+}
+```
+
+```java
+// 标记为需要返回原始响应的接口
+
+import com.lergo.framework.annotation.RawResponse;
+
+public class DemoController {
+  // ...
+  @GetMapping("/raw")
+  @RawResponse
+  String getRawResponse() {
+    // ...
+  }
+}
+```
 
 # TOTO
 

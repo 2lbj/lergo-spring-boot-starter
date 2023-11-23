@@ -12,7 +12,7 @@ import reactor.core.publisher.Mono;
 
 @Slf4j
 @Component
-@Order(1)
+@Order(1)//优先级，数字越小，优先级越高
 public class LogFilter extends BaseFilter implements WebFilter {
     @NotNull
     @Override

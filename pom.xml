@@ -102,22 +102,22 @@
         <dependency>
             <groupId>io.github.openfeign</groupId>
             <artifactId>feign-core</artifactId>
-            <version>13.0</version>
+            <version>13.1</version>
         </dependency>
         <dependency>
             <groupId>io.github.openfeign</groupId>
             <artifactId>feign-okhttp</artifactId>
-            <version>13.0</version>
+            <version>13.1</version>
         </dependency>
         <dependency>
             <groupId>io.github.openfeign</groupId>
             <artifactId>feign-slf4j</artifactId>
-            <version>13.0</version>
+            <version>13.1</version>
         </dependency>
         <dependency>
             <groupId>io.github.openfeign</groupId>
             <artifactId>feign-gson</artifactId>
-            <version>13.0</version>
+            <version>13.1</version>
         </dependency>
 
         <!-- Log -->
@@ -173,7 +173,7 @@
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>3.5.4</version>
+            <version>3.5.4.1</version>
         </dependency>
         <dependency>
             <groupId>cn.zhxu</groupId>
@@ -188,12 +188,12 @@
         <dependency>
             <groupId>com.github.pagehelper</groupId>
             <artifactId>pagehelper-spring-boot-starter</artifactId>
-            <version>1.4.7</version>
+            <version>2.0.0</version>
         </dependency>
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>42.6.0</version>
+            <version>42.7.0</version>
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
@@ -207,7 +207,7 @@
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
-            <version>5.8.22</version>
+            <version>5.8.23</version>
         </dependency>
         <!-- 重试机制 -->
         <dependency>
