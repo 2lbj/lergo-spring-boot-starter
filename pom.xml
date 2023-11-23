@@ -288,7 +288,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.11.0</version>
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
@@ -299,7 +298,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
-                <version>3.3.0</version>
                 <executions>
                     <execution>
                         <id>attach-sources</id>
@@ -316,8 +314,8 @@
                 <version>3.6.0</version>
                 <configuration>
                     <!-- 忽略生成文档中的错误 -->
-                    <!--<additionalparam>-Xdoclint:none</additionalparam>
-                    <aggregate>true</aggregate>-->
+                    <additionalparam>-Xdoclint:none</additionalparam>
+                    <aggregate>true</aggregate>
                     <charset>UTF-8</charset><!-- utf-8读取文件 -->
                     <encoding>UTF-8</encoding><!-- utf-8进行编码代码 -->
                     <docencoding>UTF-8</docencoding><!-- utf-8进行编码文档 -->
@@ -393,6 +391,7 @@
             <plugin>
                 <groupId>pl.project13.maven</groupId>
                 <artifactId>git-commit-id-plugin</artifactId>
+                <version>4.9.10</version>
                 <executions>
                     <execution>
                         <id>get-the-git-infos</id>
