@@ -88,11 +88,17 @@
 > 以下配置均为可选配置, 你可以根据自己的需求选择性配置  
 > **甚至可以完全不写**
 
-* 启动模块
+* 核心模块
   ```yaml
   lergo:
-    boot.with-jdbc: false # 是否启用JDBC (默认禁用)
-    boot.with-redis: false # 是否启用Redis (默认禁用)
+    boot:
+      with-jdbc: true # 是否启用JDBC (默认禁用)
+      with-redis: true # 是否启用Redis (默认禁用):
+    filter:
+      auth: true # 是否启用权限过滤器 (默认禁用)
+      auth-header-name: token # 权限过滤器_请求头名称 (默认token)
+      timer: true # 是否启用耗时过滤器 (默认禁用) 监控地址: /actuator/metrics/lergo.filter.timer
+      result: true # 是否启用统一JSON格式响应过滤器 (默认禁用)
   ```
 * 文档配置
   ```yaml
@@ -101,6 +107,13 @@
     version: 1.0.0 # 文档_项目版本(默认application.version)
     termsOfService: ' https://your.service.com' # 文档_服务条款
     description: 基于SpringBoot的微服务开发脚手架 # 文档_项目描述
+  ```
+* 调试日志
+  ```yaml
+  logging:
+    level:
+      com.lergo.framework.filter.LogFilter: TRACE # REST请求日志
+      com.lergo.framework.filter.ResultFilter: TRACE # REST响应非法json
   ```
 
 # TOTO
