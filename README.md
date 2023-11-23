@@ -125,9 +125,13 @@
 
 import com.lergo.framework.annotation.Authentication;
 
-@Authentication
 public class DemoController {
   // ...
+  @GetMapping("/auth")
+  @Authentication
+  String getAuth() {
+    // ...
+  }
 }
 ```
 
