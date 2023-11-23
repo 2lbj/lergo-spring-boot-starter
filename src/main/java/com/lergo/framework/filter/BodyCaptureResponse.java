@@ -27,7 +27,7 @@ public class BodyCaptureResponse extends ServerHttpResponseDecorator {
     }
 
     public String getBodyStr() {
-        return this.body.toString().replaceAll("[\r\n ]", "");
+        return this.body.toString().replaceAll("[\r\n]", "");
     }
 
 }

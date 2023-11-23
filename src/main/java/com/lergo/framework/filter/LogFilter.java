@@ -27,7 +27,7 @@ public class LogFilter extends BaseFilter implements WebFilter {
         return chain.filter(bce).doFinally((se) -> {
 
             if (!HttpStatus.OK.equals(bce.getResponse().getStatusCode())) {
-                log.warn("[{}] {} Headers:{} Form:{} Body:{} !----> ({}) {}",
+                log.warn("[{}] {} Headers:{} Form:{} Body:{} !----> ({}) `{}`",
                         bce.getRequest().getMethod(),
                         bce.getRequest().getURI(),
                         bce.getRequest().getHeaders(),
@@ -39,7 +39,7 @@ public class LogFilter extends BaseFilter implements WebFilter {
             }
 
             // REST日志
-            log.trace("[{}] {} Headers:{} Form:{} Body:{} |====> ({}) {}",
+            log.trace("[{}] {} Headers:{} Form:{} Body:{} |====> ({}) `{}`",
                     bce.getRequest().getMethod(),
                     bce.getRequest().getURI(),
                     bce.getRequest().getHeaders(),

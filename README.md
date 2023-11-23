@@ -120,24 +120,8 @@
 
 **LerGo** 提供了一些自定义注解, 你可以在需要的地方使用它们
 
+`@LogTracker` 标记为需要日志记录 请求/返回(耗时) 的方法
 ```java
-// 标记为需要权限校验的接口
-
-import com.lergo.framework.annotation.Authentication;
-
-public class DemoController {
-  // ...
-  @GetMapping("/auth")
-  @Authentication
-  String getAuth() {
-    // ...
-  }
-}
-```
-
-```java
-// 标记为需要日志记录 请求/返回(耗时) 的方法
-
 import com.lergo.framework.annotation.LogTracker;
 
 public class Function {
@@ -149,9 +133,8 @@ public class Function {
 }
 ```
 
+`@RawResponse` 标记为需要返回原始响应的接口 优先级 #100
 ```java
-// 标记为需要返回原始响应的接口
-
 import com.lergo.framework.annotation.RawResponse;
 
 public class DemoController {
@@ -161,6 +144,21 @@ public class DemoController {
   String getRawResponse() {
     // ...
   }
+}
+```
+
+`@UnAuthentication` 标记为 **不需要** 权限校验的接口 优先级 #1000 (仅当 `lergo.filter.auth: true` 时有效)
+
+```java
+import com.lergo.framework.annotation.UnAuthentication;
+
+public class DemoController {
+    // ...
+    @GetMapping("/login")
+    @UnAuthentication
+    String getAuth() {
+        // ...
+    }
 }
 ```
 
