@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 public class CommonResult<T> implements Serializable {
 
-    public static Integer CODE_SUCCESS = 0;
+    public static Integer CODE_SUCCESS = 200;
     public static Gson gson = new Gson();
 
     /**
@@ -71,6 +71,11 @@ public class CommonResult<T> implements Serializable {
 
     public Integer getCode() {
         return code;
+    }
+
+    public CommonResult<T> setCode(Integer code) {
+        this.code = code;
+        return this;
     }
 
     public String getMessage() {

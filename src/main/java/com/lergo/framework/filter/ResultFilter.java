@@ -21,7 +21,7 @@ import reactor.core.publisher.Mono;
 import java.nio.charset.StandardCharsets;
 import java.util.Objects;
 
-import static org.springframework.http.HttpStatus.*;
+import static org.springframework.http.HttpStatus.OK;
 
 @Slf4j
 @Configuration
@@ -44,37 +44,32 @@ public class ResultFilter extends BaseFilter implements WebFilter {
 
                 return super.writeWith(DataBufferUtils.join(body).handle((buffer, sink) -> {
 
-                    setStatusCode(OK);
-                    getHeaders().setContentType(MediaType.APPLICATION_JSON);
-
                     try {
 
-                        String r = buffer.toString(StandardCharsets.UTF_8);
-
-                        switch (Objects.requireNonNull(getStatusCode())) {
-                            case OK:
-                                r = CommonResult.success(objectMapper.readValue(r, Object.class))
-                                        .setMessage("SUCCESS").toString();
-                                break;
-                            case UNAUTHORIZED:
-                                r = CommonResult.error(UNAUTHORIZED.value(), r)
-                                        .setMessage("UNAUTHORIZED").toString();
-                                break;
-                            default:
-                                r = CommonResult.error(getStatusCode().value(), r)
-                                        .setMessage("UNKNOWN ERROR").toString();
+                        CommonResult<Object> result = new CommonResult<>();
+                        try {
+                            result.setData(objectMapper.readValue(buffer.toString(StandardCharsets.UTF_8), Object.class));
+                        } catch (JsonProcessingException e) {
+                            log.trace(e.getMessage());
+                            result.setData(buffer.toString(StandardCharsets.UTF_8));
                         }
 
-                        getHeaders().setContentLength(r.getBytes(StandardCharsets.UTF_8).length);
-                        sink.next(this.bufferFactory().wrap(r.getBytes(StandardCharsets.UTF_8)));
+//                        switch (Objects.requireNonNull(getStatusCode())) {
+//                            case OK:
+//                                result.setCode(OK.value()).setMessage(OK.getReasonPhrase());
+//                                break;
+//                            case UNAUTHORIZED:
+//                                result.setCode(UNAUTHORIZED.value()).setMessage(UNAUTHORIZED.getReasonPhrase());
+//                                break;
+//                            default:
+//                                result.setCode(INTERNAL_SERVER_ERROR.value()).setMessage(INTERNAL_SERVER_ERROR.getReasonPhrase());
+//                        }
+                        result.setCode(Objects.requireNonNull(getStatusCode()).value()).setMessage(getStatusCode().getReasonPhrase());
 
-                    } catch (JsonProcessingException e) {
-
-                        log.error("JsonProcessingException", e);
-                        String r = CommonResult.error(INTERNAL_SERVER_ERROR.value(), e.getMessage()).toString();
-
-                        getHeaders().setContentLength(r.getBytes(StandardCharsets.UTF_8).length);
-                        sink.next(this.bufferFactory().wrap(r.getBytes(StandardCharsets.UTF_8)));
+                        setStatusCode(OK);
+                        getHeaders().setContentType(MediaType.APPLICATION_JSON);
+                        getHeaders().setContentLength(result.toString().getBytes(StandardCharsets.UTF_8).length);
+                        sink.next(this.bufferFactory().wrap(result.toString().getBytes(StandardCharsets.UTF_8)));
 
                     } finally {
                         DataBufferUtils.release(buffer);
