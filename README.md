@@ -2,7 +2,7 @@
 
 # LerGo是什么
 
-**LerGo** 是一个基于 SpringBoot 的微服务`工程脚手架`, 旨在提供一套完整的微服务开发解决方案, 精简项目结构,
+**LerGo** 是一个基于 SpringBoot 的 RESTful 微服务`工程脚手架`, 旨在提供一套完整的微服务开发解决方案, 精简项目结构,
 使开发者可以专注于业务开发而不是重复造轮子
 
 > **LerGo** 发音为 [ˈlɜːɡəʊ] , 意为 `Let it go` , 取自早期项目中自动化部署机器人 `李二狗` 的谐音  
@@ -172,4 +172,4 @@ public class DemoController {
 4. [x] 异常捕获及校验
 5. [x] 前置解析模块 http状态码转义固定json格式
 
-Created by [hexLi](https://2lbj.github.io/) with Github Copilot (它可真能瞎胡嘞)
+Created by @[hexLi](https://2lbj.github.io/) with Github Copilot (它可真能瞎胡嘞)
