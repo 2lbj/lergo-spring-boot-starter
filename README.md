@@ -113,7 +113,7 @@
   logging:
     level:
       com.lergo.framework.filter.LogFilter: TRACE # REST请求日志
-      com.lergo.framework.filter.ResultFilter: TRACE # REST响应非法json
+      com.lergo.framework.filter.ResultFilter: DEBUG # REST响应非法json
   ```
 
 # 自定义注解
