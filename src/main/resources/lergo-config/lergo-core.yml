@@ -37,14 +37,6 @@ springdoc:
 #    resolve-schema-properties: true
 
 lergo:
-  boot:
-    with-jdbc: true
-    with-redis: true
-  filter:
-    auth: true
-    auth-header-name: token
-    timer: true
-    result: true
   channel:
     - code: 100
       name: AAA

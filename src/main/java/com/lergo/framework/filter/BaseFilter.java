@@ -1,9 +1,11 @@
 package com.lergo.framework.filter;
 
+import com.google.gson.Gson;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 
 public class BaseFilter {
 
+    Gson gson = new Gson();
     boolean writeList(ServerHttpRequest req) {
         return req.getPath().value().equals("/") ||
                 req.getPath().value().startsWith("/actuator") ||
