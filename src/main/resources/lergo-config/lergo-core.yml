@@ -39,6 +39,6 @@ springdoc:
 lergo:
   channel:
     - code: 100
-      name: AAA
+      name: UAT
     - code: 200
-      name: BBB
+      name: PROD
