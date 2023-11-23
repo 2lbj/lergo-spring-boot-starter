@@ -1,13 +1,12 @@
 package com.lergo.framework.filter;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.lergo.framework.entity.CommonResult;
 import lombok.extern.slf4j.Slf4j;
 import org.jetbrains.annotations.NotNull;
 import org.reactivestreams.Publisher;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
-import org.springframework.boot.configurationprocessor.json.JSONException;
-import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.core.io.buffer.DataBuffer;
@@ -22,8 +21,7 @@ import reactor.core.publisher.Mono;
 import java.nio.charset.StandardCharsets;
 import java.util.Objects;
 
-import static org.springframework.http.HttpStatus.OK;
-import static org.springframework.http.HttpStatus.UNAUTHORIZED;
+import static org.springframework.http.HttpStatus.*;
 
 @Slf4j
 @Configuration
@@ -44,33 +42,40 @@ public class ResultFilter extends BaseFilter implements WebFilter {
             @Override
             public Mono<Void> writeWith(@NotNull Publisher<? extends DataBuffer> body) {
 
-                return super.writeWith(DataBufferUtils.join(body).map(buffer -> {
+                return super.writeWith(DataBufferUtils.join(body).handle((buffer, sink) -> {
+
+                    setStatusCode(OK);
+                    getHeaders().setContentType(MediaType.APPLICATION_JSON);
+
                     try {
 
-                        //优化以下代码
                         String r = buffer.toString(StandardCharsets.UTF_8);
-                        JSONObject result;
-                        try {
-                            result = new JSONObject(r);
-                        } catch (JSONException e) {
-                            result = new JSONObject();
-                        }
 
                         switch (Objects.requireNonNull(getStatusCode())) {
                             case OK:
-                                r = CommonResult.success(result).toString();
+                                r = CommonResult.success(objectMapper.readValue(r, Object.class))
+                                        .setMessage("SUCCESS").toString();
                                 break;
                             case UNAUTHORIZED:
-                                r = CommonResult.error(UNAUTHORIZED.value(), r).toString();
+                                r = CommonResult.error(UNAUTHORIZED.value(), r)
+                                        .setMessage("UNAUTHORIZED").toString();
                                 break;
                             default:
-                                r = CommonResult.error(getStatusCode().value(), r).toString();
+                                r = CommonResult.error(getStatusCode().value(), r)
+                                        .setMessage("UNKNOWN ERROR").toString();
                         }
 
-                        setStatusCode(OK);
-                        getHeaders().setContentType(MediaType.APPLICATION_JSON);
                         getHeaders().setContentLength(r.getBytes(StandardCharsets.UTF_8).length);
-                        return this.bufferFactory().wrap(r.getBytes(StandardCharsets.UTF_8));
+                        sink.next(this.bufferFactory().wrap(r.getBytes(StandardCharsets.UTF_8)));
+
+                    } catch (JsonProcessingException e) {
+
+                        log.error("JsonProcessingException", e);
+                        String r = CommonResult.error(INTERNAL_SERVER_ERROR.value(), e.getMessage()).toString();
+
+                        getHeaders().setContentLength(r.getBytes(StandardCharsets.UTF_8).length);
+                        sink.next(this.bufferFactory().wrap(r.getBytes(StandardCharsets.UTF_8)));
+
                     } finally {
                         DataBufferUtils.release(buffer);
                     }

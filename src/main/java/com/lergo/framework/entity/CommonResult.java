@@ -2,12 +2,10 @@ package com.lergo.framework.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.gson.Gson;
-import lombok.Data;
 import org.springframework.util.Assert;
 
 import java.io.Serializable;
 
-@Data
 public class CommonResult<T> implements Serializable {
 
     public static Integer CODE_SUCCESS = 0;
@@ -70,4 +68,26 @@ public class CommonResult<T> implements Serializable {
         return gson.toJson(this);
     }
 
+
+    public Integer getCode() {
+        return code;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public CommonResult<T> setMessage(String message) {
+        this.message = message;
+        return this;
+    }
+
+    public T getData() {
+        return data;
+    }
+
+    public CommonResult<T> setData(T data) {
+        this.data = data;
+        return this;
+    }
 }

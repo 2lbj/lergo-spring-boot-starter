@@ -34,7 +34,7 @@ public class LogFilter extends BaseFilter implements WebFilter {
                     bce.getResponse().getStatusCode(),
                     bce.getResponse().getFullBody());
             if (!HttpStatus.OK.equals(bce.getResponse().getStatusCode())) {
-                log.error("[{}] {} Headers:{} Form:{} Body:{} ==> ({}) {}",
+                log.error("[{}] {} Headers:{} Form:{} Body:{} |====> ({}) {}",
                         bce.getRequest().getMethod(),
                         bce.getRequest().getURI(),
                         bce.getRequest().getHeaders(),
