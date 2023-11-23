@@ -84,7 +84,7 @@
 
 # 配置文件说明
 
-**LerGo** 提供了一些默认配置, 你可以在 `application-xxx.yml` 中覆盖它们
+**LerGo** 提供了一些默认配置, 你可以在 `application-dev.yml` 中覆盖它们
 
 > 以下配置均为可选配置, 你可以根据自己的需求选择性配置  
 > **没有特别需要可以完全不写**
@@ -171,4 +171,4 @@ public class DemoController {
 4. [x] 异常捕获及校验
 5. [x] 前置解析模块 http状态码转义固定json格式
 
-Created by @[hexLi](https://2lbj.github.io/) with Github Copilot (它可真能瞎胡嘞)
+Created by @[hexLi](https://2lbj.github.io/) with Github Copilot ~~它可真能瞎胡嘞~~ 献给同行的小礼物, 希望大家用的开心
