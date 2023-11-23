@@ -68,7 +68,7 @@ public class ResultFilter extends BaseFilter implements WebFilter {
                             try {
                                 result.setData(objectMapper.readValue(buffer.toString(StandardCharsets.UTF_8), Object.class));
                             } catch (JsonProcessingException e) {
-                                log.debug(e.getMessage());
+                                log.debug(e.getOriginalMessage());
                                 result.setData(buffer.toString(StandardCharsets.UTF_8));
                             }
 
