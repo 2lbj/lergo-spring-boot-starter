@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.server.reactive.ServerHttpRequest;
@@ -22,6 +23,7 @@ import org.springframework.web.server.WebFilterChain;
 import reactor.core.publisher.Mono;
 
 import javax.annotation.Resource;
+import java.util.concurrent.TimeUnit;
 
 @Slf4j
 @Configuration
@@ -34,7 +36,12 @@ public class AuthFilter extends BaseFilter implements WebFilter {
     private RequestMappingHandlerMapping requestMappingHandlerMapping;
 
     @Value("${lergo.filter.auth-header-name:token}")
-    private String tokenHeaderName;
+    private String authHeaderName;
+    @Value("${lergo.filter.auth-expire-seconds:120}")
+    private int authExpireSeconds;
+
+    @Resource
+    private StringRedisTemplate stringRedisTemplate;
 
     @NotNull
     public Mono<Void> filter(ServerWebExchange exchange, @NotNull WebFilterChain chain) {
@@ -51,23 +58,33 @@ public class AuthFilter extends BaseFilter implements WebFilter {
                 .getHandler(exchange).cast(HandlerMethod.class);
 
         return handlerMethodMono.flatMap(handlerMethod -> {
+
             // 判断Method是否含有对应注解
             if (!handlerMethod.hasMethodAnnotation(UnAuthentication.class)) {
 
                 MultiValueMap<String, String> params = req.getQueryParams();
                 HttpHeaders headers = req.getHeaders();
+
                 // 从header获取token
-                String token = headers.getFirst(tokenHeaderName);
+                String token = headers.getFirst(authHeaderName);
+
                 // 从参数中获取token
-                if (StringUtils.isNotBlank(params.getFirst(tokenHeaderName))) {
-                    token = params.getFirst(tokenHeaderName);
+                if (StringUtils.isNotBlank(params.getFirst(authHeaderName))) {
+                    token = params.getFirst(authHeaderName);
                 }
 
-                // TODO: 校验Token
-                boolean valid = "OK".equals(token);
+                // 校验token是否有效
+                boolean valid = false;
+                if (token != null) {
+                    valid = Boolean.TRUE.equals(stringRedisTemplate.hasKey(token));
+                }
 
                 // 校验通过，过滤器正常放行
-                if (valid) return chain.filter(exchange);
+                if (valid) {
+                    // 刷新token过期时间
+                    stringRedisTemplate.expire(token, authExpireSeconds, TimeUnit.SECONDS);
+                    return chain.filter(exchange);
+                }
 
                 // 校验不通过，返回错误信息
                 res.setStatusCode(HttpStatus.NON_AUTHORITATIVE_INFORMATION);
@@ -76,7 +93,7 @@ public class AuthFilter extends BaseFilter implements WebFilter {
                 return res.writeWith(Mono.just(res.bufferFactory().wrap(bytes)));
             }
 
-            // 注解，正常放行
+            // 免登录注解，正常放行
             return chain.filter(exchange);
         });
     }

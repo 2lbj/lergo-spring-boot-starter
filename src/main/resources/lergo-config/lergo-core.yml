@@ -37,6 +37,15 @@ springdoc:
 #    resolve-schema-properties: true
 
 lergo:
+  boot:
+    with-jdbc: true
+    with-redis: true
+  filter:
+    auth: true
+    auth-header-name: token
+    auth-expire-seconds: 30
+    timer: true
+    result: true
   channel:
     - code: 100
       name: UAT

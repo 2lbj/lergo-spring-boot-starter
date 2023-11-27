@@ -24,6 +24,11 @@ public class LergoFilterConfig {
     private String authHeaderName;
 
     /**
+     * 请求头过期时间
+     */
+    private String authExpireSeconds;
+
+    /**
      * 是否返回通用JSON结果
      */
     private boolean result;
