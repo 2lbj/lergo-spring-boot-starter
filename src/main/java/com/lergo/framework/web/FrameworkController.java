@@ -22,17 +22,11 @@ public class FrameworkController {
     LergoConfig lergoConfig;
 
     @GetMapping("ping")
-    @LogTracker("...Ping")
-    @Operation(summary = "服务连通性测试接口")
+    @LogTracker("Ping...")
+    @Operation(summary = "服务连通性测试接口", description = "返回PONG")
+    @UnAuthentication
     public String ping() {
         return "PONG";
-    }
-
-    @GetMapping("authentication")
-    @UnAuthentication
-    @Operation(summary = "服务鉴权测试接口")
-    public String authentication() {
-        return "OK";
     }
 
     @GetMapping("config")
