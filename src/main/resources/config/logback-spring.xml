@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" debug="false">
+
+    <!-- 变量配置 http://logback.qos.ch/manual/configuration.html#variableSubstitution -->
+    <springProperty name="DEPLOY_ENV" source="spring.profiles.active" defaultValue="dev"/>
+    <!-- 本地环境-->
+    <springProfile name="dev,local">
+        <property scope="context" name="logPath" value="./logs"/>
+    </springProfile>
+    <!--  -->
+    <springProfile name="test,prod,uat">
+        <property scope="context" name="logPath" value="./logs"/>
+    </springProfile>
+    <!--    <property scope="context" name="logPath" value="/export/Logs/com.porsche.platform.service"/>-->
+    <property scope="context" name="logFileName" value="@project.artifactId@"/>
+    <!--<property scope="context" name="logPattern" value="%d{MM-dd HH:mm:ss.SSS} [%thread] %-5level [%logger{100}]>%msg%n" />-->
+
+    <!--有方法名,行号配置, 效率低-->
+    <property scope="context" name="logPattern"
+              value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%X{requestId}] [%thread] %-5level %logger{100}[%method][%line]>%msg%n"/>
+
+    <!-- 日志级别 OFF、FATAL、ERROR、WARN、INFO、DEBUG、TRACE、 ALL -->
+    <!-- 清除logback状态日志  -->
+    <statusListener class="ch.qos.logback.core.status.NopStatusListener"/>
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${logPath}/${logFileName}.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- 滚动日志文件保存格式 -->
+            <FileNamePattern>${logPath}/${logFileName}.%d{yyyy-MM-dd}.%i.log</FileNamePattern>
+            <totalSizeCap>10GB</totalSizeCap>
+            <MaxFileSize>950MB</MaxFileSize>
+            <MaxHistory>7</MaxHistory>
+        </rollingPolicy>
+
+        <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+            <charset>UTF-8</charset>
+            <layout class="ch.qos.logback.classic.PatternLayout">
+                <pattern>${logPattern}</pattern>
+            </layout>
+        </encoder>
+    </appender>
+    <appender name="ERROR_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${logPath}/${logFileName}_error.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+
+            <!-- 滚动日志文件保存格式 -->
+            <FileNamePattern>${logPath}/${logFileName}_error.%d{yyyy-MM-dd}.%i.log</FileNamePattern>
+            <totalSizeCap>5GB</totalSizeCap>
+            <MaxFileSize>950MB</MaxFileSize>
+            <MaxHistory>7</MaxHistory>
+        </rollingPolicy>
+
+        <!-- 过滤级别一下日志 -->
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+
+        <!-- <layout class="ch.qos.logback.classic.html.HTMLLayout"> 可以按HTML格式输出 -->
+        <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+            <charset>UTF-8</charset>
+            <layout class="ch.qos.logback.classic.PatternLayout">
+                <pattern>${logPattern}</pattern>
+            </layout>
+        </encoder>
+    </appender>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${logPattern}</pattern>
+        </encoder>
+    </appender>
+
+    <!--http://logback.qos.ch/manual/appenders.html-->
+    <!-- https://blog.csdn.net/weixin_41241142/article/details/80923948 -->
+    <!-- 异步输出 -->
+    <appender name="ASYNC" class="ch.qos.logback.classic.AsyncAppender">
+
+        <!-- 不丢失日志.默认的,如果队列的80%已满,则会丢弃TRACT、DEBUG、INFO级别的日志 -->
+        <discardingThreshold>0</discardingThreshold>
+        <!-- 更改默认的队列的深度,该值会影响性能.默认值为256 -->
+        <queueSize>1000</queueSize>
+        <!-- 添加附加的appender,最多只能添加一个 -->
+        <appender-ref ref="FILE"/>
+        <!-- event关联的调用者数据不会被提取。false: 只有"cheap"的数据，如线程名, true: 包含其他信息,行号等, 性能差 -->
+        <includeCallerData>true</includeCallerData>
+        <!--调用ArrayBlockingQueue对的offer方法而不是put,offer是非阻塞的-->
+        <neverBlock>true</neverBlock>
+
+    </appender>
+
+    <appender name="ERROR_ASYNC" class="ch.qos.logback.classic.AsyncAppender">
+
+        <!-- 不丢失日志.默认的,如果队列的80%已满,则会丢弃TRACT、DEBUG、INFO级别的日志 -->
+        <discardingThreshold>0</discardingThreshold>
+        <!-- 更改默认的队列的深度,该值会影响性能.默认值为256 -->
+        <queueSize>1000</queueSize>
+        <!-- 添加附加的appender,最多只能添加一个 -->
+        <appender-ref ref="ERROR_FILE"/>
+        <!-- event关联的调用者数据不会被提取。false: 只有"cheap"的数据，如线程名, true: 包含其他信息,行号等, 性能差 -->
+        <includeCallerData>true</includeCallerData>
+        <!--调用ArrayBlockingQueue对的offer方法而不是put,offer是非阻塞的-->
+        <neverBlock>true</neverBlock>
+
+    </appender>
+
+
+    <!-- https://www.cnblogs.com/luozw/p/9329379.html -->
+    <root level="INFO">
+        <!-- 本地环境. 多个使用逗号隔开 -->
+        <springProfile name="local,dev,uat">
+            <appender-ref ref="STDOUT"/>
+        </springProfile>
+        <springProfile name="test,pre,prod,dev,uat">
+            <!--异步输出日志, 为了性能突然大量会丢日志-->
+            <appender-ref ref="ASYNC"/>
+            <appender-ref ref="ERROR_ASYNC"/>
+        </springProfile>
+    </root>
+
+</configuration>
+
