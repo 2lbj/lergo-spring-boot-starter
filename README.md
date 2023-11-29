@@ -164,11 +164,16 @@ public class DemoController {
 ```
 
 # TOTO
-
+## core
 1. [ ] 日志 traceId 耗时
 2. [ ] pageBean searchBean
 3. [ ] 重试机制 feign
 4. [x] 异常捕获及校验
 5. [x] 前置解析模块 http状态码转义固定json格式
+
+## Admin
+1. [ ] RBAC模型 
+2. [ ] OAuth2
+
 
 Created by @[hexLi](https://2lbj.github.io/) with Github Copilot ~~它可真能瞎胡嘞~~ 献给同行的小礼物, 希望大家用的开心

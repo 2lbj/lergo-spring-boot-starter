@@ -165,6 +165,18 @@
             <artifactId>spring-data-rest-hal-browser</artifactId>
             <version>3.3.9.RELEASE</version>
         </dependency>-->
+
+        <!-- SpringBoot Security -->
+        <!--<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>-->
+        <!--<dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>0.9.1</version>
+        </dependency>-->
+
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid-spring-boot-starter</artifactId>

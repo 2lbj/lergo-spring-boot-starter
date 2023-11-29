@@ -11,7 +11,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.http.server.reactive.ServerHttpResponse;
 import org.springframework.util.MultiValueMap;
@@ -28,9 +27,9 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 @Configuration
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.REACTIVE)
-@ConditionalOnProperty(value = "lergo.filter.auth", havingValue = "true")
+@ConditionalOnProperty(value = "lergo.filter.authRedis", havingValue = "true")
 @Order(1000)
-public class AuthFilter extends BaseFilter implements WebFilter {
+public class AuthRedisFilter extends BaseFilter implements WebFilter {
 
     @Resource
     private RequestMappingHandlerMapping requestMappingHandlerMapping;
@@ -61,40 +60,41 @@ public class AuthFilter extends BaseFilter implements WebFilter {
 
             // 判断Method是否含有对应注解
             if (!handlerMethod.hasMethodAnnotation(UnAuthentication.class)) {
-
-                MultiValueMap<String, String> params = req.getQueryParams();
-                HttpHeaders headers = req.getHeaders();
-
-                // 从header获取token
-                String token = headers.getFirst(authHeaderName);
-
-                // 从参数中获取token
-                if (StringUtils.isNotBlank(params.getFirst(authHeaderName))) {
-                    token = params.getFirst(authHeaderName);
-                }
-
-                // 校验token是否有效
-                boolean valid = false;
-                if (token != null) {
-                    valid = Boolean.TRUE.equals(stringRedisTemplate.hasKey(token));
-                }
-
-                // 校验通过，过滤器正常放行
-                if (valid) {
-                    // 刷新token过期时间
-                    stringRedisTemplate.expire(token, authExpireSeconds, TimeUnit.SECONDS);
-                    return chain.filter(exchange);
-                }
-
-                // 校验不通过，返回错误信息
-                res.setStatusCode(HttpStatus.NON_AUTHORITATIVE_INFORMATION);
-                res.getHeaders().add("Content-Type", "text/plain;charset=UTF-8");
-                byte[] bytes = "NON_AUTHORITATIVE".getBytes();
-                return res.writeWith(Mono.just(res.bufferFactory().wrap(bytes)));
+                // 免登录注解，正常放行
+                return chain.filter(exchange);
             }
 
-            // 免登录注解，正常放行
+            MultiValueMap<String, String> params = req.getQueryParams();
+            HttpHeaders headers = req.getHeaders();
+
+            // 从header获取token
+            String token = headers.getFirst(authHeaderName);
+
+            // 从参数中获取token
+            if (StringUtils.isNotBlank(params.getFirst(authHeaderName))) {
+                token = params.getFirst(authHeaderName);
+            }
+
+            // 校验token是否有效
+            boolean valid = false;
+            if (token != null) {
+                valid = Boolean.TRUE.equals(stringRedisTemplate.hasKey(token));
+            }
+
+            // 校验通过，过滤器正常放行
+            if (valid) {
+                // 刷新token过期时间
+                stringRedisTemplate.expire(token, authExpireSeconds, TimeUnit.SECONDS);
+                return chain.filter(exchange);
+            }
+
             return chain.filter(exchange);
+
+//            // 校验不通过，返回错误信息
+//            res.setStatusCode(HttpStatus.NON_AUTHORITATIVE_INFORMATION);
+//            res.getHeaders().add("Content-Type", "text/plain;charset=UTF-8");
+//            byte[] bytes = "NON_AUTHORITATIVE".getBytes();
+//            return res.writeWith(Mono.just(res.bufferFactory().wrap(bytes)));
         });
     }
 

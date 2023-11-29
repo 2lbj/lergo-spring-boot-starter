@@ -17,16 +17,22 @@ public class LergoFilterConfig {
     /**
      * 是否启用鉴权
      */
-    private boolean auth;
+    private boolean authJWT;
+
     /**
-     * 请求头校验名称
+     * 是否启用Redis认证
      */
-    private String authHeaderName;
+    private boolean authRedis;
 
     /**
      * 请求头过期时间
      */
-    private String authExpireSeconds;
+    private Long authExpireSeconds;
+
+    /**
+     * 请求头名称
+     */
+    private String authHeaderName;
 
     /**
      * 是否返回通用JSON结果
