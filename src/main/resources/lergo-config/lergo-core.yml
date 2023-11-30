@@ -18,7 +18,6 @@ logging:
   level:
     root: info
     org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer: ERROR
-    #org.springframework.boot.web.embedded.netty.NettyWebServer: WARN
     org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor: WARN
     org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver: WARN
     org.springdoc.api.AbstractOpenApiResource: WARN
@@ -31,14 +30,3 @@ springdoc:
     display-request-duration: true
     disable-swagger-default-url: true
     use-root-path: true
-#  writer-with-default-pretty-printer: true
-#  override-with-generic-response: true
-#  api-docs:
-#    resolve-schema-properties: true
-
-lergo:
-  channel:
-    - code: 100
-      name: UAT
-    - code: 200
-      name: PROD
