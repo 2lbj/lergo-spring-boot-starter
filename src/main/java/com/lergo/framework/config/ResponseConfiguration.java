@@ -8,7 +8,7 @@ import org.springframework.http.codec.ServerCodecConfigurer;
 import org.springframework.web.reactive.accept.RequestedContentTypeResolver;
 
 @Configuration
-@ConditionalOnProperty(value = "lergo.result.enable", havingValue = "true")
+@ConditionalOnProperty(value = "lergo.handler.result", havingValue = "true")
 public class ResponseConfiguration {
     @Bean
     public ResponseBodyHandler responseWrapper(ServerCodecConfigurer serverCodecConfigurer,
