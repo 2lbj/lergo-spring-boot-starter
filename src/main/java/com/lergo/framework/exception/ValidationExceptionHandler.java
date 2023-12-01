@@ -13,7 +13,7 @@ import javax.validation.Path;
 
 @Slf4j
 @RestControllerAdvice
-public class ValidationException {
+public class ValidationExceptionHandler {
 
 
     /**

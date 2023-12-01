@@ -9,7 +9,7 @@ import org.springframework.web.server.UnsupportedMediaTypeStatusException;
 
 @Slf4j
 @RestControllerAdvice
-public class SystemException {
+public class SystemExceptionHandler {
 
     /**
      * 处理运行时异常
