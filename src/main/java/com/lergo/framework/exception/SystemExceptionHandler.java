@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.server.UnsupportedMediaTypeStatusException;
 
+import java.util.Arrays;
+
 @Slf4j
 @RestControllerAdvice
 public class SystemExceptionHandler {
@@ -42,7 +44,7 @@ public class SystemExceptionHandler {
     public String exceptionHandler(BizException e) {
         log.error("{} <-- {}",
                 e.getLocalizedMessage() == null ? e.toString() : e.getLocalizedMessage(),
-                e.getStackTrace());
+                Arrays.stream(e.getStackTrace()).findFirst().orElse(e.getStackTrace()[0]));
         return e.getMessage() == null ? e.toString() : e.getMessage();
     }
 }
