@@ -32,4 +32,17 @@ public class SystemExceptionHandler {
         log.error("{} <-- {}", e.getSupportedMediaTypes(), e.getContentType());
         return e.getMessage();
     }
+
+
+    /**
+     * 处理运行时异常
+     */
+    @ExceptionHandler(BizException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public String exceptionHandler(BizException e) {
+        log.error("{} <-- {}",
+                e.getLocalizedMessage() == null ? e.toString() : e.getLocalizedMessage(),
+                e.getStackTrace());
+        return e.getMessage() == null ? e.toString() : e.getMessage();
+    }
 }
