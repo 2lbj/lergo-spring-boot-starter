@@ -15,7 +15,10 @@ import javax.validation.Path;
 @RestControllerAdvice
 public class ValidationException {
 
-    //处理单个参数校验失败抛出的异常
+
+    /**
+     * 处理单个参数校验失败抛出的异常
+     */
     @ExceptionHandler(ConstraintViolationException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public HashedMap<Path, String> constraintViolationExceptionHandler(ConstraintViolationException e) {
@@ -28,7 +31,9 @@ public class ValidationException {
     }
 
 
-    //处理 json 请求体调用接口校验失败抛出的异常
+    /**
+     * 处理请求体调用接口校验失败抛出的异常
+     */
     @ExceptionHandler(WebExchangeBindException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public HashedMap<String, String> methodArgumentNotValidExceptionHandler(WebExchangeBindException e) {
@@ -40,6 +45,16 @@ public class ValidationException {
                         HashedMap::putAll);
     }
 
-    //处理 form data方式调用接口校验失败抛出的异常
+//    //处理 form data方式调用接口校验失败抛出的异常
+//    @ExceptionHandler(org.springframework.validation.BindException.class)
+//    @ResponseStatus(HttpStatus.BAD_REQUEST)
+//    public HashedMap<String, String> bindExceptionHandler(org.springframework.validation.BindException e) {
+//        return e.getBindingResult().getFieldErrors().parallelStream()
+//                .peek(v -> log.warn("{{}.{}} {} <-- [{}]", v.getObjectName(), v.getField(),
+//                        v.getDefaultMessage(), v.getRejectedValue()))
+//                .collect(HashedMap::new, (m, v) ->
+//                                m.put(v.getField(), v.getDefaultMessage()),
+//                        HashedMap::putAll);
+//    }
 
 }

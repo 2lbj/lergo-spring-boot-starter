@@ -9,15 +9,23 @@ import org.springframework.web.server.UnsupportedMediaTypeStatusException;
 
 @Slf4j
 @RestControllerAdvice
-public class UnknownRestException {
+public class SystemException {
 
-//    @ExceptionHandler(Exception.class)
-//    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-//    public String unknownExceptionHandler(Exception e) {
-//        log.error("Unknown ERROR |", e);
-//        return e.getMessage();
-//    }
+    /**
+     * 处理运行时异常
+     */
+    @ExceptionHandler(RuntimeException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public String exceptionHandler(RuntimeException e) {
+        log.error("{} <-- {}",
+                e.getLocalizedMessage() == null ? e.toString() : e.getLocalizedMessage(),
+                e.getStackTrace(), e);
+        return e.getMessage() == null ? e.toString() : e.getMessage();
+    }
 
+    /**
+     * 处理请求体类型不支持的异常
+     */
     @ExceptionHandler(UnsupportedMediaTypeStatusException.class)
     @ResponseStatus(HttpStatus.UNSUPPORTED_MEDIA_TYPE)
     public String unsupportedMediaTypeExceptionHandler(UnsupportedMediaTypeStatusException e) {
