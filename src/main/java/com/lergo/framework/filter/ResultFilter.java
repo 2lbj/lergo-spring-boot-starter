@@ -73,7 +73,8 @@ public class ResultFilter extends BaseFilter implements WebFilter {
                             }
 
                             result.setCode(Objects.requireNonNull(getStatusCode()).value())
-                                    .setMessage(getStatusCode().getReasonPhrase());
+                                    .setMsg(getStatusCode().getReasonPhrase())
+                                    .isSuccess();
 
                             setStatusCode(OK);
                             getHeaders().setContentType(MediaType.APPLICATION_JSON);

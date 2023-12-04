@@ -2,10 +2,12 @@ package com.lergo.framework.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.gson.Gson;
+import lombok.Getter;
 import org.springframework.util.Assert;
 
 import java.io.Serializable;
 
+@Getter
 public class CommonResult<T> implements Serializable {
 
     public static Integer CODE_SUCCESS = 200;
@@ -18,7 +20,7 @@ public class CommonResult<T> implements Serializable {
     /**
      * 错误提示
      */
-    private String message;
+    private String msg;
     /**
      * 返回数据
      */
@@ -34,14 +36,14 @@ public class CommonResult<T> implements Serializable {
      * @return 新的 CommonResult 对象
      */
     public static <T> CommonResult<T> error(CommonResult<?> result) {
-        return error(result.getCode(), result.getMessage());
+        return error(result.getCode(), result.getMsg());
     }
 
     public static <T> CommonResult<T> error(Integer code, String message) {
         Assert.isTrue(!CODE_SUCCESS.equals(code), "code must not be success");
         CommonResult<T> result = new CommonResult<>();
         result.code = code;
-        result.message = message;
+        result.msg = message;
         return result;
     }
 
@@ -49,7 +51,7 @@ public class CommonResult<T> implements Serializable {
         CommonResult<T> result = new CommonResult<>();
         result.code = CODE_SUCCESS;
         result.data = data;
-        result.message = "";
+        result.msg = "";
         return result;
     }
 
@@ -69,26 +71,14 @@ public class CommonResult<T> implements Serializable {
     }
 
 
-    public Integer getCode() {
-        return code;
-    }
-
     public CommonResult<T> setCode(Integer code) {
         this.code = code;
         return this;
     }
 
-    public String getMessage() {
-        return message;
-    }
-
-    public CommonResult<T> setMessage(String message) {
-        this.message = message;
+    public CommonResult<T> setMsg(String msg) {
+        this.msg = msg;
         return this;
-    }
-
-    public T getData() {
-        return data;
     }
 
     public CommonResult<T> setData(T data) {
