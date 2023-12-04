@@ -1,6 +1,5 @@
 package com.lergo.framework.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.gson.Gson;
 import lombok.Getter;
 import org.springframework.util.Assert;
@@ -53,16 +52,6 @@ public class CommonResult<T> implements Serializable {
         result.data = data;
         result.msg = "";
         return result;
-    }
-
-    @JsonIgnore
-    public boolean isSuccess() {
-        return CODE_SUCCESS.equals(code);
-    }
-
-    @JsonIgnore
-    public boolean isError() {
-        return !isSuccess();
     }
 
     @Override

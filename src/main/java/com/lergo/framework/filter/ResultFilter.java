@@ -60,6 +60,7 @@ public class ResultFilter extends BaseFilter implements WebFilter {
                 @NotNull
                 @Override
                 public Mono<Void> writeWith(@NotNull Publisher<? extends DataBuffer> body) {
+
                     return super.writeWith(DataBufferUtils.join(body).handle((buffer, sink) -> {
 
                         try {
@@ -73,12 +74,12 @@ public class ResultFilter extends BaseFilter implements WebFilter {
                             }
 
                             result.setCode(Objects.requireNonNull(getStatusCode()).value())
-                                    .setMsg(getStatusCode().getReasonPhrase())
-                                    .isSuccess();
+                                    .setMsg(getStatusCode().getReasonPhrase());
 
                             setStatusCode(OK);
                             getHeaders().setContentType(MediaType.APPLICATION_JSON);
                             getHeaders().setContentLength(result.toString().getBytes(StandardCharsets.UTF_8).length);
+
                             sink.next(this.bufferFactory().wrap(result.toString().getBytes(StandardCharsets.UTF_8)));
 
                         } finally {
