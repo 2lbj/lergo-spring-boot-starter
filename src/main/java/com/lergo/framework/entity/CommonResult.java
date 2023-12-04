@@ -19,7 +19,7 @@ public class CommonResult<T> implements Serializable {
     /**
      * 错误提示
      */
-    private String msg;
+    private String message;
     /**
      * 返回数据
      */
@@ -35,14 +35,14 @@ public class CommonResult<T> implements Serializable {
      * @return 新的 CommonResult 对象
      */
     public static <T> CommonResult<T> error(CommonResult<?> result) {
-        return error(result.getCode(), result.getMsg());
+        return error(result.getCode(), result.getMessage());
     }
 
     public static <T> CommonResult<T> error(Integer code, String message) {
         Assert.isTrue(!CODE_SUCCESS.equals(code), "code must not be success");
         CommonResult<T> result = new CommonResult<>();
         result.code = code;
-        result.msg = message;
+        result.message = message;
         return result;
     }
 
@@ -50,7 +50,7 @@ public class CommonResult<T> implements Serializable {
         CommonResult<T> result = new CommonResult<>();
         result.code = CODE_SUCCESS;
         result.data = data;
-        result.msg = "";
+        result.message = "";
         return result;
     }
 
@@ -65,8 +65,8 @@ public class CommonResult<T> implements Serializable {
         return this;
     }
 
-    public CommonResult<T> setMsg(String msg) {
-        this.msg = msg;
+    public CommonResult<T> setMessage(String message) {
+        this.message = message;
         return this;
     }
 

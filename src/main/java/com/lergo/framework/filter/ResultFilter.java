@@ -66,6 +66,8 @@ public class ResultFilter extends BaseFilter implements WebFilter {
                         try {
 
                             CommonResult<Object> result = new CommonResult<>();
+                            result.setCode(Objects.requireNonNull(getStatusCode()).value())
+                                    .setMessage(getStatusCode().getReasonPhrase());
                             try {
                                 result.setData(objectMapper.readValue(buffer.toString(StandardCharsets.UTF_8), Object.class));
                             } catch (JsonProcessingException e) {
@@ -73,8 +75,16 @@ public class ResultFilter extends BaseFilter implements WebFilter {
                                 result.setData(buffer.toString(StandardCharsets.UTF_8));
                             }
 
-                            result.setCode(Objects.requireNonNull(getStatusCode()).value())
-                                    .setMsg(getStatusCode().getReasonPhrase());
+                            try {
+                                CommonResult<Object> commonResult =
+                                        objectMapper.readValue(buffer.toString(StandardCharsets.UTF_8), CommonResult.class);
+                                if (commonResult.getCode() != null &&
+                                        commonResult.getMessage() != null &&
+                                        commonResult.getData() != null) {
+                                    result = commonResult;
+                                }
+                            } catch (Exception ignored) {
+                            }
 
                             setStatusCode(OK);
                             getHeaders().setContentType(MediaType.APPLICATION_JSON);
