@@ -21,6 +21,7 @@ import org.springframework.web.server.WebFilterChain;
 import reactor.core.publisher.Mono;
 
 import javax.annotation.Resource;
+import java.util.Arrays;
 import java.util.Map;
 
 @Slf4j
@@ -35,8 +36,17 @@ public class AuthJWTFilter extends BaseFilter implements WebFilter {
 
     @Value("${lergo.filter.auth-header-name:Authorization}")
     private String authHeaderName;
-    @Value("${lergo.filter.auth-expire-seconds:120}")
+    @Value("${lergo.filter.auth-expire-seconds:3600}")
     private int authExpireSeconds;
+
+    @Value("${lergo.filter.jwt-key:lerGo}")
+    private String jwtKey;
+    @Value("${lergo.filter.jwt-secret:io.github.2lbj}")
+    private String jwtSecret;
+    @Value("${lergo.filter.jwt-leeway-seconds:120}")
+    private int jwtLeewaySeconds;
+    @Value("${lergo.filter.jwt-refresh:false}")
+    private boolean jwtRefresh;
 
     @NotNull
     public Mono<Void> filter(ServerWebExchange exchange, @NotNull WebFilterChain chain) {
@@ -60,15 +70,13 @@ public class AuthJWTFilter extends BaseFilter implements WebFilter {
                 return chain.filter(exchange);
             }
 
-            String testAppKey = "testAppkey";
-            String testAppSecret = "*************************";
-
-            String authHeader = req.getHeaders().getFirst("Authorization");
+            String authHeader = req.getHeaders().getFirst(authHeaderName);
 
             if (authHeader != null && authHeader.startsWith("Bearer ")) {
                 String token = authHeader.substring(7);
 
-                JwtTool.JwtVerifyResult jwtVerifyResult = JwtTool.claimsToken(token, testAppKey, testAppSecret);
+                JwtTool.JwtVerifyResult jwtVerifyResult = JwtTool.claimsToken(token,
+                        jwtKey, jwtSecret, jwtLeewaySeconds);
 
                 if(jwtVerifyResult.getSuccess()){
                     Map<String, String> payload = jwtVerifyResult.getPayload();
@@ -81,37 +89,18 @@ public class AuthJWTFilter extends BaseFilter implements WebFilter {
                     );
 
                     // 刷新token过期时间
-                    //res.getHeaders().set("Authorization", "Bearer "+JwtTool.createToken(payload, testAppKey, testAppSecret, Collections.singletonList("role-admin")));
+                    if (jwtRefresh) {
+                        res.getHeaders().set(authHeaderName, "Bearer " +
+                                JwtTool.createToken(jwtKey, jwtSecret, authExpireSeconds, payload,
+                                        //重新实现获取用户角色信息
+                                        Arrays.asList(payload.get("roles").split(","))));
+                    }
 
                     return chain.filter(exchange);
                 }else{
                     log.error("验证失败："+jwtVerifyResult.getMsg());
                 }
             }
-
-//            MultiValueMap<String, String> params = req.getQueryParams();
-//            HttpHeaders headers = req.getHeaders();
-//
-//            // 从header获取token
-//            String token = headers.getFirst(authHeaderName);
-//
-//            // 从参数中获取token
-//            if (StringUtils.isNotBlank(params.getFirst(authHeaderName))) {
-//                token = params.getFirst(authHeaderName);
-//            }
-//
-//            // 校验token是否有效
-//            boolean valid = false;
-//            if (token != null) {
-//                valid = Boolean.TRUE.equals(stringRedisTemplate.hasKey(token));
-//            }
-//
-//            // 校验通过，过滤器正常放行
-//            if (valid) {
-//                // 刷新token过期时间
-//                stringRedisTemplate.expire(token, authExpireSeconds, TimeUnit.SECONDS);
-//                return chain.filter(exchange);
-//            }
 
             // 校验不通过，返回错误信息
             res.setStatusCode(HttpStatus.NON_AUTHORITATIVE_INFORMATION);
