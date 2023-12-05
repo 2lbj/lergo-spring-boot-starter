@@ -10,7 +10,6 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
-import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.http.server.reactive.ServerHttpResponse;
@@ -34,13 +33,10 @@ public class AuthJWTFilter extends BaseFilter implements WebFilter {
     @Resource
     private RequestMappingHandlerMapping requestMappingHandlerMapping;
 
-    @Value("${lergo.filter.auth-header-name:token}")
+    @Value("${lergo.filter.auth-header-name:Authorization}")
     private String authHeaderName;
     @Value("${lergo.filter.auth-expire-seconds:120}")
     private int authExpireSeconds;
-
-    @Resource
-    private StringRedisTemplate stringRedisTemplate;
 
     @NotNull
     public Mono<Void> filter(ServerWebExchange exchange, @NotNull WebFilterChain chain) {

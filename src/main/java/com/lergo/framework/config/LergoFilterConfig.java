@@ -15,14 +15,14 @@ public class LergoFilterConfig {
     private boolean timer;
 
     /**
+     * 是否返回通用JSON结果
+     */
+    private boolean result;
+
+    /**
      * 是否启用鉴权
      */
     private boolean authJWT;
-
-    /**
-     * 是否启用Redis认证
-     */
-    private boolean authRedis;
 
     /**
      * 请求头过期时间
@@ -35,8 +35,8 @@ public class LergoFilterConfig {
     private String authHeaderName;
 
     /**
-     * 是否返回通用JSON结果
+     * 是否启用Redis认证
      */
-    private boolean result;
-
+    @Deprecated
+    private boolean authRedis;
 }

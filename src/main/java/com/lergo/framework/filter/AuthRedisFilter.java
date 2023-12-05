@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.http.server.reactive.ServerHttpResponse;
 import org.springframework.util.MultiValueMap;
@@ -34,7 +35,7 @@ public class AuthRedisFilter extends BaseFilter implements WebFilter {
     @Resource
     private RequestMappingHandlerMapping requestMappingHandlerMapping;
 
-    @Value("${lergo.filter.auth-header-name:token}")
+    @Value("${lergo.filter.auth-header-name:Authorization}")
     private String authHeaderName;
     @Value("${lergo.filter.auth-expire-seconds:120}")
     private int authExpireSeconds;
@@ -59,7 +60,7 @@ public class AuthRedisFilter extends BaseFilter implements WebFilter {
         return handlerMethodMono.flatMap(handlerMethod -> {
 
             // 判断Method是否含有对应注解
-            if (!handlerMethod.hasMethodAnnotation(UnAuthentication.class)) {
+            if (handlerMethod.hasMethodAnnotation(UnAuthentication.class)) {
                 // 免登录注解，正常放行
                 return chain.filter(exchange);
             }
@@ -85,16 +86,15 @@ public class AuthRedisFilter extends BaseFilter implements WebFilter {
             if (valid) {
                 // 刷新token过期时间
                 stringRedisTemplate.expire(token, authExpireSeconds, TimeUnit.SECONDS);
+                log.debug("token={} refresh expire time", token);
                 return chain.filter(exchange);
             }
 
-            return chain.filter(exchange);
-
-//            // 校验不通过，返回错误信息
-//            res.setStatusCode(HttpStatus.NON_AUTHORITATIVE_INFORMATION);
-//            res.getHeaders().add("Content-Type", "text/plain;charset=UTF-8");
-//            byte[] bytes = "NON_AUTHORITATIVE".getBytes();
-//            return res.writeWith(Mono.just(res.bufferFactory().wrap(bytes)));
+            // 校验不通过，返回错误信息
+            res.setStatusCode(HttpStatus.NON_AUTHORITATIVE_INFORMATION);
+            res.getHeaders().add("Content-Type", "text/plain;charset=UTF-8");
+            byte[] bytes = "NON_AUTHORITATIVE".getBytes();
+            return res.writeWith(Mono.just(res.bufferFactory().wrap(bytes)));
         });
     }
 
