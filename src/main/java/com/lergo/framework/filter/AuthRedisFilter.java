@@ -39,8 +39,6 @@ public class AuthRedisFilter extends BaseFilter implements WebFilter {
     private String authHeaderName;
     @Value("${lergo.filter.auth-expire-seconds:3600}")
     private int authExpireSeconds;
-    @Value("${lergo.boot.with-redis:false}")
-    private boolean withRedis;
 
     @Resource
     private StringRedisTemplate stringRedisTemplate;
