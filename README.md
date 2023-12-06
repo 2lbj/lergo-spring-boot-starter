@@ -96,17 +96,24 @@
       with-jdbc: true # 是否启用JDBC (默认禁用)
       with-redis: true # 是否启用Redis (默认禁用):
     filter:
-      auth: true # 是否启用权限过滤器 (默认禁用)
-      auth-header-name: token # 权限过滤器_请求头名称 (默认token)
-      timer: true # 是否启用耗时过滤器 (默认禁用) 监控地址: /actuator/metrics/lergo.filter.timer
-      result: true # 是否启用统一JSON格式响应过滤器 (默认禁用)
+      timer: true #-1 是否启用耗时过滤器 (默认禁用) 监控地址: /actuator/metrics/lergo.filter.timer
+      #1 LogFilter 日志过滤器 (默认启用)
+      result: true #100 是否启用统一JSON格式响应过滤器 (默认禁用)
+      auth-jwt: true #999 是否启用JWT鉴权过滤器 (默认禁用)
+      auth-redis: true #1000 Redis 缓存权限及用户登录信息依赖redis过期/续期token-key (默认禁用) 如无特别需求建议采用JWT实现
+      auth-expire-seconds: 3600 #过期时间 (默认3600秒)
+      auth-header-name: Authorization #鉴权请求头名称 (默认Authorization)
+    jwt:
+      app-key: lerGo-app-key # JWT密钥-AK
+      app-secret: lerGo-app-secret # JWT密钥-SK
+      leeway-seconds: 120 # JWT容错时间 (默认120秒)
   ```
 * 文档配置
   ```yaml
   open-api:
     title:  基础开发脚手架 # 文档_项目标题 (默认spring.application.name)
     version: 1.0.0 # 文档_项目版本(默认application.version)
-    termsOfService: ' https://your.service.com' # 文档_服务条款
+    termsOfService: 'https://your.service.com' # 文档_服务条款
     description: 基于SpringBoot的微服务开发脚手架 # 文档_项目描述
   ```
 * 调试日志
@@ -115,13 +122,15 @@
     level:
       com.lergo.framework.filter.LogFilter: TRACE # REST请求日志
       com.lergo.framework.filter.ResultFilter: DEBUG # REST响应非法json
+      com.lergo.framework.filter.AuthRedisFilter: DEBUG
+      com.lergo.framework.filter.AuthJWTFilter: DEBUG
   ```
 
 # 自定义注解
 
 **LerGo** 提供了一些自定义注解, 你可以在需要的地方使用它们
 
-`@LogTracker` 标记为需要日志记录 请求/返回(耗时) 的方法
+`@LogTracker` 标记为需要日志记录 入参/返回(耗时) 的方法
 ```java
 import com.lergo.framework.annotation.LogTracker;
 
@@ -148,7 +157,7 @@ public class DemoController {
 }
 ```
 
-`@UnAuthentication` 标记为 **不需要** 权限校验的接口 优先级 #1000 (仅当 `lergo.filter.auth: true` 时有效)
+`@UnAuthentication` 标记为 **不需要** 权限校验的接口 优先级 #1000-#999 (仅当 `lergo.filter.auth: true` 时有效)
 
 ```java
 import com.lergo.framework.annotation.UnAuthentication;

@@ -27,7 +27,7 @@ import java.util.Map;
 @Slf4j
 @Configuration
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.REACTIVE)
-@ConditionalOnProperty(value = "lergo.filter.authJWT", havingValue = "true")
+@ConditionalOnProperty(value = "lergo.filter.auth-jwt", havingValue = "true")
 @Order(999)
 public class AuthJWTFilter extends BaseFilter implements WebFilter {
 
@@ -39,13 +39,13 @@ public class AuthJWTFilter extends BaseFilter implements WebFilter {
     @Value("${lergo.filter.auth-expire-seconds:3600}")
     private int authExpireSeconds;
 
-    @Value("${lergo.filter.jwt-key:lerGo}")
+    @Value("${lergo.jwt.app-key:lerGo}")
     private String jwtKey;
-    @Value("${lergo.filter.jwt-secret:io.github.2lbj}")
+    @Value("${lergo.jwt.app-secret:io.github.2lbj}")
     private String jwtSecret;
-    @Value("${lergo.filter.jwt-leeway-seconds:120}")
+    @Value("${lergo.jwt.leeway-seconds:120}")
     private int jwtLeewaySeconds;
-    @Value("${lergo.filter.jwt-refresh:false}")
+    @Value("${lergo.jwt.refresh:false}")
     private boolean jwtRefresh;
 
     @NotNull
@@ -90,10 +90,12 @@ public class AuthJWTFilter extends BaseFilter implements WebFilter {
 
                     // 刷新token过期时间
                     if (jwtRefresh) {
-                        res.getHeaders().set(authHeaderName, "Bearer " +
+                        res.getHeaders().set(authHeaderName, "reBearer " +
                                 JwtTool.createToken(jwtKey, jwtSecret, authExpireSeconds, payload,
                                         //重新实现获取用户角色信息
                                         Arrays.asList(payload.get("roles").split(","))));
+                        log.debug("ak {} sk {} payload {} refresh expire time",
+                                jwtKey, jwtSecret, payload);
                     }
 
                     return chain.filter(exchange);

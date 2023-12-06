@@ -28,7 +28,7 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 @Configuration
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.REACTIVE)
-@ConditionalOnProperty(value = "lergo.filter.authRedis", havingValue = "true")
+@ConditionalOnProperty(value = "lergo.filter.auth-redis", havingValue = "true")
 @Order(1000)
 public class AuthRedisFilter extends BaseFilter implements WebFilter {
 
@@ -37,7 +37,7 @@ public class AuthRedisFilter extends BaseFilter implements WebFilter {
 
     @Value("${lergo.filter.auth-header-name:Authorization}")
     private String authHeaderName;
-    @Value("${lergo.filter.auth-expire-seconds:120}")
+    @Value("${lergo.filter.auth-expire-seconds:3600}")
     private int authExpireSeconds;
 
     @Resource
