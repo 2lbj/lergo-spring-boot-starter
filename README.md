@@ -22,7 +22,7 @@
 <dependency>
     <groupId>io.github.2lbj</groupId>
     <artifactId>lergo-spring-boot-starter</artifactId>
-    <version>1.0.10</version>
+  <version>1.0.11</version>
 </dependency>
 ```
 
