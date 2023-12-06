@@ -33,15 +33,14 @@ import java.util.concurrent.TimeUnit;
 public class AuthRedisFilter extends BaseFilter implements WebFilter {
 
     @Resource
+    private StringRedisTemplate stringRedisTemplate;
+    @Resource
     private RequestMappingHandlerMapping requestMappingHandlerMapping;
 
     @Value("${lergo.filter.auth-header-name:Authorization}")
     private String authHeaderName;
     @Value("${lergo.filter.auth-expire-seconds:3600}")
     private int authExpireSeconds;
-
-    @Resource
-    private StringRedisTemplate stringRedisTemplate;
 
     @NotNull
     public Mono<Void> filter(ServerWebExchange exchange, @NotNull WebFilterChain chain) {
