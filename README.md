@@ -100,7 +100,7 @@
       #1 LogFilter 日志过滤器 (默认启用)
       result: true #100 是否启用统一JSON格式响应过滤器 (默认禁用)
       auth-jwt: true #999 是否启用JWT鉴权过滤器 (默认禁用)
-      auth-redis: true #1000 Redis 缓存权限及用户登录信息依赖redis过期/续期token-key (默认禁用) 如无特别需求建议采用JWT实现
+      #auth-redis: true #1000 Redis 缓存权限及用户登录信息依赖redis过期/续期token-key (默认禁用) 如无特别需求建议采用JWT实现
       auth-expire-seconds: 3600 #过期时间 (默认3600秒)
       auth-header-name: Authorization #鉴权请求头名称 (默认Authorization)
     jwt:
@@ -122,8 +122,8 @@
     level:
       com.lergo.framework.filter.LogFilter: TRACE # REST请求日志
       com.lergo.framework.filter.ResultFilter: DEBUG # REST响应非法json
-      com.lergo.framework.filter.AuthRedisFilter: DEBUG
-      com.lergo.framework.filter.AuthJWTFilter: DEBUG
+      #com.lergo.framework.filter.AuthRedisFilter: DEBUG
+      #com.lergo.framework.filter.AuthJWTFilter: DEBUG
   ```
 
 # 自定义注解
