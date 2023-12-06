@@ -10,9 +10,9 @@ management:
 spring:
   application:
     name: @project.name@
-    description: @project.description@
     artifactId: @project.artifactId@
     version: @project.version@
+    description: @project.description@
 
 logging:
   level:
