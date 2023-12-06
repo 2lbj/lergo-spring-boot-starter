@@ -13,54 +13,24 @@ import cn.hutool.jwt.RegisteredPayload;
 import cn.hutool.jwt.signers.JWTSigner;
 import cn.hutool.jwt.signers.JWTSignerUtil;
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.Map;
 
 @Component
+@Slf4j
 public class JwtTool {
-
-//    @Value("${jwt.secret}")
-//    private String secret;
-//
-//    @Value("${jwt.expiration}")
-//    private Long expiration;
-//
-//    public String generateToken(String username) {
-//        return Jwts.builder()
-//                .setSubject(username)
-//                .setIssuedAt(new Date())
-//                .setExpiration(new Date(System.currentTimeMillis() + expiration * 1000))
-//                .signWith(SignatureAlgorithm.HS512, secret)
-//                .compact();
-//    }
-//
-//    public String getUsernameFromToken(String token) {
-//        return Jwts.parser()
-//                .setSigningKey(secret)
-//                .parseClaimsJws(token)
-//                .getBody()
-//                .getSubject();
-//    }
-//
-//    public Claims claimsToken(String token) {
-//        return Jwts.parser()
-//                .setSigningKey(secret)
-//                .parseClaimsJws(token)
-//                .getBody();
-//    }
-
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     /**
      * jwt 签名秘钥，可以更换其他不常用的自定义签名器： JWTSignerUtil
      */
-    static final JWTSigner jwtSigner = JWTSignerUtil.hs256("lerGo".getBytes());
+    static final JWTSigner jwtSigner = JWTSignerUtil.hs256("lerGo@2lbj".getBytes());
     /**
      * 自定义二重认证 token key
      */
-    static final String AUTHENTICATOR_KEY = "at";
+    static final String AUTHENTICATOR_KEY = "@";
 
     /**
      * 生成安全的 jwt token
@@ -87,6 +57,8 @@ public class JwtTool {
                                      String appSecret,
                                      int expiresAt,
                                      Map<String, String> payload) {
+        log.trace("createToken: appKey={}, appSecret={}, expiresAt={}, payload={}",
+                appKey, appSecret, expiresAt, payload);
 
         Date dateNow = new Date();
         //构建自定义的签名摘要（安全2）
@@ -116,7 +88,12 @@ public class JwtTool {
      * @param leeway    时间容忍度（秒）
      * @return map :当error = "ok"，会额外多出 payload
      */
-    public static JwtVerifyResult claimsToken(String token, String appKey, String appSecret, long leeway) {
+    public static JwtVerifyResult claimsToken(String token,
+                                              String appKey,
+                                              String appSecret,
+                                              long leeway) {
+        log.trace("claimsToken: token={}, appKey={}, appSecret={}, leeway={}",
+                token, appKey, appSecret, leeway);
 
         try {
             JWT jwt = JWT.of(token);

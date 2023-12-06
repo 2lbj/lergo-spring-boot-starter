@@ -80,19 +80,17 @@ public class AuthJWTFilter extends BaseFilter implements WebFilter {
                 if(jwtVerifyResult.getSuccess()){
                     Map<String, String> payload = jwtVerifyResult.getPayload();
 
-                    log.info("负载： {} \r\n ts-{} iat-{} exp-{}",
+                    log.info("负载： {} iat {} exp {}",
                             payload,
-                            DateUtil.date(Long.parseLong(payload.get("ts"))),
                             DateUtil.date(Long.parseLong(payload.get("iat")+"000")),
                             DateUtil.date(Long.parseLong(payload.get("exp")+"000"))
                     );
 
                     // 刷新token过期时间
                     if (jwtRefresh) {
-                        res.getHeaders().set(authHeaderName, "reBearer " +
+                        res.getHeaders().set(authHeaderName, "Refresh " +
                                 JwtTool.createToken(jwtKey, jwtSecret, authExpireSeconds, payload));
-                        log.debug("ak {} sk {} payload {} refresh expire time",
-                                jwtKey, jwtSecret, payload);
+                        log.debug("payload {} refresh expire time", payload);
                     }
 
                     return chain.filter(exchange);
