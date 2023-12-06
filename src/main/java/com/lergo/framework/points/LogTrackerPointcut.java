@@ -49,10 +49,8 @@ public class LogTrackerPointcut {
         return proceed;
     }
 
-    /**
+    /*
      * 获取方法中声明的注解
-     * @param joinPoint
-     * @return Method
      */
     public Method getDeclaredAnnotation(ProceedingJoinPoint joinPoint) {
 

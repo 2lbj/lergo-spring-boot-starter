@@ -40,7 +40,7 @@ public class JwtTool {
      * 失效时间（JWTPayload#EXPIRES_AT）不能早于当前时间
      * 签发时间（JWTPayload#ISSUED_AT）不能晚于当前时间
      * 一般时间线是：
-     *   (签发时间)->->-(生效时间)->->- [当前时间] ->->-(失效时间)
+     *   (签发时间)---(生效时间)---[当前时间]---(失效时间)
      * <p>
      * 负载签名时间：iat（签发时间-强制）、exp（过期时间校验-强制）、at（内嵌再次token校验），已被占用
      * 可能使用的高级占用参数：详见 hutool 的RegisteredPayload 接口

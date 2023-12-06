@@ -6,16 +6,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-/**
+/*
  * 树形结构工具类
- *
- * @param <T>
  * @author lihexu
  */
 
 public class TreeTool<T extends ModelTree> {
 
-    /**
+    /*
      * 根据原始列表组装树形结构
      */
     @SuppressWarnings("unchecked")
@@ -42,10 +40,9 @@ public class TreeTool<T extends ModelTree> {
         return r;//庙里有个老和尚讲故事
     }
 
-
     /*
      * 遍历树形结构
-     * */
+     */
     @SuppressWarnings("unchecked")
     public void iteratorRunner(T tree, Iterator<T> iterator) {
         if (tree.getChildren() != null) {

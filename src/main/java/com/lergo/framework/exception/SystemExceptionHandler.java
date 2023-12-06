@@ -13,7 +13,7 @@ import java.util.Arrays;
 @RestControllerAdvice
 public class SystemExceptionHandler {
 
-    /**
+    /*
      * 处理运行时异常
      */
     @ExceptionHandler(RuntimeException.class)
@@ -25,7 +25,7 @@ public class SystemExceptionHandler {
         return e.getMessage() == null ? e.toString() : e.getMessage();
     }
 
-    /**
+    /*
      * 处理请求体类型不支持的异常
      */
     @ExceptionHandler(UnsupportedMediaTypeStatusException.class)
@@ -36,7 +36,7 @@ public class SystemExceptionHandler {
     }
 
 
-    /**
+    /*
      * 处理运行时异常
      */
     @ExceptionHandler(BizException.class)

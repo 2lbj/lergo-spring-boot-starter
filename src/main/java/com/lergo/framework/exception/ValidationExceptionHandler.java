@@ -16,7 +16,7 @@ import javax.validation.Path;
 public class ValidationExceptionHandler {
 
 
-    /**
+    /*
      * 处理单个参数校验失败抛出的异常
      */
     @ExceptionHandler(ConstraintViolationException.class)
@@ -31,7 +31,7 @@ public class ValidationExceptionHandler {
     }
 
 
-    /**
+    /*
      * 处理请求体调用接口校验失败抛出的异常
      */
     @ExceptionHandler(WebExchangeBindException.class)
