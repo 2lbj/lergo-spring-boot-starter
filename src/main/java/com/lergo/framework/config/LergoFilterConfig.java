@@ -33,11 +33,11 @@ public class LergoFilterConfig {
     /**
      * 鉴权过期时间
      */
-    private Long authExpireSeconds;
+    private Long authExpireSeconds = 3600L;
 
     /**
      * 鉴权请求头名称
      */
-    private String authHeaderName;
+    private String authHeaderName = "Authorization";
 
 }

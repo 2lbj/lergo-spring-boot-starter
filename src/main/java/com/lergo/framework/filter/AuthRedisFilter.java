@@ -39,6 +39,8 @@ public class AuthRedisFilter extends BaseFilter implements WebFilter {
     private String authHeaderName;
     @Value("${lergo.filter.auth-expire-seconds:3600}")
     private int authExpireSeconds;
+    @Value("${lergo.boot.with-redis:false}")
+    private boolean withRedis;
 
     @Resource
     private StringRedisTemplate stringRedisTemplate;
@@ -49,7 +51,7 @@ public class AuthRedisFilter extends BaseFilter implements WebFilter {
         ServerHttpRequest req = exchange.getRequest();
         ServerHttpResponse res = exchange.getResponse();
 
-        if (writeList(req)) {
+        if (writeList(req) || !withRedis) {
             return chain.filter(exchange);
         }
 
