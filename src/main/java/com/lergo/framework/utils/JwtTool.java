@@ -13,14 +13,12 @@ import cn.hutool.jwt.RegisteredPayload;
 import cn.hutool.jwt.signers.JWTSigner;
 import cn.hutool.jwt.signers.JWTSignerUtil;
 import lombok.Data;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.Map;
 
 @Component
-@Slf4j
 public class JwtTool {
 
     /**
@@ -57,8 +55,9 @@ public class JwtTool {
                                      String appSecret,
                                      int expiresAt,
                                      Map<String, String> payload) {
-        log.trace("createToken: appKey={}, appSecret={}, expiresAt={}, payload={}",
-                appKey, appSecret, expiresAt, payload);
+        //移除预置参数
+        payload.remove("iat");
+        payload.remove("exp");
 
         Date dateNow = new Date();
         //构建自定义的签名摘要（安全2）
@@ -69,7 +68,7 @@ public class JwtTool {
         /*
             1.创建 jwt 签名，存放参数；
             2.签名时间
-            3.设置过期时间为当天结束（validateToken方法：容忍校验2分钟）
+            3.设置过期时间为当天结束（validateToken方法：容忍校验x秒）
             4.hash256签名为（安全4）
          */
         return JWT.create()
@@ -92,8 +91,6 @@ public class JwtTool {
                                               String appKey,
                                               String appSecret,
                                               long leeway) {
-        log.trace("claimsToken: token={}, appKey={}, appSecret={}, leeway={}",
-                token, appKey, appSecret, leeway);
 
         try {
             JWT jwt = JWT.of(token);

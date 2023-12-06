@@ -84,9 +84,9 @@ public class AuthJWTFilter extends BaseFilter implements WebFilter {
                     if (jwtRefresh) {
                         res.getHeaders().set(authHeaderName, "Refresh " +
                                 JwtTool.createToken(jwtKey, jwtSecret, authExpireSeconds, payload));
-                        log.debug("payload={} refresh expire time", payload);
+                        log.debug("payload:{} refresh expire time", payload);
                     } else {
-                        log.debug("payload={} iat:{} exp:{}",
+                        log.debug("payload:{} iat:{} exp:{}",
                                 payload,
                                 DateUtil.date(Long.parseLong(payload.get("iat") + "000")),
                                 DateUtil.date(Long.parseLong(payload.get("exp") + "000"))
