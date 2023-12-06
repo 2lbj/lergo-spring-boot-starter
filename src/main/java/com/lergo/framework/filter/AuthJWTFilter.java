@@ -82,7 +82,7 @@ public class AuthJWTFilter extends BaseFilter implements WebFilter {
 
                     // 刷新token过期时间
                     if (jwtRefresh) {
-                        res.getHeaders().set(authHeaderName, "Refresh " +
+                        res.getHeaders().set(authHeaderName, "Refresh-Bearer  " +
                                 JwtTool.createToken(jwtKey, jwtSecret, authExpireSeconds, payload));
                         log.debug("payload:{} refresh expire time", payload);
                     } else {
