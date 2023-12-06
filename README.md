@@ -107,6 +107,7 @@
       app-key: lerGo-app-key # JWT密钥-AK
       app-secret: lerGo-app-secret # JWT密钥-SK
       leeway-seconds: 120 # JWT容错时间 (默认120秒)
+      refresh: true # 是否启用JWT刷新 (默认禁用)
   ```
 * 文档配置
   ```yaml
