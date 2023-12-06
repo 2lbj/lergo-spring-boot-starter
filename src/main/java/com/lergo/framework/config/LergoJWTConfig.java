@@ -6,13 +6,13 @@ import org.springframework.stereotype.Component;
 
 @Data
 @Component
-@ConfigurationProperties(prefix = "lergo.filter.jwt")
+@ConfigurationProperties(prefix = "lergo.jwt")
 public class LergoJWTConfig {
 
     /**
      * JWT鉴权过期容忍时间
      */
-    private Long jwtLeewaySeconds;
+    private Long leewaySeconds;
 
     /**
      * JWT签名键值
