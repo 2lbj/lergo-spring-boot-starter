@@ -20,16 +20,6 @@ public class LergoFilterConfig {
     private boolean result;
 
     /**
-     * 鉴权过期时间
-     */
-    private Long authExpireSeconds;
-
-    /**
-     * 鉴权请求头名称
-     */
-    private String authHeaderName;
-
-    /**
      * 是否启用Redis认证
      */
     @Deprecated
@@ -39,5 +29,15 @@ public class LergoFilterConfig {
      * 是否启用JWT认证
      */
     private boolean authJwt;
+
+    /**
+     * 鉴权过期时间
+     */
+    private Long authExpireSeconds;
+
+    /**
+     * 鉴权请求头名称
+     */
+    private String authHeaderName;
 
 }
