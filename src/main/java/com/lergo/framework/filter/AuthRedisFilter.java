@@ -51,7 +51,7 @@ public class AuthRedisFilter extends BaseFilter implements WebFilter {
         ServerHttpRequest req = exchange.getRequest();
         ServerHttpResponse res = exchange.getResponse();
 
-        if (writeList(req) || !withRedis) {
+        if (writeList(req)) {
             return chain.filter(exchange);
         }
 
