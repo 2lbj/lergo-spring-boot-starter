@@ -21,7 +21,6 @@ import org.springframework.web.server.WebFilterChain;
 import reactor.core.publisher.Mono;
 
 import javax.annotation.Resource;
-import java.util.Arrays;
 import java.util.Map;
 
 @Slf4j
@@ -91,9 +90,7 @@ public class AuthJWTFilter extends BaseFilter implements WebFilter {
                     // 刷新token过期时间
                     if (jwtRefresh) {
                         res.getHeaders().set(authHeaderName, "reBearer " +
-                                JwtTool.createToken(jwtKey, jwtSecret, authExpireSeconds, payload,
-                                        //重新实现获取用户角色信息
-                                        Arrays.asList(payload.get("roles").split(","))));
+                                JwtTool.createToken(jwtKey, jwtSecret, authExpireSeconds, payload));
                         log.debug("ak {} sk {} payload {} refresh expire time",
                                 jwtKey, jwtSecret, payload);
                     }

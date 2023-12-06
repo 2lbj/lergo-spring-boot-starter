@@ -16,7 +16,6 @@ import lombok.Data;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
-import java.util.List;
 import java.util.Map;
 
 @Component
@@ -82,21 +81,25 @@ public class JwtTool {
      * @param appSecret 签名秘钥
      * @param expiresAt 过期时间（秒）
      * @param payload   jwt负载
-     * @param roles     用户角色信息
      * @return jwtToken
      */
-    public static String createToken(String appKey, String appSecret, int expiresAt, Map<String, String> payload, List<String> roles) {
+    public static String createToken(String appKey,
+                                     String appSecret,
+                                     int expiresAt,
+                                     Map<String, String> payload) {
 
         Date dateNow = new Date();
-        //1.构建自定义的签名摘要（安全2）
+        //构建自定义的签名摘要（安全2）
         payload.put(AUTHENTICATOR_KEY,
                 SecureUtil.md5(SecureUtil.sha256(
                         appKey + "_" + DateUtil.formatDateTime(dateNow) + "_" + appSecret)));
 
-        //2.将用户角色信息添加到JWT负载中
-        payload.put("roles", String.join(",", roles));  // 将用户角色信息添加到JWT负载中
-
-        //3.创建 jwt 签名，存放参数；2.签名时间 3。设置过期时间为当天结束（validateToken方法：容忍校验2分钟），4.hash256签名为（安全4）
+        /*
+            1.创建 jwt 签名，存放参数；
+            2.签名时间
+            3.设置过期时间为当天结束（validateToken方法：容忍校验2分钟）
+            4.hash256签名为（安全4）
+         */
         return JWT.create()
                 .setIssuedAt(dateNow)
                 .setExpiresAt(DateUtil.offsetSecond(dateNow, expiresAt))
