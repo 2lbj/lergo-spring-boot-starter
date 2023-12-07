@@ -36,16 +36,9 @@ spring:
           config:
             multi-statement-allow: true
 
-mybatis-plus:
+mybatis-flex:
   global-config:
-    banner: false
-    db-config:
-      id-type: ASSIGN_ID
-
-pagehelper:
-  auto-dialect: true
-  reasonable: true
-  support-methods-arguments: true
+    print-banner: false
 
 logging:
   level:

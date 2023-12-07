@@ -53,6 +53,9 @@
 > 语法糖
  lombok
 
+> 高可用 (断路器/限流/重试)
+ Resilience4j
+
 > 接口文档
  OpenApi
 
@@ -63,13 +66,13 @@
  Druid
 
 > 数据库开发辅助
- MybatisPlus
- PageHelper
+ MyBatis-Flex
  MapStruct
  BeanSearcher
 
 > Google工具库
  Guava
+ ZXing
 
 > Hutool工具库
  Hutool
@@ -179,6 +182,8 @@ public class DemoController {
 3. [ ] 重试机制 feign
 4. [x] 异常捕获及校验
 5. [x] 前置解析模块 http状态码转义固定json格式
+6. [ ] Resilience4j
+7. [ ] MyBatis-Flex
 
 ## Admin
 1. [ ] RBAC模型 

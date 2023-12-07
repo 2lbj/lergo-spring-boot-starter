@@ -6,9 +6,13 @@ import com.lergo.framework.annotation.UnAuthentication;
 import com.lergo.framework.config.LergoConfig;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ServerWebExchange;
 
 import javax.annotation.Resource;
 
@@ -23,15 +27,23 @@ public class FrameworkController {
 
     @GetMapping("ping")
     @LogTracker("Ping...")
-    @Operation(summary = "服务连通性测试接口", description = "返回PONG")
+    @Operation(summary = "服务连通性测试接口", description = "cbor返回PONG")
     @UnAuthentication
-    public String ping() {
+    public String ping(ServerWebExchange exchange) {
+
+        exchange.getResponse().getHeaders().add(
+                HttpHeaders.CONTENT_TYPE,
+                MediaType.APPLICATION_CBOR_VALUE);
+
         return "PONG";
     }
 
     @GetMapping("config")
-    public LergoConfig config() {
-        return lergoConfig;
+    public ResponseEntity<LergoConfig> config() {
+
+        return ResponseEntity.ok()
+                .contentType(MediaType.APPLICATION_NDJSON)
+                .body(lergoConfig);
     }
 
 }
