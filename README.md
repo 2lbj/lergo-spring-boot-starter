@@ -68,7 +68,6 @@
 > 数据库开发辅助
  MyBatis-Flex
  MapStruct
- BeanSearcher
 
 > Google工具库
  Guava

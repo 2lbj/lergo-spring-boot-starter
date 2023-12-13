@@ -232,11 +232,6 @@
             <version>1.5.5.Final</version>
         </dependency>
         <dependency>
-            <groupId>cn.zhxu</groupId>
-            <artifactId>bean-searcher</artifactId>
-            <version>4.2.4</version>
-        </dependency>
-        <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>42.7.0</version>
