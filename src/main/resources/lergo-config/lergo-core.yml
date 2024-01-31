@@ -24,9 +24,9 @@ logging:
 
 #https://springdoc.org/#properties
 springdoc:
+  writer-with-order-by-keys: true
   swagger-ui:
-    enabled: false
     display-request-duration: true
     disable-swagger-default-url: true
     use-root-path: true
-  writer-with-order-by-keys: true
+    enabled: false
