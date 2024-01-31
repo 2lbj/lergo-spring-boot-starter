@@ -3,8 +3,9 @@ package com.lergo.framework.filter;
 import cn.hutool.core.date.DateUtil;
 import com.lergo.framework.annotation.UnAuthentication;
 import com.lergo.framework.utils.JwtTool;
+import jakarta.annotation.Resource;
+import jakarta.validation.constraints.NotNull;
 import lombok.extern.slf4j.Slf4j;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
@@ -20,7 +21,6 @@ import org.springframework.web.server.WebFilter;
 import org.springframework.web.server.WebFilterChain;
 import reactor.core.publisher.Mono;
 
-import javax.annotation.Resource;
 import java.util.Map;
 
 @Slf4j

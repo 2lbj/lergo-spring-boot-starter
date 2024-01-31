@@ -175,6 +175,11 @@ public class DemoController {
 ```
 
 # TOTO
+
+## Spring-boot 3.x + JDK 17
+
+1. [x] 升级基础功能
+
 ## core
 1. [ ] 日志 traceId 耗时
 2. [ ] pageBean searchBean
@@ -182,7 +187,7 @@ public class DemoController {
 4. [x] 异常捕获及校验
 5. [x] 前置解析模块 http状态码转义固定json格式
 6. [ ] Resilience4j
-7. [ ] MyBatis-Flex
+7. [ ] MyBatis-Flex / R2DBC
 
 ## Admin
 1. [ ] RBAC模型 

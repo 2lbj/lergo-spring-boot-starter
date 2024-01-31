@@ -9,7 +9,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ConditionalOnProperty(value = "lergo.boot.with-jdbc", havingValue = "false", matchIfMissing = true)
 @EnableAutoConfiguration(exclude = {
-        DataSourceAutoConfiguration.class,
-        DruidDataSourceAutoConfigure.class})
+        DruidDataSourceAutoConfigure.class,
+        DataSourceAutoConfiguration.class
+})
 public class ExcludeJDBCConfiguration {
 }

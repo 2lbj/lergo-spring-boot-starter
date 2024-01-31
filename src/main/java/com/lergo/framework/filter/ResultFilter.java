@@ -3,8 +3,9 @@ package com.lergo.framework.filter;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.lergo.framework.annotation.RawResponse;
 import com.lergo.framework.entity.CommonResult;
+import jakarta.annotation.Resource;
+import jakarta.validation.constraints.NotNull;
 import lombok.extern.slf4j.Slf4j;
-import org.jetbrains.annotations.NotNull;
 import org.reactivestreams.Publisher;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
@@ -21,7 +22,6 @@ import org.springframework.web.server.WebFilter;
 import org.springframework.web.server.WebFilterChain;
 import reactor.core.publisher.Mono;
 
-import javax.annotation.Resource;
 import java.nio.charset.StandardCharsets;
 import java.util.Objects;
 
@@ -67,7 +67,7 @@ public class ResultFilter extends BaseFilter implements WebFilter {
 
                             CommonResult<Object> result = new CommonResult<>();
                             result.setCode(Objects.requireNonNull(getStatusCode()).value())
-                                    .setMessage(getStatusCode().getReasonPhrase());
+                                    .setMessage(getStatusCode().toString());
                             try {
                                 result.setData(objectMapper.readValue(buffer.toString(StandardCharsets.UTF_8), Object.class));
                             } catch (JsonProcessingException e) {

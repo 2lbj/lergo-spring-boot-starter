@@ -39,6 +39,9 @@ spring:
 mybatis-flex:
   global-config:
     print-banner: false
+  configuration:
+    # 打印SQL日志
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 logging:
   level:

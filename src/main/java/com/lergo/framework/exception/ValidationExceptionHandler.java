@@ -1,5 +1,7 @@
 package com.lergo.framework.exception;
 
+import jakarta.validation.ConstraintViolationException;
+import jakarta.validation.Path;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.map.HashedMap;
 import org.springframework.http.HttpStatus;
@@ -7,9 +9,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.bind.support.WebExchangeBindException;
-
-import javax.validation.ConstraintViolationException;
-import javax.validation.Path;
 
 @Slf4j
 @RestControllerAdvice
