@@ -193,5 +193,11 @@ public class DemoController {
 1. [ ] RBAC模型 
 2. [ ] OAuth2
 
+## Html
+
+- classpath:/META-INF/resources/
+- classpath:/resources/
+- classpath:/static/
+- classpath:/public/
 
 Created by @[hexLi](https://2lbj.github.io/) with Github Copilot ~~它可真能瞎胡嘞~~ 献给同行的小礼物, 希望大家用的开心

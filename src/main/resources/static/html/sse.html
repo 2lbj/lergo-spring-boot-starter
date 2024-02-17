@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SSE Example</title>
+</head>
+<body>
+
+<p id="sseEvents"></p>
+
+<script>
+    if (typeof (EventSource) === "undefined") {
+        document.getElementById('sseEvents').innerHTML = "Your browser does not support Server-Sent Events.";
+    }
+
+    let eventSource;
+
+    function establishConnection() {
+
+        const eventSource = new EventSource("/framework/events");
+
+        eventSource.addEventListener("sse-event", function (event) {
+            //const data = JSON.parse(event.data);
+            //console.log("Received data:", data);
+            // 处理接收到的数据，例如更新页面
+            document.getElementById('sseEvents').innerHTML = "[" + event.type + "] " + event.data;
+        });
+
+        eventSource.onopen = function () {
+            console.log("Connection opened");
+        };
+
+        eventSource.onerror = function (error) {
+            console.error("Error:", error);
+            // 处理连接错误
+        };
+    }
+
+    function closeConnection() {
+        if (eventSource) {
+            eventSource.close();
+            console.log("Connection closed");
+        }
+    }
+
+    // 在页面卸载时调用
+    window.addEventListener("beforeunload", closeConnection);
+
+    establishConnection();
+
+</script>
+
+</body>
+</html>
