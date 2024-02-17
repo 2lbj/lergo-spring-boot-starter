@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.2.0</version>
+        <version>3.2.2</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -130,22 +130,22 @@
         <dependency>
             <groupId>io.github.openfeign</groupId>
             <artifactId>feign-core</artifactId>
-            <version>13.2</version>
+            <version>13.2.1</version>
         </dependency>
         <dependency>
             <groupId>io.github.openfeign</groupId>
             <artifactId>feign-okhttp</artifactId>
-            <version>13.2</version>
+            <version>13.2.1</version>
         </dependency>
         <dependency>
             <groupId>io.github.openfeign</groupId>
             <artifactId>feign-slf4j</artifactId>
-            <version>13.2</version>
+            <version>13.2.1</version>
         </dependency>
         <dependency>
             <groupId>io.github.openfeign</groupId>
             <artifactId>feign-gson</artifactId>
-            <version>13.2</version>
+            <version>13.2.1</version>
         </dependency>
 
         <!-- Log -->
@@ -239,7 +239,7 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid-spring-boot-starter</artifactId>
-            <version>1.2.20</version>
+            <version>1.2.21</version>
         </dependency>
         <!--<dependency>
             <groupId>com.mybatis-flex</groupId>
@@ -266,14 +266,14 @@
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
-            <version>5.8.25</version>
+            <version>5.8.26</version>
         </dependency>
 
         <!-- barcode -->
         <dependency>
             <groupId>com.google.zxing</groupId>
             <artifactId>core</artifactId>
-            <version>3.5.2</version>
+            <version>3.5.3</version>
         </dependency>
 
         <!-- 重试机制 -->
