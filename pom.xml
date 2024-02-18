@@ -240,9 +240,9 @@
             <version>1.2.21</version>
         </dependency>
         <!--<dependency>
-            <groupId>com.mybatis-flex</groupId>
-            <artifactId>mybatis-flex-spring-boot-starter</artifactId>
-            <version>1.7.7</version>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-spring-boot3-starter</artifactId>
+            <version>3.5.5</version>
         </dependency>-->
         <dependency>
             <groupId>com.mybatis-flex</groupId>

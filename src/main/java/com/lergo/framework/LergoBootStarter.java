@@ -13,7 +13,6 @@ public class LergoBootStarter extends AbstractBootStarter {
     private static final Logger log = LoggerFactory.getLogger(LergoBootStarter.class);
 
     public LergoBootStarter() {
-        //System.setProperty("pagehelper.banner", "false");
         log.info("{}-{} ({})",
                 System.getProperties().getProperty("os.name"),
                 System.getProperties().getProperty("os.version"),
