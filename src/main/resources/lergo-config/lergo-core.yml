@@ -17,9 +17,11 @@ spring:
 logging:
   level:
     root: info
-    org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer: ERROR
+    org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer: WARN
     org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor: WARN
     org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver: WARN
+    org.springframework.integration.endpoint.EventDrivenConsumer: WARN
+    org.springframework.integration.channel.PublishSubscribeChannel: WARN
     org.springdoc.api.AbstractOpenApiResource: WARN
 
 #https://springdoc.org/#properties
