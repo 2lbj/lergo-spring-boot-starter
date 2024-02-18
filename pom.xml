@@ -72,6 +72,14 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+        </dependency>
 
         <!--  SpringBoot Mail -->
         <dependency>
@@ -227,16 +235,6 @@
         </dependency>
 
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context-support</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-autoconfigure</artifactId>
-        </dependency>
-
-        <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid-spring-boot-starter</artifactId>
             <version>1.2.21</version>
@@ -298,6 +296,10 @@
                 <exclusion>
                     <groupId>commons-collections</groupId>
                     <artifactId>commons-collections</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>cn.hutool</groupId>
+                    <artifactId>hutool-core</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>
