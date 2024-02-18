@@ -22,18 +22,19 @@
 <dependency>
     <groupId>io.github.2lbj</groupId>
     <artifactId>lergo-spring-boot-starter</artifactId>
-  <version>1.0.11</version>
+    <version>1.0.11</version>
 </dependency>
 ```
 
 # 版本说明及上游依赖
 
-| LerGo  | Spring-boot | 备注                |
-|:-------|:-----------:|:------------------|
-| 1.0.0  |    2.6.7    | 初始化               |
-| 1.0.2  |    2.7.6    | 修正部分问题            |
-| 1.0.9  |   2.7.17    | 升级OpenAPI/增加模块化启动 |
-| 1.0.11 |   2.7.17    | 增加JWT鉴权/完善异常捕获    |
+| LerGo  | Spring-boot | 备注                           |
+|:-------|:-----------:|:-----------------------------|
+| 1.0.0  |    2.6.7    | 初始化                          |
+| 1.0.2  |    2.7.6    | 修正部分问题                       |
+| 1.0.9  |   2.7.17    | 升级OpenAPI/增加模块化启动            |
+| 1.0.11 |   2.7.17    | 增加JWT鉴权/完善异常捕获               |
+| 2.0.0  |    3.2.2    | 升级Spring-boot3.x JDK17/增加SSE |
 
 # 引入模块
 
