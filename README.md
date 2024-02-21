@@ -1,4 +1,4 @@
-[![Author](https://img.shields.io/badge/Author-hexLi-666699)](https://2lbj.github.io/) [![last-commit](https://img.shields.io/github/last-commit/2lbj/lergo-spring-boot-starter)](https://github.com/2lbj/lergo-spring-boot-starter) [![maven-central](https://img.shields.io/maven-central/v/io.github.2lbj/lergo-spring-boot-starter?link=https%3A%2F%2Fcentral.sonatype.com%2Fartifact%2Fio.github.2lbj%2Flergo-spring-boot-starter)](https://central.sonatype.com/artifact/io.github.2lbj/lergo-spring-boot-starter) [![license](https://img.shields.io/badge/license-GPLv3.0-orange)](./LICENSE)
+[![Author](https://img.shields.io/badge/Author-hexLi-666699)](https://2lbj.github.io/) [![last-commit](https://img.shields.io/github/last-commit/2lbj/lergo-spring-boot-starter)](https://github.com/2lbj/lergo-spring-boot-starter) [![maven-central](https://img.shields.io/maven-central/v/io.github.2lbj/lergo-spring-boot3-starter?link=https%3A%2F%2Fcentral.sonatype.com%2Fartifact%2Fio.github.2lbj%2Flergo-spring-boot3-starter)](https://central.sonatype.com/artifact/io.github.2lbj/lergo-spring-boot3-starter) [![license](https://img.shields.io/badge/license-Apache%202.0-lime)](./LICENSE)
 
 # LerGo是什么
 
@@ -18,6 +18,21 @@
 原则上你可以在任何基于SpringBoot项目中引入  
 强烈推荐克隆 [LerGo-Example](https://github.com/2lbj/LerGo-Example) 作为基础工程, 亦可以参考其中代码最佳实践
 
+# Spring-Boot 3.x
+
+```xml
+<dependency>
+    <groupId>io.github.2lbj</groupId>
+    <artifactId>lergo-spring-boot3-starter</artifactId>
+    <version>1.0.0</version>
+</dependency>
+```
+
+| LerGo3 | Spring-boot | 备注                           |
+|:-------|:-----------:|:-----------------------------|
+| 1.0.0  |    3.2.2    | 升级Spring-boot3.x JDK17/增加SSE |
+
+# Spring-Boot 2.x
 ```xml
 <dependency>
     <groupId>io.github.2lbj</groupId>
@@ -26,15 +41,12 @@
 </dependency>
 ```
 
-# 版本说明及上游依赖
-
 | LerGo  | Spring-boot | 备注                           |
 |:-------|:-----------:|:-----------------------------|
 | 1.0.0  |    2.6.7    | 初始化                          |
 | 1.0.2  |    2.7.6    | 修正部分问题                       |
 | 1.0.9  |   2.7.17    | 升级OpenAPI/增加模块化启动            |
 | 1.0.11 |   2.7.17    | 增加JWT鉴权/完善异常捕获               |
-| 2.0.0  |    3.2.2    | 升级Spring-boot3.x JDK17/增加SSE |
 
 # 引入模块
 

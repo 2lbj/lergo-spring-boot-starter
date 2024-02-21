@@ -1,2 +1,14 @@
+#4-3
+server:
+  port: 9999
+
+spring:
+  config:
+    import:
+      - classpath:/lergo-config/lergo-core.yml
+      - classpath:/lergo-config/lergo-db.yml
+      - classpath:/lergo-config/lergo-redis.yml
+      - classpath:/lergo-config/lergo-liteflow.yml
+
 lergo:
   version: @project.version@

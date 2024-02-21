@@ -79,8 +79,7 @@ public class ResultFilter extends BaseFilter implements WebFilter {
                                 CommonResult<Object> commonResult =
                                         objectMapper.readValue(buffer.toString(StandardCharsets.UTF_8), CommonResult.class);
                                 if (commonResult.getCode() != null &&
-                                        commonResult.getMessage() != null &&
-                                        commonResult.getData() != null) {
+                                        commonResult.getMessage() != null) {
                                     result = commonResult;
                                 }
                             } catch (Exception ignored) {

@@ -1,5 +1,6 @@
 package com.lergo.framework.exception;
 
+import com.lergo.framework.entity.CommonResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -37,14 +38,28 @@ public class SystemExceptionHandler {
 
 
     /*
-     * 处理运行时异常
+     * 自定义系统异常
      */
-    @ExceptionHandler(BizException.class)
+    @ExceptionHandler(SysException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public String exceptionHandler(BizException e) {
+    public String exceptionHandler(SysException e) {
         log.error("{} <-- {}",
                 e.getLocalizedMessage() == null ? e.toString() : e.getLocalizedMessage(),
                 Arrays.stream(e.getStackTrace()).findFirst().orElse(e.getStackTrace()[0]));
         return e.getMessage() == null ? e.toString() : e.getMessage();
+    }
+
+
+    /*
+     * 自定义业务异常
+     */
+    @ExceptionHandler(BizException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public CommonResult<String> exceptionHandler(BizException e) {
+        log.error("{} <-- {}",
+                e.getLocalizedMessage() == null ? e.toString() : e.getLocalizedMessage(),
+                Arrays.stream(e.getStackTrace()).findFirst().orElse(e.getStackTrace()[0]));
+        return CommonResult.error(e.code == 200 ? 500 : e.code,
+                e.getMessage() == null ? e.toString() : e.getMessage());
     }
 }
