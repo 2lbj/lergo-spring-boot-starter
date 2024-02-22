@@ -33,3 +33,5 @@ springdoc:
     disable-swagger-default-url: true
     use-root-path: true
     enabled: false
+  api-docs:
+    enabled: false
