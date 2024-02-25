@@ -134,19 +134,6 @@
             <version>2.2.0</version>
         </dependency>
 
-        <!-- OpenFeign -->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
-            <version>4.1.0</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>commons-fileupload</groupId>
-                    <artifactId>commons-fileupload</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
         <!-- Log -->
         <!--<dependency>
             <groupId>com.yomahub</groupId>
@@ -224,7 +211,6 @@
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
-
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid-spring-boot-starter</artifactId>
@@ -240,7 +226,6 @@
             <artifactId>mybatis-flex-spring-boot3-starter</artifactId>
             <version>1.7.9</version>
         </dependency>-->
-
         <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct</artifactId>
@@ -264,7 +249,7 @@
             <version>5.8.26</version>
         </dependency>
 
-        <!-- barcode -->
+        <!-- 二维码 -->
         <dependency>
             <groupId>com.google.zxing</groupId>
             <artifactId>core</artifactId>
