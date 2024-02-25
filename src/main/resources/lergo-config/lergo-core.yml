@@ -16,7 +16,7 @@ spring:
 
 logging:
   level:
-    root: info
+    root: INFO
     org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer: WARN
     org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor: WARN
     org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver: WARN
@@ -25,13 +25,15 @@ logging:
     org.springframework.integration.channel.PublishSubscribeChannel: WARN
     org.springdoc.api.AbstractOpenApiResource: WARN
 
-#https://springdoc.org/#properties
 springdoc:
   writer-with-order-by-keys: true
   swagger-ui:
+    enabled: false #.........................default
     display-request-duration: true
     disable-swagger-default-url: true
     use-root-path: true
-    enabled: false
   api-docs:
-    enabled: false
+    enabled: true #..........................default
+    resolve-schema-properties: true
+  writer-with-default-pretty-printer: true
+  override-with-generic-response: true
