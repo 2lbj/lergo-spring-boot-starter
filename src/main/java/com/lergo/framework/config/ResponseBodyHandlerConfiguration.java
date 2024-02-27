@@ -20,7 +20,6 @@ import reactor.core.publisher.Mono;
 
 import java.nio.charset.StandardCharsets;
 import java.util.List;
-import java.util.Objects;
 import java.util.function.Function;
 
 @Configuration
@@ -28,7 +27,7 @@ import java.util.function.Function;
 @Deprecated
 public class ResponseBodyHandlerConfiguration {
     @Bean
-    ResponseBodyHandler responseWrapper(ServerCodecConfigurer serverCodecConfigurer,
+    public ResponseBodyHandler responseWrapper(ServerCodecConfigurer serverCodecConfigurer,
                                                RequestedContentTypeResolver requestedContentTypeResolver) {
         return new ResponseBodyHandler(serverCodecConfigurer.getWriters(), requestedContentTypeResolver);
     }
@@ -50,10 +49,10 @@ public class ResponseBodyHandlerConfiguration {
             return CommonResult.success(body);
         }
 
-        @Override
         @NotNull
+        @Override
         @SuppressWarnings("unchecked")
-        public Mono<Void> handleResult(ServerWebExchange exchange, HandlerResult result) {
+        public Mono<Void> handleResult(@NotNull ServerWebExchange exchange, HandlerResult result) {
 
             Object returnValue = result.getReturnValue();
             Object body;
@@ -64,12 +63,12 @@ public class ResponseBodyHandlerConfiguration {
 
             // <1.1>  处理返回结果为 Mono 的情况
             if (returnValue instanceof Mono) {
-                body = ((Mono<Object>) Objects.requireNonNull(result.getReturnValue()))
+                body = ((Mono<Object>) result.getReturnValue())
                         .map((Function<Object, Object>) ResponseBodyHandler::wrapCommonResult)
                         .defaultIfEmpty(COMMON_RESULT_SUCCESS);
                 //  <1.2> 处理返回结果为 Flux 的情况
             } else if (returnValue instanceof Flux) {
-                body = ((Flux<Object>) Objects.requireNonNull(result.getReturnValue()))
+                body = ((Flux<Object>) result.getReturnValue())
                         .collectList()
                         .map((Function<Object, Object>) ResponseBodyHandler::wrapCommonResult)
                         .defaultIfEmpty(COMMON_RESULT_SUCCESS);

@@ -29,6 +29,11 @@ springdoc:
   writer-with-order-by-keys: true
   swagger-ui:
     enabled: false #.........................default
+    # 布尔值。控制供应商扩展（x-）字段和操作、参数和架构值的显示。
+    showExtensions: true
+    # 布尔值。控制参数的扩展名（pattern、maxLength、minLength、maximum、minminimum）字段和值的显示。
+    showCommonExtensions: true
+    # 布尔值。控制“试用”请求的请求持续时间（毫秒）的显示。
     display-request-duration: true
     disable-swagger-default-url: true
     use-root-path: true
