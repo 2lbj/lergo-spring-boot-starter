@@ -24,13 +24,14 @@
 <dependency>
     <groupId>io.github.2lbj</groupId>
     <artifactId>lergo-spring-boot3-starter</artifactId>
-    <version>1.0.0</version>
+  <version>1.0.1</version>
 </dependency>
 ```
 
 | LerGo3 | Spring-boot | 备注                           |
 |:-------|:-----------:|:-----------------------------|
 | 1.0.0  |    3.2.2    | 升级Spring-boot3.x JDK17/增加SSE |
+| 1.0.1  |    3.2.2    | 修正异常枚举                       |
 
 # Spring-Boot 2.x
 ```xml
