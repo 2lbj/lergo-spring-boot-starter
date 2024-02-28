@@ -14,6 +14,7 @@ public class BaseFilter {
                 req.getPath().value().startsWith("/v3/api-docs") ||
                 req.getPath().value().equals("/swagger-ui.html") ||
                 req.getPath().value().startsWith("/webjars") ||
+                req.getPath().value().contains(".html") ||
                 req.getPath().value().startsWith("/html");
     }
 }

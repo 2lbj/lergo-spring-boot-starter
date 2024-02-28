@@ -1,12 +1,14 @@
 package com.lergo.framework.entity;
 
 import com.google.gson.Gson;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import org.springframework.util.Assert;
 
 import java.io.Serializable;
 
 @Getter
+@Schema(title = "统一返回数据体", description = "JSON包装格式")
 public class CommonResult<T> implements Serializable {
 
     public static Integer CODE_SUCCESS = 200;
@@ -15,14 +17,17 @@ public class CommonResult<T> implements Serializable {
     /**
      * 错误码
      */
+    @Schema(description = "状态码")
     private Integer code;
     /**
      * 错误提示
      */
+    @Schema(description = "状态描述")
     private String message;
     /**
      * 返回数据
      */
+    @Schema(description = "数据体")
     private T data;
 
     /**
