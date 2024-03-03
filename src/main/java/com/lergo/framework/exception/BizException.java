@@ -12,6 +12,10 @@ public class BizException extends SysException {
         super(message);
         this.code = code;
     }
+    public BizException(String code, String message) {
+        super(message);
+        this.code = Integer.valueOf(code);
+    }
 
     public BizException(String message, Throwable throwable) {
         super(message, throwable);
