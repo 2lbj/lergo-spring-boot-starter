@@ -17,11 +17,6 @@ public class BizException extends SysException {
         this.code = Integer.valueOf(code);
     }
 
-    public BizException(String code, String message) {
-        super(message);
-        this.code = Integer.parseInt(code);
-    }
-
     public BizException(String message, Throwable throwable) {
         super(message, throwable);
     }
