@@ -42,9 +42,9 @@ public class LogFilter extends BaseFilter implements WebFilter {
                         bce.getRequest().getURI(),
                         bce.getRequest().getHeaders(),
                         bce.getFormDataString(),
-                        bce.getRequest().getBodyStr(),
+                        bce.getRequest().getRequestBodyStr(),
                         bce.getResponse().getStatusCode(),
-                        bce.getResponse().getBodyStr());
+                        bce.getResponse().getResponseBodyStr());
                 return;
             }
 
@@ -54,9 +54,9 @@ public class LogFilter extends BaseFilter implements WebFilter {
                     bce.getRequest().getURI(),
                     bce.getRequest().getHeaders(),
                     bce.getFormDataString(),
-                    bce.getRequest().getBodyStr(),
+                    bce.getRequest().getRequestBodyStr(),
                     bce.getResponse().getStatusCode(),
-                    bce.getResponse().getBodyStr());
+                    bce.getResponse().getResponseBodyStr());
         });
     }
 
@@ -104,7 +104,7 @@ public class LogFilter extends BaseFilter implements WebFilter {
                 });
             }
 
-            public String getBodyStr() {
+            public String getRequestBodyStr() {
                 return this.body.toString().replaceAll("[\r\n]", "  ");
             }
         }
@@ -124,7 +124,7 @@ public class LogFilter extends BaseFilter implements WebFilter {
                 }));
             }
 
-            public String getBodyStr() {
+            public String getResponseBodyStr() {
                 return this.body.toString().replaceAll("[\r\n]", "  ");
             }
         }
