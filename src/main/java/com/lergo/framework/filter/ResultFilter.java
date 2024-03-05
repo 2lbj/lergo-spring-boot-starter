@@ -76,7 +76,7 @@ public class ResultFilter extends BaseFilter implements WebFilter {
                             }
 
                             try {
-                                CommonResult<Object> commonResult =
+                                CommonResult commonResult =
                                         objectMapper.readValue(buffer.toString(StandardCharsets.UTF_8), CommonResult.class);
                                 if (commonResult.getCode() != null &&
                                         commonResult.getMessage() != null) {
@@ -88,7 +88,7 @@ public class ResultFilter extends BaseFilter implements WebFilter {
                             setStatusCode(OK);
                             getHeaders().setContentType(MediaType.APPLICATION_JSON);
                             getHeaders().setContentLength(result.toString().getBytes(StandardCharsets.UTF_8).length);
-                            //getHeaders().setAccessControlAllowOrigin("*");
+                            getHeaders().setAccessControlAllowOrigin("*");
 
                             sink.next(this.bufferFactory().wrap(result.toString().getBytes(StandardCharsets.UTF_8)));
 
