@@ -95,6 +95,7 @@ public class ResultFilter extends BaseFilter implements WebFilter {
                             setStatusCode(OK);
                             getHeaders().setContentType(MediaType.APPLICATION_JSON);
                             getHeaders().setContentLength(result.toString().getBytes(StandardCharsets.UTF_8).length);
+                            getHeaders().setAccessControlAllowOrigin("*");
 
                             sink.next(this.bufferFactory().wrap(result.toString().getBytes(StandardCharsets.UTF_8)));
 
