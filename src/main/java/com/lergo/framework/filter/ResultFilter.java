@@ -13,6 +13,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.core.io.buffer.DataBufferUtils;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.server.reactive.ServerHttpResponseDecorator;
 import org.springframework.web.method.HandlerMethod;
@@ -41,6 +42,12 @@ public class ResultFilter extends BaseFilter implements WebFilter {
     public Mono<Void> filter(ServerWebExchange exchange, @NotNull WebFilterChain chain) {
 
         if (writeList(exchange.getRequest())) {
+            return chain.filter(exchange);
+        }
+
+        if (HttpMethod.HEAD.equals(exchange.getRequest().getMethod()) ||
+                HttpMethod.OPTIONS.equals(exchange.getRequest().getMethod()) ||
+                HttpMethod.TRACE.equals(exchange.getRequest().getMethod())) {
             return chain.filter(exchange);
         }
 
@@ -88,7 +95,6 @@ public class ResultFilter extends BaseFilter implements WebFilter {
                             setStatusCode(OK);
                             getHeaders().setContentType(MediaType.APPLICATION_JSON);
                             getHeaders().setContentLength(result.toString().getBytes(StandardCharsets.UTF_8).length);
-                            getHeaders().setAccessControlAllowOrigin("*");
 
                             sink.next(this.bufferFactory().wrap(result.toString().getBytes(StandardCharsets.UTF_8)));
 
