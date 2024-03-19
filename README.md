@@ -24,7 +24,7 @@
 <dependency>
     <groupId>io.github.2lbj</groupId>
     <artifactId>lergo-spring-boot3-starter</artifactId>
-  <version>1.0.3</version>
+  <version>1.0.4</version>
 </dependency>
 ```
 
@@ -34,6 +34,7 @@
 | 1.0.1  |    3.2.2    | 修正异常枚举                        |
 | 1.0.2  |    3.2.3    | 升级 spring-boot                |
 | 1.0.3  |    3.2.3    | 升级 postgresql 驱动/修正文档白名单      |
+| 1.0.4  |    3.2.3    | 增加脱敏注解                        |
 
 # Spring-Boot 2.x
 ```xml
@@ -190,6 +191,24 @@ public class DemoController {
 }
 ```
 
+`@Desensitization` 标记为需要脱敏的字段
+
+```java
+import com.lergo.framework.annotation.Desensitization;
+
+import static cn.hutool.core.util.DesensitizedUtil.DesensitizedType.*;
+
+public class TgDemo {
+  // ...
+  @Desensitization(type = MOBILE_PHONE)
+  private String phone;
+
+  @Desensitization(prefixLen = 3, suffixLen = 6)
+  private String info;
+
+}
+```
+
 # TOTO
 
 ## Spring-boot 3.x + JDK 17
@@ -203,7 +222,8 @@ public class DemoController {
 4. [x] 异常捕获及校验
 5. [x] 前置解析模块 http状态码转义固定json格式
 6. [ ] Resilience4j
-7. [ ] MyBatis-Flex / R2DBC
+7. [x] 脱敏注解
+8. [ ] MyBatis-Flex / R2DBC
 
 ## Admin
 1. [ ] RBAC模型 
