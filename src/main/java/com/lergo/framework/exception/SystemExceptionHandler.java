@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.bind.support.WebExchangeBindException;
+import org.springframework.web.reactive.resource.NoResourceFoundException;
 import org.springframework.web.server.UnsupportedMediaTypeStatusException;
 
 import java.util.Arrays;
@@ -37,6 +38,13 @@ public class SystemExceptionHandler {
     @ResponseStatus(HttpStatus.UNSUPPORTED_MEDIA_TYPE)
     public String unsupportedMediaTypeExceptionHandler(UnsupportedMediaTypeStatusException e) {
         log.error("{} <-- {}", e.getSupportedMediaTypes(), e.getContentType());
+        return e.getMessage();
+    }
+
+    @ExceptionHandler(NoResourceFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public String noResourceFoundExceptionHandler(NoResourceFoundException e) {
+        log.warn("NOT FOUND -- {}", e.getMessage());
         return e.getMessage();
     }
 

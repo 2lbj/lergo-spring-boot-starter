@@ -10,7 +10,7 @@ public class BaseFilter {
     ObjectMapper objectMapper = new ObjectMapper();
     boolean writeList(ServerHttpRequest req) {
         return req.getPath().value().equals("/") ||
-                req.getPath().value().startsWith("/favicon.ico") ||
+                req.getPath().value().equals("/favicon.ico") ||
                 req.getPath().value().startsWith("/actuator") ||
                 req.getPath().value().startsWith("/v3/api-docs") ||
                 req.getPath().value().equals("/swagger-ui.html") ||
