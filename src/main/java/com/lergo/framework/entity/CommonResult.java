@@ -6,6 +6,7 @@ import lombok.Getter;
 import org.springframework.util.Assert;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 @Getter
 @Schema(title = "统一返回数据体", description = "JSON包装格式")
@@ -62,6 +63,10 @@ public class CommonResult<T> implements Serializable {
     @Override
     public String toString() {
         return gson.toJson(this);
+    }
+
+    public boolean isSuccess() {
+        return Objects.equals(this.code, CODE_SUCCESS);
     }
 
 
