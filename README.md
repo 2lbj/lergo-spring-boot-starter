@@ -24,7 +24,7 @@
 <dependency>
     <groupId>io.github.2lbj</groupId>
     <artifactId>lergo-spring-boot3-starter</artifactId>
-  <version>1.0.7</version>
+  <version>1.0.8</version>
 </dependency>
 ```
 
@@ -32,10 +32,8 @@
 |:-------|:-----------:|:------------------------------|
 | 1.0.0  |    3.2.2    | 升级 spring-boot3.x JDK17/增加SSE |
 | 1.0.1  |    3.2.2    | 修正异常枚举                        |
-| 1.0.2  |    3.2.3    | 升级 spring-boot                |
-| 1.0.3  |    3.2.3    | 升级 postgresql 驱动/修正文档白名单      |
 | 1.0.4  |    3.2.3    | 增加脱敏注解                        |
-| 1.0.7  |    3.2.4    | 修正健康检查                        |
+| 1.0.8  |    3.2.4    | 修正健康检查                        |
 
 # Spring-Boot 2.x
 ```xml
