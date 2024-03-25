@@ -65,10 +65,9 @@ public class CommonResult<T> implements Serializable {
         return gson.toJson(this);
     }
 
-    public boolean isSuccess() {
+    public boolean successCode() {
         return Objects.equals(this.code, CODE_SUCCESS);
     }
-
 
     public CommonResult<T> setCode(Integer code) {
         this.code = code;
