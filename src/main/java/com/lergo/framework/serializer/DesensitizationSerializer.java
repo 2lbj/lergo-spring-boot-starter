@@ -23,10 +23,10 @@ public class DesensitizationSerializer extends JsonSerializer<String> implements
     @Override
     public void serialize(String value, JsonGenerator gen, SerializerProvider serializers) throws IOException {
         if (value != null) {
-            if (type != null) {
-                gen.writeString(DesensitizedUtil.desensitized(value, type));
-            } else if (prefixLen > 0 || suffixLen > 0) {
+            if (prefixLen > 0 || suffixLen > 0) {
                 gen.writeString(StrUtil.hide(value, prefixLen, suffixLen));
+            } else if (type != null) {
+                gen.writeString(DesensitizedUtil.desensitized(value, type));
             } else {
                 gen.writeString(DesensitizedUtil.clear());
             }
