@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.http.server.reactive.ServerHttpResponse;
@@ -50,6 +51,10 @@ public class AuthRedisFilter extends BaseFilter implements WebFilter {
         ServerHttpResponse res = exchange.getResponse();
 
         if (writeList(req)) {
+            return chain.filter(exchange);
+        }
+
+        if (HttpMethod.OPTIONS.equals(req.getMethod())) {
             return chain.filter(exchange);
         }
 
