@@ -23,6 +23,7 @@ import org.springframework.web.server.WebFilter;
 import org.springframework.web.server.WebFilterChain;
 import reactor.core.publisher.Mono;
 
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 @Slf4j
@@ -84,7 +85,9 @@ public class AuthRedisFilter extends BaseFilter implements WebFilter {
             // 校验通过，过滤器正常放行
             if (valid) {
                 // 刷新token过期时间
-                stringRedisTemplate.expire(token, authExpireSeconds, TimeUnit.SECONDS);
+                stringRedisTemplate.expire(token,
+                        Objects.requireNonNull(stringRedisTemplate.getExpire(token, TimeUnit.SECONDS)) +
+                                authExpireSeconds, TimeUnit.SECONDS);
                 log.debug("token={} refresh expire time", token);
                 return chain.filter(exchange);
             }
