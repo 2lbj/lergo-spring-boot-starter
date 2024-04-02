@@ -37,6 +37,7 @@ springdoc:
     display-request-duration: true
     disable-swagger-default-url: true
     use-root-path: true
+    groups-order: asc
   api-docs:
     enabled: true #..........................default
     resolve-schema-properties: true
