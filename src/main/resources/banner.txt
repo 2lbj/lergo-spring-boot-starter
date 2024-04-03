@@ -1,3 +1,4 @@
+${AnsiColor.BLUE}
 ${AnsiColor.BLUE},--.                     ,----.
 ${AnsiColor.BLUE}|  |     ,---.  ,--.--. '  .-./     ,---.
 ${AnsiColor.BLUE}|  |    | .-. : |  .--' |  | .---. | .-. |
