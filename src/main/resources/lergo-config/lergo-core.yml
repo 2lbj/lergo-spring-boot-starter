@@ -38,6 +38,8 @@ springdoc:
     disable-swagger-default-url: true
     use-root-path: true
     groups-order: asc
+    tags-sorter: alpha
+    operations-sorter: alpha
   api-docs:
     enabled: true #..........................default
     resolve-schema-properties: true

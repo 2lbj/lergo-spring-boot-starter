@@ -11,7 +11,7 @@
 
     <groupId>io.github.2lbj</groupId>
     <artifactId>lergo-spring-boot3-starter</artifactId>
-    <version>1.1.5</version>
+    <version>1.1.6</version>
     <packaging>jar</packaging>
     <name>Lergo Framework Starter</name>
     <description>LerGo Framework for Spring Boot</description>
@@ -230,6 +230,11 @@
         <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct</artifactId>
+            <version>1.5.5.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-processor</artifactId>
             <version>1.5.5.Final</version>
         </dependency>
 
