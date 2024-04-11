@@ -8,7 +8,8 @@ public class BaseFilter {
 
     public Gson gson = new Gson();
     public ObjectMapper objectMapper = new ObjectMapper();
-    boolean writeList(ServerHttpRequest req) {
+
+    public boolean writeList(ServerHttpRequest req) {
         return req.getPath().value().equals("/") ||
                 req.getPath().value().equals("/favicon.ico") ||
                 req.getPath().value().startsWith("/actuator") ||
