@@ -6,8 +6,8 @@ import org.springframework.http.server.reactive.ServerHttpRequest;
 
 public class BaseFilter {
 
-    Gson gson = new Gson();
-    ObjectMapper objectMapper = new ObjectMapper();
+    public Gson gson = new Gson();
+    public ObjectMapper objectMapper = new ObjectMapper();
     boolean writeList(ServerHttpRequest req) {
         return req.getPath().value().equals("/") ||
                 req.getPath().value().equals("/favicon.ico") ||
