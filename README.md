@@ -24,7 +24,7 @@
 <dependency>
     <groupId>io.github.2lbj</groupId>
     <artifactId>lergo-spring-boot3-starter</artifactId>
-  <version>1.1.8</version>
+    <version>1.1.8</version>
 </dependency>
 ```
 
@@ -56,47 +56,48 @@
 ```markdown
  > 微服务核心
  Spring Boot
- - spring-boot-starter-webflux
- - spring-boot-autoconfigure-processor
- - spring-boot-starter-validation
- - spring-boot-configuration-processor
- - spring-boot-starter-actuator
- - spring-boot-starter-aop
- - spring-boot-starter-mail
- - spring-boot-starter-data-redis
- - spring-boot-starter-cache
+
+- spring-boot-starter-webflux
+- spring-boot-autoconfigure-processor
+- spring-boot-starter-validation
+- spring-boot-configuration-processor
+- spring-boot-starter-actuator
+- spring-boot-starter-aop
+- spring-boot-starter-mail
+- spring-boot-starter-data-redis
+- spring-boot-starter-cache
 
 > 语法糖
- lombok
+lombok
 
 > 高可用 (断路器/限流/重试)
- Resilience4j
+Resilience4j
 
 > 接口文档
- OpenApi
+OpenApi
 
 > 外部调用
- OpenFeign
+OpenFeign
 
 > 数据库连接池
- Druid
+Druid
 
 > 数据库开发辅助
- MyBatis-Flex
- MapStruct
+MyBatis-Flex
+MapStruct
 
 > Google工具库
- Guava
- ZXing
+Guava
+ZXing
 
 > Hutool工具库
- Hutool
+Hutool
 
 > 重试机制
- GuavaRetrying
+GuavaRetrying
 
 > 规则引擎
- LiteFlow 
+LiteFlow 
 ```
 
 # 配置文件说明
@@ -153,11 +154,11 @@
 import com.lergo.framework.annotation.LogTracker;
 
 public class Function {
-  // ...
-  @LogTracker("say some thing for log")
-  public void doSomething() {
     // ...
-  }
+    @LogTracker("say some thing for log")
+    public void doSomething() {
+        // ...
+    }
 }
 ```
 
@@ -166,12 +167,12 @@ public class Function {
 import com.lergo.framework.annotation.RawResponse;
 
 public class DemoController {
-  // ...
-  @GetMapping("/raw")
-  @RawResponse
-  String getRawResponse() {
     // ...
-  }
+    @GetMapping("/raw")
+    @RawResponse
+    String getRawResponse() {
+        // ...
+    }
 }
 ```
 
@@ -198,12 +199,12 @@ import com.lergo.framework.annotation.Desensitization;
 import static cn.hutool.core.util.DesensitizedUtil.DesensitizedType.*;
 
 public class TgDemo {
-  // ...
-  @Desensitization(type = MOBILE_PHONE)
-  private String phone;
+    // ...
+    @Desensitization(type = MOBILE_PHONE)
+    private String phone;
 
-  @Desensitization(prefixLen = 3, suffixLen = 6)
-  private String info;
+    @Desensitization(prefixLen = 3, suffixLen = 6)
+    private String info;
 
 }
 ```
@@ -225,7 +226,8 @@ public class TgDemo {
 8. [ ] MyBatis-Flex / R2DBC
 
 ## Admin
-1. [ ] RBAC模型 
+
+1. [ ] RBAC模型
 2. [ ] OAuth2
 
 ## Html
