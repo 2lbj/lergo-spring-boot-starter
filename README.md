@@ -225,8 +225,9 @@ public class TgDemo {
 7. [x] 脱敏注解
 8. [ ] MyBatis-Flex / R2DBC
 9. [ ] MapStruct
-10.[ ] 网关转发
+10. [x] 网关转发
 11. [ ] 升级Json --> Msgpack
+12. [ ] 测试缓存模型caffeine
 
 ## Admin
 
