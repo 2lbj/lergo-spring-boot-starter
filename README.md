@@ -24,7 +24,7 @@
 <dependency>
     <groupId>io.github.2lbj</groupId>
     <artifactId>lergo-spring-boot3-starter</artifactId>
-    <version>1.1.8</version>
+  <version>1.1.9</version>
 </dependency>
 ```
 
@@ -34,6 +34,7 @@
 | 1.0.1  |    3.2.2    | 修正异常枚举                        |
 | 1.0.4  |    3.2.3    | 增加脱敏注解                        |
 | 1.1.8  |    3.2.4    | 修正健康检查及redis鉴权                |
+| 1.1.9  |    3.3.1    | 上游依赖更新                        |
 
 # Spring-Boot 2.x
 ```xml
