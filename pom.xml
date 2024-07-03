@@ -11,7 +11,7 @@
 
     <groupId>io.github.2lbj</groupId>
     <artifactId>lergo-spring-boot3-starter</artifactId>
-    <version>1.1.9</version>
+    <version>1.2.0</version>
     <packaging>jar</packaging>
     <name>Lergo Framework Starter</name>
     <description>LerGo Framework for Spring Boot</description>
@@ -33,7 +33,7 @@
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webflux-ui</artifactId>
-            <version>2.5.0</version>
+            <version>2.6.0</version>
         </dependency>
         <!--<dependency>
             <groupId>org.springdoc</groupId>
@@ -320,16 +320,16 @@
     <!--以下部分内容不需要修改，直接复制咱贴即可-->
     <url>${projectUrl}</url>
     <licenses>
-        <!--<license>
+        <license>
             <name>GNU Lesser General Public License v3.0</name>
             <url>https://www.gnu.org/licenses/lgpl-3.0.txt</url>
             <distribution>repo,manual</distribution>
-        </license>-->
-        <license>
+        </license>
+        <!--<license>
             <name>The Apache License, Version 2.0</name>
             <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
             <distribution>repo,manual</distribution>
-        </license>
+        </license>-->
     </licenses>
     <scm>
         <!-- 采用projectUrl变量代替这个值，方便给重复利用这个配置，也就是上面的标签替换一下值就行 -->

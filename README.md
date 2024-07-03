@@ -1,4 +1,7 @@
-[![Author](https://img.shields.io/badge/Author-hexLi-666699)](https://2lbj.github.io/) [![last-commit](https://img.shields.io/github/last-commit/2lbj/lergo-spring-boot-starter)](https://github.com/2lbj/lergo-spring-boot-starter) [![maven-central](https://img.shields.io/maven-central/v/io.github.2lbj/lergo-spring-boot3-starter?link=https%3A%2F%2Fcentral.sonatype.com%2Fartifact%2Fio.github.2lbj%2Flergo-spring-boot3-starter)](https://central.sonatype.com/artifact/io.github.2lbj/lergo-spring-boot3-starter) [![license](https://img.shields.io/badge/license-Apache%202.0-lime)](./LICENSE)
+[![Author](https://img.shields.io/badge/Author-hexLi-666699)](https://2lbj.github.io/)
+[![last-commit](https://img.shields.io/github/last-commit/2lbj/lergo-spring-boot-starter)](https://github.com/2lbj/lergo-spring-boot-starter)
+[![maven-central](https://img.shields.io/maven-central/v/io.github.2lbj/lergo-spring-boot3-starter?link=https%3A%2F%2Fcentral.sonatype.com%2Fartifact%2Fio.github.2lbj%2Flergo-spring-boot3-starter)](https://central.sonatype.com/artifact/io.github.2lbj/lergo-spring-boot3-starter)
+[![license](https://img.shields.io/badge/license-GPLv3.0-orange)](LICENSE)
 
 # LerGo是什么
 
@@ -24,7 +27,7 @@
 <dependency>
     <groupId>io.github.2lbj</groupId>
     <artifactId>lergo-spring-boot3-starter</artifactId>
-  <version>1.1.9</version>
+  <version>1.2.0</version>
 </dependency>
 ```
 
@@ -34,7 +37,7 @@
 | 1.0.1  |    3.2.2    | 修正异常枚举                        |
 | 1.0.4  |    3.2.3    | 增加脱敏注解                        |
 | 1.1.8  |    3.2.4    | 修正健康检查及redis鉴权                |
-| 1.1.9  |    3.3.1    | 上游依赖更新                        |
+| 1.2.0  |    3.3.1    | 上游依赖更新                        |
 
 # Spring-Boot 2.x
 ```xml
